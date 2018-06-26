@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+canvas {
+  width: 90vw;
+  height: 30vh;
+  border: 5px solid black;
+}
+
+.nav-parent {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #ddd;
+  padding: 1%;
+}
+
+.nav-child {
+  display: flex;
+}
+
+.nav-ch {
+  display: flex;
+  margin: 0 1em;
+}
+
+.root-canvas-info {
+  border: 3px solid grey;
+  /* position: relative; */
+  margin-top: 50vh;
+}
+
+.root-canvas-selection-bar-component-category, .root-canvas-selection-bar-component-images {
+  display: flex;
+  flex-direction: row;
+}
+
+.root-canvas-selection-bar-category, .root-canvas-selection-bar-images-options {
+  padding: 1em;
+}
