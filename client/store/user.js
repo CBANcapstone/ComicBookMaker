@@ -1,69 +1,67 @@
-import { db, auth, provider } from '../config/firebase';
+import axios from 'axios'
+import history from '../history'
 
-const userSession = (user, dispatch) => {
-  let { displayName, email, photoURL } = user;
+/**
+ * ACTION TYPES
+ */
+const GET_USER = 'GET_USER'
+const REMOVE_USER = 'REMOVE_USER'
 
-  db.collection('users')
-    .doc(email)
-    .get()
-    .then(user => {
-      if (user.exists) {
-        return user;
-      } else {
-        return db
-          .collection('users')
-          .doc(email)
-          .set({
-            displayName,
-            email,
-            photoURL,
-            chapters: []
-          });
-      }
-    })
-    .then(user => {
-      dispatch(getUser(user.data()));
-    })
-    .catch(error => {
-      console.error('Error adding document: ', error);
-    });
-};
+/**
+ * INITIAL STATE
+ */
+const defaultUser = {}
 
-const GET_USER = 'GET_USER';
-const LOGIN = 'LOGIN';
-const LOGOUT = 'LOGOUT';
+/**
+ * ACTION CREATORS
+ */
+const getUser = user => ({type: GET_USER, user})
+const removeUser = () => ({type: REMOVE_USER})
 
-//Action creators
-export const login = user => ({ type: LOGIN, user });
-export const logout = user => ({ type: LOGOUT, user });
-export const getUser = user => ({ type: GET_USER, user });
+/**
+ * THUNK CREATORS
+ */
+export const me = () =>
+  dispatch =>
+    axios.get('/auth/me')
+      .then(res =>
+        dispatch(getUser(res.data || defaultUser)))
+      .catch(err => console.log(err))
 
-//Thunk creators
-export const loginThunk = () => dispatch => {
-  auth.signInWithPopup(provider).then(result => {
-    userSession(result.user, dispatch);
-  });
-};
+export const auth = (email, password, method) =>
+  dispatch => {
+    axios.post(`/auth/${method}`, { email, password })
+      .then(res => {
+        dispatch(getUser(res.data))
+        history.push('/home')
+        return res.data
+      }, authError => { // rare example: a good use case for parallel (non-catch) error handler
+        dispatch(getUser({error: authError}))
+      })
+      .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
+    }
 
-export const logoutThunk = () => dispatch => {
-  auth.signOut().then(() => {
-    dispatch(logout(null));
-  });
-};
+    
 
-export const getUserThunk = user => dispatch => {
-  userSession(user, dispatch);
-};
+export const logout = () =>
+  dispatch =>
+    axios.post('/auth/logout')
+      .then(_ => {
+        dispatch(removeUser())
+        history.push('/login')
+      })
+      .catch(err => console.log(err))
 
-export default function(state = null, action) {
+/**
+ * REDUCER
+ */
+export default function (state = defaultUser, action) {
   switch (action.type) {
-    case LOGIN:
-      return action.user;
-    case LOGOUT:
-      return action.user;
     case GET_USER:
-      return action.user;
+      return action.user
+    case REMOVE_USER:
+      return defaultUser
     default:
-      return state;
+      return state
   }
 }

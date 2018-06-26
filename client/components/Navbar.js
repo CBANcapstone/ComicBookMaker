@@ -1,22 +1,19 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { logoutThunk, loginThunk } from '../store';
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
+import {logout, auth} from '../store'
 
 class Navbar extends Component {
   handleLogout = () => {
-    this.props.logUserOut();
-  };
+    this.props.logUserOut()
+  }
 
-  handleLogin = () => {
-    this.props.authLogin();
-  };
   render() {
     return (
       <div className="nav-parent">
         <div>LOGO</div>
 
-        {this.props.user ? (
+        {this.props.user.id ? (
           <div className="nav-child">
             <Link to="/login">
               <div className="nav-ch" onClick={this.handleLogout}>
@@ -28,29 +25,28 @@ class Navbar extends Component {
             </Link>
           </div>
         ) : (
-          <div className="nav-ch" onClick={this.handleLogin}>
+          <Link to="/login">
+          <div className="nav-ch" >
             SIGN-IN
           </div>
+          </Link>
         )}
       </div>
-    );
+    )
   }
 }
 
 const mapState = state => {
   return {
     user: state.user
-  };
-};
+  }
+}
 
 function mapToProps(dispatch) {
   return {
-    logUserOut: () => dispatch(logoutThunk()),
-    authLogin: () => dispatch(loginThunk())
-  };
+    logUserOut: () => dispatch(logout()),
+    // authLogin: () => dispatch(auth())
+  }
 }
 
-export default connect(
-  mapState,
-  mapToProps
-)(Navbar);
+export default connect(mapState, mapToProps)(Navbar)
