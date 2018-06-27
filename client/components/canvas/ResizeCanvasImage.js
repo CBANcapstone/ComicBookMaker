@@ -166,6 +166,7 @@ export default class ResizeCanvasImage extends Component {
           width={Math.abs(this.state.xRight - this.state.xLeft)}
           height={Math.abs(this.state.yBottom - this.state.yTop)}
           rotation={this.state.rotation}
+          onClick={this.props.onClickImg}
           //   zIndex={this.props.zindex}
         />
       </Group>

@@ -99,3 +99,27 @@ canvas {
   margin: 1em
 }
 
+.root-canvas-info {
+  border: 3px solid grey;
+  margin-top: 5vh;
+}
+
+.root-canvas-buttons {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.root-canvas-delete-image {
+  margin-right: 1em;
+}
+
+.root-canvas-clear-canvas {
+  margin-right: 1em;
+}
+
+.root-canvas-selection-bar-component-category,
+.root-canvas-selection-bar-component-images {
+  display: flex;
+  flex-direction: row;
+}
+
