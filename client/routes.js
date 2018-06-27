@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserProfile, Home, Canvas, RootCanvas} from './components'
+import {Login, Signup, UserProfile, HomePage, Canvas, RootCanvas} from './components'
 import {me} from './store'
 
 /**
@@ -20,7 +20,7 @@ class Routes extends Component {
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/home" component={Home} />
+        <Route path="/home" component={HomePage} />
 
         {isLoggedIn && (
           <Switch>
@@ -32,7 +32,7 @@ class Routes extends Component {
 
         )}
 
-        <Route component={Home} />
+        <Route component={HomePage} />
       </Switch>
     )
   }

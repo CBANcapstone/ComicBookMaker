@@ -51,9 +51,9 @@ function mapState(state) {
 }
 
 function mapDispatch(dispatch) {
-  // return {
-  //   getUserStories: () => dispatch(getUserStoriesThunk())
-  // }
+  return {
+    // getUserStories: () => dispatch(getUserStoriesThunk())
+  }
 }
 
 export default connect(mapState, mapDispatch)(UserProfile)

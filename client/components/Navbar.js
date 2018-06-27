@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {logout, auth} from '../store'
+import {logout} from '../store'
 
 class Navbar extends Component {
   handleLogout = () => {
@@ -10,24 +10,22 @@ class Navbar extends Component {
 
   render() {
     return (
-      <div className="nav-parent">
-        <div>LOGO</div>
+      <div className="navbar-container">
+        <Link to="/home"> home </Link>
 
         {this.props.user.id ? (
-          <div className="nav-child">
-            <Link to="/login">
-              <div className="nav-ch" onClick={this.handleLogout}>
-                LOGOUT
-              </div>
+          <div className="navbar-links-container">
+            <Link to="/user-profile" className="navbar-link">
+              my account
             </Link>
-            <Link to="/user-profile">
-              <div className="nav-ch">MY-ACCOUNT</div>
-            </Link>
+            <a className="navbar-link" onClick={this.handleLogout}>
+              logout
+            </a>
           </div>
         ) : (
-          <div className="nav-ch">
-            <Link to="/login"> LOG IN </Link>
-            <Link to="/signup"> SIGN UP </Link>
+          <div className="navbar-links-container">
+            <Link to="/login"> log in </Link>
+            <Link to="/signup"> sign up </Link>
           </div>
         )}
       </div>

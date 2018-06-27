@@ -10,7 +10,7 @@ canvas {
   border: 5px solid black;
 }
 
-.nav-parent {
+.navbar-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -18,13 +18,14 @@ canvas {
   padding: 1%;
 }
 
-.nav-child {
+.navbar-links-container {
   display: flex;
+  justify-content: space-around;
+  width: 10em
 }
 
-.nav-ch {
+.navbar-link {
   display: flex;
-  margin: 0 1em;
 }
 
 .root-canvas-info {
@@ -86,3 +87,15 @@ canvas {
   height: 15em;
   background-color: beige
 }
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1em
+}
+
+.home-container > * {
+  margin: 1em
+}
+

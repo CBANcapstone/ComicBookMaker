@@ -7,13 +7,6 @@ import Routes from './routes'
 // import firebase, { auth } from './config/firebase';
 
 class App extends Component {
-  componentDidMount() {
-    // auth.onAuthStateChanged(user => {
-    //   if (user) {
-    //     this.props.getUser(user);
-    //   }
-    // });
-  }
   render() {
     return (
       <div>
