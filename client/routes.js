@@ -2,8 +2,18 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserProfile, HomePage, Canvas, RootCanvas} from './components'
+import {
+  Login,
+  Signup,
+  UserProfile,
+  HomePage,
+  Canvas,
+  RootCanvas,
+  Templates,
+  NewStory
+} from './components'
 import {me} from './store'
+
 
 /**
  * COMPONENT
@@ -28,8 +38,9 @@ class Routes extends Component {
             <Route path="/canvas" component={Canvas} />
             <Route path="/user-profile" component={UserProfile} />
             <Route path="/rootCanvas" component={RootCanvas} />
+            <Route path="/templates" component={Templates} />
+            <Route path='/newstory/:id' component={NewStory} />
           </Switch>
-
         )}
 
         <Route component={HomePage} />

@@ -1,20 +1,19 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const Story = db.define('story', {
+const Resource = db.define('resource', {
   title: {
     type: Sequelize.STRING
   },
   description: {
     type: Sequelize.STRING
   },
-  coverImgUrl: {
+  imgUrl: {
     type: Sequelize.TEXT
   },
-  completed: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false
+  category: {
+    type: Sequelize.STRING
   }
 })
 
-module.exports = Story
+module.exports = Resource
