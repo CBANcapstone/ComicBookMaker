@@ -1,6 +1,12 @@
 const router = require('express').Router()
-const {User} = require('../db/models')
+const {Story, Chapter, Template} = require('../db/models')
+
 module.exports = router
+
+
+router.post('/createstory', (req,res,next)=>{
+  console.log(req.body)
+})
 
 
 

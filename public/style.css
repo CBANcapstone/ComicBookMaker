@@ -136,3 +136,12 @@ canvas {
   height: 10em;
   z-index: -1;
 }
+
+.create-story-container {
+  border: 1px solid black
+}
+
+.create-story-container-img {
+  width: 20em;
+  height: 20em
+}
