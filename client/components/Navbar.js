@@ -20,16 +20,15 @@ class Navbar extends Component {
                 LOGOUT
               </div>
             </Link>
-            <Link to="/userProfile">
+            <Link to="/user-profile">
               <div className="nav-ch">MY-ACCOUNT</div>
             </Link>
           </div>
         ) : (
-          <Link to="/login">
-          <div className="nav-ch" >
-            SIGN-IN
+          <div className="nav-ch">
+            <Link to="/login"> LOG IN </Link>
+            <Link to="/signup"> SIGN UP </Link>
           </div>
-          </Link>
         )}
       </div>
     )
@@ -44,8 +43,7 @@ const mapState = state => {
 
 function mapToProps(dispatch) {
   return {
-    logUserOut: () => dispatch(logout()),
-    // authLogin: () => dispatch(auth())
+    logUserOut: () => dispatch(logout())
   }
 }
 
