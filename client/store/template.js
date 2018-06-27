@@ -16,7 +16,7 @@ export const getTemplatesThunk = () =>
 dispatch =>
   axios.get('/api/templates')
     .then((templates) => {
-      dispatch(getTemplates(templates))
+      dispatch(getTemplates(templates.data))
       history.push('/templates')
     })
     .catch(err => console.log(err))

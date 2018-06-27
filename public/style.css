@@ -123,3 +123,16 @@ canvas {
   flex-direction: row;
 }
 
+.template-thumbnail {
+  display: flex;
+  width: 20em;
+  height: 10em;
+  background: none;
+  border: 1px solid black
+}
+
+.template-thumbnail-image{
+  width: 20em;
+  height: 10em;
+  z-index: -1;
+}

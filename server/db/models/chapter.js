@@ -5,9 +5,6 @@ const Chapter = db.define('chapter', {
     title : {
         type : Sequelize.STRING
     },
-    description : {
-        type : Sequelize.STRING
-    },
     imageUrl : {
         type : Sequelize.TEXT
     },
