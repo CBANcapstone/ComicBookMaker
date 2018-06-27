@@ -1,8 +1,9 @@
 const User = require('./user')
 const Story = require('./story')
 const UserRole = require('./user_role')
-const Chapter = require('./Chapter')
-const Resource = require('./Resource')
+const Chapter = require('./chapter')
+const Resource = require('./resource')
+const Template = require('./template')
 
 User.belongsToMany(Story, {through: UserRole})
 Story.belongsToMany(User, {through: UserRole})
@@ -14,5 +15,6 @@ Chapter.belongsTo(User, {as: 'creator'})
 module.exports = {
   User,
   Story,
-  Resource
+  Resource,
+  Template
 }
