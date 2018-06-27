@@ -9,13 +9,11 @@ const Chapter = db.define('chapter', {
         type : Sequelize.STRING
     },
     imageUrl : {
-        type : Sequelize.STRING
+        type : Sequelize.TEXT
     },
-    status : {
-        type : Sequelize.ENUM('complete', 'incomplete')
-    },
-    creator : {
-        type : Sequelize.STRING
+    completed : {
+        type : Sequelize.BOOLEAN,
+        defaultValue: false
     }
 })
 
