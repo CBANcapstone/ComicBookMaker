@@ -27,9 +27,7 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
     callbackURL: process.env.GOOGLE_CALLBACK
   }
 
-  const strategy = new GoogleStrategy(
-    googleConfig,
-    (token, refreshToken, profile, done) => {
+  const strategy = new GoogleStrategy(googleConfig, (token, refreshToken, profile, done) => {
       const googleId = profile.id
       const name = profile.displayName
       const email = profile.emails[0].value
@@ -47,10 +45,8 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
 
   router.get('/', passport.authenticate('google', {scope: 'email'}))
 
-  router.get(
-    '/callback',
-    passport.authenticate('google', {
-      successRedirect: '/home',
+  router.get('/callback', passport.authenticate('google', {
+      successRedirect: '/user-profile',
       failureRedirect: '/login'
     })
   )
