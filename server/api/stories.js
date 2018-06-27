@@ -5,7 +5,8 @@ module.exports = router
 
 
 router.post('/createstory', (req,res,next)=>{
-  console.log(req.body)
+  console.log(req)
+  res.json('Works!')
 })
 
 
