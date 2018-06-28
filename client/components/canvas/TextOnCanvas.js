@@ -2,14 +2,13 @@ import React, {Component} from 'react'
 import {Text} from 'react-konva'
 import Konva from 'konva'
 
-
 export default class TextOnCanvas extends Component {
-  constructor(props){
-    super(props);
-    this.tr;
+  constructor(props) {
+    super(props)
+    this.tr
     this.layer2 = new Konva.Layer()
   }
-  //attaching transformer on Text 
+  //attaching transformer on Text
   transformShow = e => {
     let stage = e.target.getStage()
     stage.add(this.layer2)
@@ -29,10 +28,11 @@ export default class TextOnCanvas extends Component {
   }
   // redraw Text on transform
   handleTransform = e => {
-    let textLayer = e.target.getLayer();
-    textLayer.draw();
-  };
+    let textLayer = e.target.getLayer()
+    textLayer.draw()
+  }
   render() {
+    console.log('FONT IN TextOnCanvas: >>', this.props.font)
     return (
       <Text
         text={this.props.currText}
@@ -40,6 +40,7 @@ export default class TextOnCanvas extends Component {
         onDragMove={this.dragMove}
         onDblClick={this.transformHide}
         fontSize="40"
+        fontFamily={this.props.font}
         align="center"
         fill="black"
         draggable

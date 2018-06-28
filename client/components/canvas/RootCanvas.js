@@ -15,6 +15,7 @@ export default class RootCanvas extends Component {
       images: [],
       lines: [],
       text: [],
+      font: [],
       selectedImageOnCanvas: null,
       width: window.innerWidth,
       height: window.innerHeight / 1.5,
@@ -94,8 +95,11 @@ export default class RootCanvas extends Component {
     }
   }
 
-  addTextToCanvas = text => {
-    this.setState({text: [...this.state.text, text]})
+  addTextToCanvas = (text, font) => {
+    this.setState({
+      text: [...this.state.text, text],
+      font: [...this.state.font, font]
+    })
   }
 
   handleCanvasImgClick = event => {
@@ -231,12 +235,13 @@ export default class RootCanvas extends Component {
                   )
                 })}
               {this.state.text &&
-                this.state.text.map(txt => {
+                this.state.text.map((txt, fontIdx) => {
                   return (
                     <TextOnCanvas
                       key={txt}
                       handleCanvasTextClick={this.handleCanvasTextClick}
                       currText={txt}
+                      font={this.state.font[fontIdx]}
                     />
                   )
                 })}

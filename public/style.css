@@ -209,6 +209,18 @@ textarea {
   margin-top: 24px;
   margin-bottom: 100px;
 }
+.canvas-text-area-fonts {
+  margin-top: 70px;
+}
+.canvas-text-area-fonts-selection {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.canvas-text-area-font-each {
+  margin-left: 1em;
+}
 
 /* --------------------- */
 /* TODO CanvasTextArea */
