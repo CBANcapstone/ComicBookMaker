@@ -15,6 +15,7 @@ export default class CanvasTextArea extends Component {
             id="text"
             name="text"
             rows="4"
+            style={{fontFamily: 'Courier, monospace'}}
           />
           <br />
           <input id="buttonForText" type="submit" value="Add" />

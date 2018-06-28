@@ -121,7 +121,7 @@ export default class RootCanvas extends Component {
   }
 
   handleClear = () => {
-    this.setState({images: [], lines: [], text: [] })
+    this.setState({images: [], lines: [], text: []})
   }
 
   handleSubmit = () => {
@@ -207,6 +207,8 @@ export default class RootCanvas extends Component {
                 fontSize="30"
                 align="center"
                 fill="blue"
+                x={this.state.width / 2.9}
+                y="10"
               />
               {this.state.canvasBoxPosX.map(pos => {
                 return (
