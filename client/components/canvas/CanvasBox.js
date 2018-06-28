@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Rect } from 'react-konva';
+import React, {Component} from 'react'
+import {Rect} from 'react-konva'
 
 export default class extends Component {
   render() {
@@ -8,10 +8,10 @@ export default class extends Component {
         width={this.props.width / 3.3}
         height={this.props.height}
         stroke="black"
-        fill="transparent"
+        fill="white"
         x={this.props.x}
         y={140}
       />
-    );
+    )
   }
 }
