@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const Story = db.define('story', {
+const Template = db.define('template', {
   title: {
     type: Sequelize.STRING
   },
@@ -11,10 +11,9 @@ const Story = db.define('story', {
   coverImgUrl: {
     type: Sequelize.TEXT
   },
-  completed: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false
+  chapters: {
+    type: Sequelize.ARRAY(Sequelize.STRING)
   }
 })
 
-module.exports = Story
+module.exports = Template
