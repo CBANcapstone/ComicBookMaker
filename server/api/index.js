@@ -2,7 +2,6 @@ const router = require('express').Router()
 module.exports = router
 
 router.use('/', (req, res, next) => {
-  console.log(req.user)
   if (!req.user) {
     const error = new Error('Unauthorized. Please login to see that page.')
     error.status = 401

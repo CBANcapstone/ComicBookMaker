@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import { Link } from 'react-router-dom';
 import {fetchStoryThunk} from '../store'
 
 function SingleStory(props) {
@@ -12,9 +13,13 @@ function SingleStory(props) {
         <div className="single-story-info-title">
           <div>Story name: {title}</div>
           <div>Creator: {props.creator && props.creator.email}</div>
-          <div>Contributors: {props.contributors && props.contributors.map(col => {
-            return (<p key={col.id}>{col.email}</p>)
-          })}</div>
+          <div>
+            Contributors:{' '}
+            {props.contributors &&
+              props.contributors.map(col => {
+                return <p key={col.id}>{col.email}</p>
+              })}
+          </div>
           <button>See completed chapters</button>
         </div>
       </div>
@@ -25,6 +30,9 @@ function SingleStory(props) {
             return (
               <div key={chapter.id} className="single-story-thumbnail">
                 <h3 className="center-item">{chapter.title}</h3>
+                <Link to={`/stories/${props.story.id}/${chapter.id}`}>
+                  <button>EDIT</button>
+                </Link>
               </div>
             )
           })}
@@ -39,15 +47,25 @@ class SingleStoryContainer extends Component {
   }
 
   render() {
-    return <SingleStory story={this.props.story} creator={this.props.creator} contributors={this.props.contributors}/>
+    return (
+      <SingleStory
+        story={this.props.story}
+        creator={this.props.creator}
+        contributors={this.props.contributors}
+      />
+    )
   }
 }
 
 function mapState(state) {
   return {
     story: state.story,
-    creator: state.story.users && state.story.users.filter(user => user.user_role.role == 'creator')[0],
-    contributors: state.story.users && state.story.users.filter(user => user.user_role.role == 'contributor')
+    creator:
+      state.story.users &&
+      state.story.users.filter(user => user.user_role.role == 'creator')[0],
+    contributors:
+      state.story.users &&
+      state.story.users.filter(user => user.user_role.role == 'contributor')
   }
 }
 

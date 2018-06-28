@@ -40,6 +40,8 @@ export default class RootCanvas extends Component {
   }
   componentDidMount = () => {
     window.addEventListener('resize', this.updateDimensions)
+    console.log('ROUTE PROPS ON CANVAS: ', this.props)
+    // fetch a chapter by story ID and chapter ID ==>
   }
   componentWillUnmount = () => {
     window.removeEventListener('resize', this.updateDimensions)
@@ -127,6 +129,8 @@ export default class RootCanvas extends Component {
   handleSubmit = () => {
     const picture = this.stageRef.getStage().toDataURL()
     console.log(picture)
+    // after user is done => 
+    // save it under the chapter in DB and redirect to STORY main screen
   }
 
   render() {
