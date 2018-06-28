@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import {Stage, Layer, Text, Line} from 'react-konva'
-import Konva from 'konva'
+// import Konva from 'konva'
 import SelectionBar from './SelectionBar'
 import ResizeCanvasImage from './ResizeCanvasImage'
 import CanvasBox from './CanvasBox'
+import TextOnCanvas from './TextOnCanvas'
 
 export default class RootCanvas extends Component {
   constructor() {
@@ -60,7 +61,7 @@ export default class RootCanvas extends Component {
     })
   }
 
-  handleMouseMove = e => {
+  handleMouseMove = () => {
     // no drawing - skipping
     if (!this._drawing) {
       return
@@ -94,19 +95,7 @@ export default class RootCanvas extends Component {
   }
 
   addTextToCanvas = text => {
-    console.log('in rott-canvas, text is >>>>', text)
-    // var textNode = new Konva.Text({
-    //   text: text,
-    //   x: 50,
-    //   y: 50,
-    //   fontSize: 20
-    // })
-    // textNode.onload = () => {
-    //   this.setState({text: [...this.state.text, textNode]})
-    // }
-    // console.log('textnode IS >>>>', textNode)
     this.setState({text: [...this.state.text, text]})
-    // console.log('STATE IS >>>>', this.state)
   }
 
   handleCanvasImgClick = event => {
@@ -121,7 +110,6 @@ export default class RootCanvas extends Component {
 
   handleCanvasTextClick = event => {
     this._type = 'text'
-    console.log(event.target)
     this.setState({selectedImageOnCanvas: event.target.attrs.text})
   }
 
@@ -133,7 +121,7 @@ export default class RootCanvas extends Component {
   }
 
   handleClear = () => {
-    this.setState({images: [], lines: [], text: []})
+    this.setState({images: [], lines: [], text: [] })
   }
 
   handleSubmit = () => {
@@ -210,6 +198,7 @@ export default class RootCanvas extends Component {
             onMouseDown={this.handleMouseDown}
             onMouseMove={this.handleMouseMove}
             onMouseUp={this.handleMouseUp}
+            onClick={this.clickOnStage}
             ref={node => (this.stageRef = node)}
           >
             <Layer>
@@ -242,14 +231,10 @@ export default class RootCanvas extends Component {
               {this.state.text &&
                 this.state.text.map(txt => {
                   return (
-                    <Text
+                    <TextOnCanvas
                       key={txt}
-                      text={txt}
-                      fontSize="40"
-                      align="center"
-                      fill="black"
-                      draggable
-                      onClick={this.handleCanvasTextClick}
+                      handleCanvasTextClick={this.handleCanvasTextClick}
+                      currText={txt}
                     />
                   )
                 })}

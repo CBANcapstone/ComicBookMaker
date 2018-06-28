@@ -3,7 +3,6 @@ import React, {Component} from 'react'
 export default class CanvasTextArea extends Component {
   handleSubmit = evt => {
     evt.preventDefault()
-    console.log('submitted')
     this.props.sendTextToCanvas(evt.target.text.value)
     evt.target.text.value = ''
   }
