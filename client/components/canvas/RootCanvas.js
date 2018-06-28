@@ -18,9 +18,7 @@ export default class extends Component {
       canvasBoxPosX: [
         this.canvasBoxPos,
         this.canvasBoxPos + 30 + window.innerWidth / this.canvasBoxDisRatio,
-        this.canvasBoxPos +
-          60 +
-          (window.innerWidth / this.canvasBoxDisRatio) * 2
+        this.canvasBoxPos + 60 + window.innerWidth / this.canvasBoxDisRatio * 2
       ]
     };
   }
@@ -33,9 +31,7 @@ export default class extends Component {
       canvasBoxPosX: [
         this.canvasBoxPos,
         this.canvasBoxPos + 20 + window.innerWidth / this.canvasBoxDisRatio,
-        this.canvasBoxPos +
-          40 +
-          (window.innerWidth / this.canvasBoxDisRatio) * 2
+        this.canvasBoxPos + 40 + window.innerWidth / this.canvasBoxDisRatio * 2
       ]
     });
   };

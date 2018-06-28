@@ -1,4 +1,4 @@
-const isDev = process.env.NODE_ENV === 'development'
+const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
   mode: isDev ? 'development' : 'production',
@@ -23,8 +23,8 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      },
+        use: ['style-loader', 'css-loader']
+      }
       // {
       //   test: /\.xml$/,
       //   use: {
@@ -36,4 +36,4 @@ module.exports = {
       // }
     ]
   }
-}
+};

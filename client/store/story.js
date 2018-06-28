@@ -1,28 +1,28 @@
 import axios from 'axios'
 import history from '../history'
 
-const SELECTED_STORY = 'SELECTED_STORY';
+const GET_STORY = 'GET_STORY'
 
-const selectedStory = story => ({
-  type: SELECTED_STORY,
+const getStory = story => ({
+  type: GET_STORY,
   story
 })
 
-export const selectedStoryThunk = (templates, id) => dispatch =>{
-
-  axios.post('/api/stories/createstory', {
-    tempId: id
-  } )
-  .then(res=>console.log(res))
-  .catch(err=>console.log(err))
-
-
-  // dispatch(selectedStory(templates.filter(template => template.id == id)[0]));
- }
+export const createStoryThunk = templateId => dispatch => {
+  axios
+    .post('/api/stories/createstory', {
+      templateId
+    })
+    .then(res => {
+      dispatch(getStory(res.data))
+      history.push(`/stories/${res.data.id}`)
+    })
+    .catch(err => console.log(err))
+}
 
 export default function(state = {}, action) {
   switch (action.type) {
-    case SELECTED_STORY:
+    case GET_STORY:
       return Object.assign({}, state, action.story)
     default:
       return state

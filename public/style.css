@@ -21,7 +21,7 @@ canvas {
 .navbar-links-container {
   display: flex;
   justify-content: space-around;
-  width: 10em
+  width: 10em;
 }
 
 .navbar-link {
@@ -85,18 +85,18 @@ canvas {
   margin: 2em;
   width: 15em;
   height: 15em;
-  background-color: beige
+  background-color: beige;
 }
 
 .home-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1em
+  margin: 1em;
 }
 
 .home-container > * {
-  margin: 1em
+  margin: 1em;
 }
 
 .root-canvas-info {
@@ -123,25 +123,90 @@ canvas {
   flex-direction: row;
 }
 
-.template-thumbnail {
-  display: flex;
-  width: 20em;
-  height: 10em;
-  background: none;
-  border: 1px solid black
-}
-
-.template-thumbnail-image{
-  width: 20em;
-  height: 10em;
-  z-index: -1;
-}
-
+/* FIX THIS*/
 .create-story-container {
-  border: 1px solid black
+  border: 1px solid black;
 }
 
 .create-story-container-img {
   width: 20em;
-  height: 20em
+  height: 20em;
+}
+
+.grid {
+  display: flex;
+  flex-flow: column wrap;
+  margin: auto;
+  padding: 3em;
+  border: 1px solid black;
+  width: 80%;
+}
+
+.grid-header {
+  margin: auto;
+}
+
+.grid-thumbnails-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.grid-thumbnail {
+  display: flex;
+  position: relative;
+  width: 22em;
+  height: 20em;
+  margin: 1em;
+}
+
+.grid-thumbnail-title {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
+  text-align: center;
+  background-color: whitesmoke;
+  width: 90%;
+  border-radius: 3%;
+  font-size: 2em;
+}
+.grid-thumbnail-description {
+  display: none;
+  padding: 1em;
+  margin-left: 2em;
+  margin-right: 2em;
+  position: absolute;
+  z-index: 1;
+  bottom: 2.5em;
+  background-color: whitesmoke;
+  text-align: center;
+  width: 80%;
+  border-radius: 5%;
+}
+.grid-thumbnail-btn {
+  display: none;
+  text-align: center;
+  z-index: 1;
+  position: absolute;
+  bottom: 0em;
+  background-color: green;
+  color: whitesmoke;
+  margin: auto;
+  width: 100%;
+  height: 10%;
+}
+
+.grid-thumbnail:hover div {
+  display: initial;
+}
+
+/* .grid-thumbnail-btn:hover {
+  background-color: green;
+} */
+
+.grid-thumbnail-image {
+  position: relative;
+  width: 22em;
 }
