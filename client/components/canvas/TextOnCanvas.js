@@ -32,7 +32,6 @@ export default class TextOnCanvas extends Component {
     textLayer.draw()
   }
   render() {
-    console.log('FONT IN TextOnCanvas: >>', this.props.font)
     return (
       <Text
         text={this.props.currText}

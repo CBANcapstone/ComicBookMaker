@@ -132,10 +132,6 @@ textarea {
   height: 160px;
 }
 
-#paper {
-  color: #fff;
-  font-size: 20px;
-}
 #margin {
   margin-left: 12px;
   margin-bottom: 20px;
@@ -171,9 +167,9 @@ textarea {
 }
 
 #buttonForText {
+  display: block;
   cursor: pointer;
   margin-top: 20px;
-  float: right;
   height: 40px;
   padding-left: 24px;
   padding-right: 24px;
@@ -182,10 +178,8 @@ textarea {
   font-size: 20px;
   color: #fff;
   text-shadow: 0px -1px 0px #000000;
-  -webkit-border-radius: 8px;
   border-radius: 8px;
   border-top: 1px solid #fff;
-  -webkit-box-shadow: 0px 2px 14px #000;
   box-shadow: 0px 2px 14px #000;
   background-color: #62add6;
   background-image: url(https://static.tumblr.com/maopbtg/ZHLmgtok7/button.png);
@@ -202,24 +196,46 @@ textarea {
   opacity: 0.8;
 }
 #wrapper {
-  width: 700px;
+  width: 100%;
   height: auto;
+  margin: 0 auto;
+}
+#paper {
+  display: block;
+  width: 700px;
+  color: #fff;
+  font-size: 20px;
+  margin-top: 24px;
+  margin-bottom: 30px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 24px;
-  margin-bottom: 100px;
 }
 .canvas-text-area-fonts {
-  margin-top: 70px;
+  align-content: center;
+  display: flex;
+  background-color: #ddd;
+  width: 100%;
+  overflow: scroll;
+}
+
+.canvas-text-area-fonts-options {
+  display: block;
 }
 .canvas-text-area-fonts-selection {
   display: flex;
-  flex-direction: row;
+  justify-content: space-evenly;
   list-style: none;
 }
 
 .canvas-text-area-font-each {
+  background-color: whitesmoke;
+  width: 3em;
+  height: 3em;
+  text-align: center;
   margin-left: 1em;
+  margin-right: 1em;
+  font-size: 2em;
+  padding: 0.5em;
 }
 
 /* --------------------- */
