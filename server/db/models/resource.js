@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize')
-const db = require('../db')
+const Sequelize = require('sequelize');
+const db = require('../db');
 
 const Resource = db.define('resource', {
   title: {
@@ -14,6 +14,6 @@ const Resource = db.define('resource', {
   category: {
     type: Sequelize.STRING
   }
-})
+});
 
-module.exports = Resource
+module.exports = Resource;

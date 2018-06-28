@@ -1,12 +1,12 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {logout} from '../store'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { logout } from '../store';
 
 class Navbar extends Component {
   handleLogout = () => {
-    this.props.logUserOut()
-  }
+    this.props.logUserOut();
+  };
 
   render() {
     return (
@@ -29,20 +29,20 @@ class Navbar extends Component {
           </div>
         )}
       </div>
-    )
+    );
   }
 }
 
 const mapState = state => {
   return {
     user: state.user
-  }
-}
+  };
+};
 
 function mapToProps(dispatch) {
   return {
     logUserOut: () => dispatch(logout())
-  }
+  };
 }
 
-export default connect(mapState, mapToProps)(Navbar)
+export default connect(mapState, mapToProps)(Navbar);

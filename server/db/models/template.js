@@ -1,19 +1,19 @@
-const Sequelize = require('sequelize')
-const db = require('../db')
+const Sequelize = require('sequelize');
+const db = require('../db');
 
 const Template = db.define('template', {
   title: {
     type: Sequelize.STRING
   },
   description: {
-    type: Sequelize.STRING
+    type: Sequelize.TEXT
   },
   coverImgUrl: {
     type: Sequelize.TEXT
   },
   chapters: {
-    type: Sequelize.ARRAY(Sequelize.STRING)
+    type: Sequelize.ARRAY(Sequelize.TEXT)
   }
-})
+});
 
-module.exports = Template
+module.exports = Template;
