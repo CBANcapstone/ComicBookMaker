@@ -90,6 +90,8 @@ export default class RootCanvas extends Component {
     const image = new window.Image()
     image.crossOrigin = 'Anonymous'
     image.src = event.target.src
+    image.height = '457'
+    image.width = '432'
     image.onload = () => {
       this.setState({images: [...this.state.images, image]})
     }
@@ -167,7 +169,7 @@ export default class RootCanvas extends Component {
 
           <div className="root-canvas-submit-image">
             <button type="button" onClick={this.handleSubmit}>
-              submit
+              SUBMIT
               <img
                 src="https://cdn.pixabay.com/photo/2016/03/31/14/37/check-mark-1292787_1280.png"
                 height="30"
@@ -178,6 +180,7 @@ export default class RootCanvas extends Component {
 
           <div className="root-canvas-delete-image">
             <button type="button" onClick={this.handleDelete}>
+              DELETE
               <img
                 src="https://cdn3.iconfinder.com/data/icons/in-and-around-the-house/43/trash_bin-512.png"
                 height="30"
@@ -187,6 +190,7 @@ export default class RootCanvas extends Component {
           </div>
           <div className="root-canvas-clear-canvas">
             <button type="button" onClick={this.handleClear}>
+              CLEAR
               <img
                 src="https://static1.squarespace.com/static/5737ad2a1d07c093e2787063/5ab80fd503ce64c499d79d16/5ab810f3562fa7d514189228/1522012404191/Clear+icon.png?format=300w"
                 height="30"
@@ -208,10 +212,13 @@ export default class RootCanvas extends Component {
             <Layer>
               <Text
                 text="Chapter # - Name Of Chapter"
-                fontSize="30"
+                fontSize="60"
+                fontFamily="Bangers"
+                shadowColor="black"
+                // shadowBlur="0"
                 align="center"
-                fill="blue"
-                x={this.state.width / 2.9}
+                fill="white"
+                x={this.state.width / 3.1}
                 y="10"
               />
               {this.state.canvasBoxPosX.map(pos => {
@@ -251,7 +258,7 @@ export default class RootCanvas extends Component {
                   <Line
                     key={i}
                     points={line}
-                    stroke="blue"
+                    stroke="black"
                     onClick={this.handleCanvasLineClick}
                   />
                 ))}

@@ -34,10 +34,15 @@ canvas {
   margin-top: 50vh;
 }
 
-.root-canvas-selection-bar-component-category,
+.root-canvas-selection-bar-component-category {
+  display: flex;
+  flex-direction: row;
+}
+
 .root-canvas-selection-bar-component-images {
   display: flex;
   flex-direction: row;
+  overflow: scroll;
 }
 
 .root-canvas-selection-bar-category,
@@ -101,6 +106,8 @@ canvas {
 .root-canvas-info {
   border: 3px solid grey;
   margin-top: 1vh;
+  background: url('https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2FBackground%2F11425.jpg?alt=media&token=a00f2a5a-f517-49bb-a932-9ca0100f04c1');
+  background-size: cover;
 }
 
 .root-canvas-buttons {
