@@ -27,8 +27,8 @@ export default class extends Component {
   };
 
   render() {
-      return (
-        <div>
+    return (
+      <div>
         <h1>All pictures in database</h1>
         <ul>
           {this.state.allPictures.map(pic => {
@@ -41,7 +41,6 @@ export default class extends Component {
           })}
         </ul>
       </div>
-      )
+    );
   }
-
 }

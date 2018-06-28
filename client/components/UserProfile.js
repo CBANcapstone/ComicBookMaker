@@ -1,18 +1,16 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class UserProfile extends Component {
-
   componentDidMount() {
     // this.props.getUserStories()
   }
 
   render() {
-    const {name, email, photoUrl} = this.props.user
+    const { name, email, photoUrl } = this.props.user;
     // const {stories} = this.props.stories
     return (
       <div className="profile-container">
-
         <div className="profile-info-container">
           <div className="profile-pic">
             <img src={photoUrl} alt="avatar" />
@@ -25,8 +23,8 @@ class UserProfile extends Component {
         </div>
 
         <div className="profile-filter-bar">
-          <button >created</button>
-          <button >contributed</button>
+          <button>created</button>
+          <button>contributed</button>
         </div>
 
         <div className="profile-stories-lst">
@@ -39,7 +37,7 @@ class UserProfile extends Component {
           <div className="storyThumbnail">story</div>
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -47,13 +45,13 @@ function mapState(state) {
   return {
     user: state.user,
     stories: state.userStories
-  }
+  };
 }
 
 function mapDispatch(dispatch) {
   return {
     // getUserStories: () => dispatch(getUserStoriesThunk())
-  }
+  };
 }
 
-export default connect(mapState, mapDispatch)(UserProfile)
+export default connect(mapState, mapDispatch)(UserProfile);

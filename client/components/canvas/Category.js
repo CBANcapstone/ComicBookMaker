@@ -6,7 +6,8 @@ export default class extends Component {
       <div
         id={this.props.category}
         onClick={this.props.onClick}
-        className="root-canvas-selection-bar-category">
+        className="root-canvas-selection-bar-category"
+      >
         {this.props.category}
       </div>
     );
