@@ -5,6 +5,7 @@ import SelectionBar from './SelectionBar'
 import ResizeCanvasImage from './ResizeCanvasImage'
 import CanvasBox from './CanvasBox'
 import TextOnCanvas from './TextOnCanvas'
+import getChapterThunk from '../../store/index'
 
 export default class RootCanvas extends Component {
   constructor() {
@@ -42,6 +43,8 @@ export default class RootCanvas extends Component {
     window.addEventListener('resize', this.updateDimensions)
     console.log('ROUTE PROPS ON CANVAS: ', this.props)
     // fetch a chapter by story ID and chapter ID ==>
+    let {id, chid} = this.props.match.params
+    getChapterThunk(chid, id)
   }
   componentWillUnmount = () => {
     window.removeEventListener('resize', this.updateDimensions)

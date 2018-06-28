@@ -5,11 +5,13 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import user from './user';
 import templates from './templates';
 import story from './story';
+import chapter from './chapter'
 
 const reducer = combineReducers({
   user,
   templates,
-  story
+  story,
+  chapter
 });
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
@@ -20,3 +22,4 @@ export default store;
 export * from './user';
 export * from './templates';
 export * from './story';
+export * from './chapter'
