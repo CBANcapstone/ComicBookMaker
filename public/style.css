@@ -220,8 +220,6 @@ textarea {
   border: 1px solid black;
 }
 
-.template-thumbnail-image {
-}
 /* FIX THIS*/
 .create-story-container {
   border: 1px solid black;
@@ -301,11 +299,52 @@ textarea {
   display: initial;
 }
 
-/* .grid-thumbnail-btn:hover {
-  background-color: green;
-} */
-
 .grid-thumbnail-image {
   position: relative;
   width: 22em;
 }
+
+.single-story-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 3em;
+  width: 90%;
+  border: 1px solid black
+}
+
+.single-story-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50em
+}
+
+/* .single-story-info > * {
+  padding: 4em;
+} */
+
+.single-story-info-img {
+  width: 30em;
+  height: 20em;
+  align-items: flex-start
+}
+
+.single-story-chapters {
+  display: flex;
+  flex-flow: column wrap
+}
+
+.single-story-thumbnail{
+  margin: 2em;
+  width: 50em;
+  height: 15em;
+  background-color: beige;
+}
+
+.center-item {
+  margin: auto;
+  padding-top: 2em;
+}
+

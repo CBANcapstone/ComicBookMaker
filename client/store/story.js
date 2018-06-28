@@ -14,7 +14,7 @@ export const createStoryThunk = templateId => dispatch => {
       templateId
     })
     .then(res => {
-      dispatch(getStory(res.data))
+      // dispatch(getStory(res.data))
       history.push(`/stories/${res.data.id}`)
     })
     .catch(err => console.log(err))
