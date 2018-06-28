@@ -33,6 +33,15 @@ router.post('/createstory', async (req, res, next) => {
   }
 })
 
+router.get('/:id/:chapterid', async (req, res, next) => {
+  try {
+    let chapter = await Chapter.findById(req.params.chapterid)
+    res.json(chapter)
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.get('/:id', async (req, res, next) => {
   try {
     let story = await Story.findOne({
@@ -46,3 +55,5 @@ router.get('/:id', async (req, res, next) => {
     next(err)
   }
 })
+
+

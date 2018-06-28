@@ -5,7 +5,7 @@ import SelectionBar from './SelectionBar'
 import ResizeCanvasImage from './ResizeCanvasImage'
 import CanvasBox from './CanvasBox'
 import TextOnCanvas from './TextOnCanvas'
-import getChapterThunk from '../../store/index'
+import axios from 'axios'
 
 export default class RootCanvas extends Component {
   constructor() {
@@ -40,12 +40,14 @@ export default class RootCanvas extends Component {
       ]
     })
   }
-  componentDidMount = () => {
+  componentDidMount = async () => {
     window.addEventListener('resize', this.updateDimensions)
-    console.log('ROUTE PROPS ON CANVAS: ', this.props)
-    // fetch a chapter by story ID and chapter ID ==>
+//****************************************************** */
+// in process...
     let {id, chid} = this.props.match.params
-    getChapterThunk(chid, id)
+    let res = await axios.get(`/api/stories/${id}/${chid}`)
+    console.log(res.data)
+//****************************************************** */
   }
   componentWillUnmount = () => {
     window.removeEventListener('resize', this.updateDimensions)
