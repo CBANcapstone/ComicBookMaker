@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react'
 
-export default class extends Component {
-  render() {
-    return (
-      <div
-        id={this.props.category}
-        onClick={this.props.onClick}
-        className="root-canvas-selection-bar-category">
-        {this.props.category}
-      </div>
-    );
-  }
+const Category = props => {
+  return (
+    <div
+      id={props.category}
+      onClick={props.onClick}
+      className="root-canvas-selection-bar-category"
+    >
+      {props.category}
+    </div>
+  )
 }
+
+export default Category

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Stage, Layer, Text, Line} from 'react-konva'
+import Konva from 'konva'
 import SelectionBar from './SelectionBar'
 import ResizeCanvasImage from './ResizeCanvasImage'
 import CanvasBox from './CanvasBox'
@@ -12,6 +13,7 @@ export default class RootCanvas extends Component {
     this.state = {
       images: [],
       lines: [],
+      text: [],
       selectedImageOnCanvas: null,
       width: window.innerWidth,
       height: window.innerHeight / 1.5,
@@ -19,14 +21,7 @@ export default class RootCanvas extends Component {
         this.canvasBoxPos,
         this.canvasBoxPos + 30 + window.innerWidth / this.canvasBoxDisRatio,
         this.canvasBoxPos + 60 + window.innerWidth / this.canvasBoxDisRatio * 2
-      ],
-      xLeft: 5,
-      yTop: 5,
-      xRight: 280,
-      yBottom: 280,
-      rotation: 0,
-      draggable: true,
-      fill: 'transparent'
+      ]
     }
   }
 
@@ -98,6 +93,22 @@ export default class RootCanvas extends Component {
     }
   }
 
+  addTextToCanvas = text => {
+    console.log('in rott-canvas, text is >>>>', text)
+    // var textNode = new Konva.Text({
+    //   text: text,
+    //   x: 50,
+    //   y: 50,
+    //   fontSize: 20
+    // })
+    // textNode.onload = () => {
+    //   this.setState({text: [...this.state.text, textNode]})
+    // }
+    // console.log('textnode IS >>>>', textNode)
+    this.setState({text: [...this.state.text, text]})
+    // console.log('STATE IS >>>>', this.state)
+  }
+
   handleCanvasImgClick = event => {
     this._type = 'images'
     this.setState({selectedImageOnCanvas: event.target.attrs.image})
@@ -105,12 +116,16 @@ export default class RootCanvas extends Component {
 
   handleCanvasLineClick = event => {
     this._type = 'lines'
-    console.log('handle line click >>>>>', event.target.attrs.points)
     this.setState({selectedImageOnCanvas: event.target.attrs.points})
   }
 
+  handleCanvasTextClick = event => {
+    this._type = 'text'
+    console.log(event.target)
+    this.setState({selectedImageOnCanvas: event.target.attrs.text})
+  }
+
   handleDelete = () => {
-    // let abc = this.state[type].filter(img => console.log(img))
     let arr = this.state[this._type].filter(img => {
       return img !== this.state.selectedImageOnCanvas
     })
@@ -118,7 +133,7 @@ export default class RootCanvas extends Component {
   }
 
   handleClear = () => {
-    this.setState({images: [], lines: []})
+    this.setState({images: [], lines: [], text: []})
   }
 
   handleSubmit = () => {
@@ -130,7 +145,10 @@ export default class RootCanvas extends Component {
     return (
       <div className="root-canvas">
         <div className="root-canvas-selection-bar">
-          <SelectionBar click={this.handleClick} />
+          <SelectionBar
+            click={this.handleClick}
+            addText={this.addTextToCanvas}
+          />
         </div>
         <div className="root-canvas-buttons">
           <div className="root-canvas-move-image">
@@ -221,6 +239,21 @@ export default class RootCanvas extends Component {
                     />
                   )
                 })}
+              {this.state.text &&
+                this.state.text.map(txt => {
+                  return (
+                    <Text
+                      key={txt}
+                      text={txt}
+                      fontSize="40"
+                      align="center"
+                      fill="black"
+                      draggable
+                      onClick={this.handleCanvasTextClick}
+                    />
+                  )
+                })}
+
               {this.state.lines &&
                 this.state.lines.map((line, i) => (
                   <Line
