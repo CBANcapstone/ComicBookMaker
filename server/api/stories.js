@@ -25,20 +25,25 @@ router.post('/createstory', async (req, res, next) => {
       })
     })
   )
-  let storyToSend = story.get({plain : true})
+  let storyToSend = story.get({plain: true})
   storyToSend.chapters = chapters
   res.json(storyToSend)
 })
 
-router.get('/', async (req, res, next) => {
+router.get('/', (req, res) => {
+  Story.findAll().then(stories => res.json(stories))
+})
+
+router.get('/:userId', async (req, res, next) => {
   try {
-    const users = await User.findAll({
-      // explicitly select only the id and email fields - even though
-      // users' passwords are encrypted, it won't help if we just
-      // send everything to anyone who asks!
-      attributes: ['id', 'email']
+    let user = await User.findOne({
+      where: {
+        id: req.params.userId
+      },
+
+      include: [{all: true}]
     })
-    res.json(users)
+    res.status(200).send(user.stories)
   } catch (err) {
     next(err)
   }

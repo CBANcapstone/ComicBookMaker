@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ThumbnailsGrid from './ThumbnailsGrid';
+import { getUserStoriesThunk } from '../store'
+
 
 class UserProfile extends Component {
   componentDidMount() {
-    // this.props.getUserStories()
+    this.props.getUserStories(this.props.user.id)
   }
 
   render() {
+    // console.log(this.props)
+    // console.log('(#_#) ',this.state)
+
     const { name, email, photoUrl } = this.props.user;
     // const {stories} = this.props.stories
     return (
@@ -28,13 +34,7 @@ class UserProfile extends Component {
         </div>
 
         <div className="profile-stories-lst">
-          {/* grid of user stories here */}
-          <div className="storyThumbnail">story</div>
-          <div className="storyThumbnail">story</div>
-          <div className="storyThumbnail">story</div>
-          <div className="storyThumbnail">story</div>
-          <div className="storyThumbnail">story</div>
-          <div className="storyThumbnail">story</div>
+          <ThumbnailsGrid list={this.props.stories} />
         </div>
       </div>
     );
@@ -44,13 +44,13 @@ class UserProfile extends Component {
 function mapState(state) {
   return {
     user: state.user,
-    stories: state.userStories
+    stories: state.story
   };
 }
 
 function mapDispatch(dispatch) {
   return {
-    // getUserStories: () => dispatch(getUserStoriesThunk())
+    getUserStories: (id) => dispatch(getUserStoriesThunk(id))
   };
 }
 
