@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Stage, Layer, Rect, Image, Group } from 'react-konva';
-import firebase from 'firebase';
 import { db } from '../../config/firebase';
 import AllPictures from './PicsFromDB';
 

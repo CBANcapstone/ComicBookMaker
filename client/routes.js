@@ -10,7 +10,7 @@ import {
   Canvas,
   RootCanvas,
   Templates,
-  NewStory
+  SingleStoryContainer
 } from './components';
 import { me } from './store';
 
@@ -38,7 +38,7 @@ class Routes extends Component {
             <Route path="/user-profile" component={UserProfile} />
             <Route path="/rootCanvas" component={RootCanvas} />
             <Route path="/templates" component={Templates} />
-            <Route path="/newstory/:id" component={NewStory} />
+            <Route path="/stories/:id" component={SingleStoryContainer} />
           </Switch>
         )}
 

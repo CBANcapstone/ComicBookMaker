@@ -20,6 +20,12 @@ export const createStoryThunk = templateId => dispatch => {
     .catch(err => console.log(err))
 }
 
+export const fetchStoryThunk = storyId => async dispatch => {
+  let story = await axios.get(`/api/stories/${storyId}`)
+  console.log('FETCHED STORY', story.data)
+  dispatch(getStory(story.data))
+}
+
 export default function(state = {}, action) {
   switch (action.type) {
     case GET_STORY:
