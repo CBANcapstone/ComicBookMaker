@@ -98,23 +98,14 @@ canvas {
 .home-container > * {
   margin: 1em;
 }
-
 .root-canvas-info {
   border: 3px solid grey;
-  margin-top: 5vh;
+  margin-top: 1vh;
 }
 
 .root-canvas-buttons {
   display: flex;
   flex-direction: row-reverse;
-}
-
-.root-canvas-delete-image {
-  margin-right: 1em;
-}
-
-.root-canvas-clear-canvas {
-  margin-right: 1em;
 }
 
 .root-canvas-selection-bar-component-category,
@@ -123,6 +114,114 @@ canvas {
   flex-direction: row;
 }
 
+/* TODO CanvasTextArea */
+/* --------------------- */
+
+/* * {
+  outline: none;
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  font-family: Courier, monospace;
+} */
+
+textarea {
+  overflow: hidden;
+  word-wrap: break-word;
+  resize: none;
+  height: 160px;
+}
+
+#paper {
+  color: #fff;
+  font-size: 20px;
+}
+#margin {
+  margin-left: 12px;
+  margin-bottom: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+#text {
+  width: 500px;
+  overflow: hidden;
+  background-color: #fff;
+  color: #222;
+  /* font-family: Courier, monospace; */
+  font-weight: normal;
+  font-size: 24px;
+  resize: none;
+  line-height: 40px;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 45px;
+  padding-bottom: 34px;
+  background-image: url(https://static.tumblr.com/maopbtg/E9Bmgtoht/lines.png),
+    url(https://static.tumblr.com/maopbtg/nBUmgtogx/paper.png);
+  background-repeat: repeat-y, repeat;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+  -webkit-box-shadow: 0px 2px 14px #000;
+  box-shadow: 0px 2px 14px #000;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+
+#buttonForText {
+  cursor: pointer;
+  margin-top: 20px;
+  float: right;
+  height: 40px;
+  padding-left: 24px;
+  padding-right: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+  text-shadow: 0px -1px 0px #000000;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  border-top: 1px solid #fff;
+  -webkit-box-shadow: 0px 2px 14px #000;
+  box-shadow: 0px 2px 14px #000;
+  background-color: #62add6;
+  background-image: url(https://static.tumblr.com/maopbtg/ZHLmgtok7/button.png);
+  background-repeat: repeat-x;
+}
+#button:active {
+  zoom: 1;
+  filter: alpha(opacity=80);
+  opacity: 0.8;
+}
+#button:focus {
+  zoom: 1;
+  filter: alpha(opacity=80);
+  opacity: 0.8;
+}
+#wrapper {
+  width: 700px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 24px;
+  margin-bottom: 100px;
+}
+
+/* --------------------- */
+/* TODO CanvasTextArea */
+.template-thumbnail {
+  display: flex;
+  width: 20em;
+  height: 10em;
+  background: none;
+  border: 1px solid black;
+}
+
+.template-thumbnail-image {
+}
 /* FIX THIS*/
 .create-story-container {
   border: 1px solid black;

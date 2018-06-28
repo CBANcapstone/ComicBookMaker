@@ -1,17 +1,20 @@
-import React, { Component } from 'react';
-import { Stage, Layer, Text } from 'react-konva';
-import SelectionBar from './SelectionBar';
-import ResizeCanvasImage from './ResizeCanvasImage';
-import CanvasBox from './CanvasBox';
-// import '../../styles/RootCanvas.css';
+import React, {Component} from 'react'
+import {Stage, Layer, Text, Line} from 'react-konva'
+// import Konva from 'konva'
+import SelectionBar from './SelectionBar'
+import ResizeCanvasImage from './ResizeCanvasImage'
+import CanvasBox from './CanvasBox'
+import TextOnCanvas from './TextOnCanvas'
 
-export default class extends Component {
+export default class RootCanvas extends Component {
   constructor() {
-    super();
-    this.canvasBoxDisRatio = 3.3;
-    this.canvasBoxPos = 30;
+    super()
+    this.canvasBoxDisRatio = 3.3
+    this.canvasBoxPos = 30
     this.state = {
       images: [],
+      lines: [],
+      text: [],
       selectedImageOnCanvas: null,
       width: window.innerWidth,
       height: window.innerHeight / 1.5,
@@ -20,11 +23,11 @@ export default class extends Component {
         this.canvasBoxPos + 30 + window.innerWidth / this.canvasBoxDisRatio,
         this.canvasBoxPos + 60 + window.innerWidth / this.canvasBoxDisRatio * 2
       ]
-    };
+    }
   }
 
   updateDimensions = () => {
-    this.canvasBoxPos = window.innerWidth * 0.02;
+    this.canvasBoxPos = window.innerWidth * 0.02
     this.setState({
       width: window.innerWidth,
       height: window.innerHeight / 2,
@@ -33,45 +36,142 @@ export default class extends Component {
         this.canvasBoxPos + 20 + window.innerWidth / this.canvasBoxDisRatio,
         this.canvasBoxPos + 40 + window.innerWidth / this.canvasBoxDisRatio * 2
       ]
-    });
-  };
+    })
+  }
   componentDidMount = () => {
-    window.addEventListener('resize', this.updateDimensions);
-  };
+    window.addEventListener('resize', this.updateDimensions)
+  }
   componentWillUnmount = () => {
-    window.removeEventListener('resize', this.updateDimensions);
-  };
+    window.removeEventListener('resize', this.updateDimensions)
+  }
+
+  disableDraw = () => {
+    this._drawAllowed = false
+  }
+
+  handleDraw = () => {
+    this._drawAllowed = true
+  }
+
+  handleMouseDown = () => {
+    if (this._drawAllowed) this._drawing = true
+    // add line
+    this.setState({
+      lines: [...this.state.lines, []]
+    })
+  }
+
+  handleMouseMove = () => {
+    // no drawing - skipping
+    if (!this._drawing) {
+      return
+    }
+    const stage = this.stageRef.getStage()
+    const point = stage.getPointerPosition()
+    const {lines} = this.state
+
+    let lastLine = lines[lines.length - 1]
+    // add point
+    lastLine = lastLine.concat([point.x, point.y])
+
+    // replace last
+    lines.splice(lines.length - 1, 1, lastLine)
+    this.setState({
+      lines: lines.concat()
+    })
+  }
+
+  handleMouseUp = () => {
+    this._drawing = false
+  }
 
   handleClick = event => {
-    const image = new window.Image();
-    image.src = event.target.src;
+    const image = new window.Image()
+    image.crossOrigin = 'Anonymous'
+    image.src = event.target.src
     image.onload = () => {
-      this.setState({ images: [...this.state.images, image] });
-    };
-  };
+      this.setState({images: [...this.state.images, image]})
+    }
+  }
+
+  addTextToCanvas = text => {
+    this.setState({text: [...this.state.text, text]})
+  }
 
   handleCanvasImgClick = event => {
-    this.setState({ selectedImageOnCanvas: event.target.attrs.image });
-  };
+    this._type = 'images'
+    this.setState({selectedImageOnCanvas: event.target.attrs.image})
+  }
+
+  handleCanvasLineClick = event => {
+    this._type = 'lines'
+    this.setState({selectedImageOnCanvas: event.target.attrs.points})
+  }
+
+  handleCanvasTextClick = event => {
+    this._type = 'text'
+    this.setState({selectedImageOnCanvas: event.target.attrs.text})
+  }
 
   handleDelete = () => {
-    let arr = this.state.images.filter(img => {
-      return img !== this.state.selectedImageOnCanvas;
-    });
-    this.setState({ images: arr });
-  };
+    let arr = this.state[this._type].filter(img => {
+      return img !== this.state.selectedImageOnCanvas
+    })
+    this.setState({[this._type]: arr})
+  }
 
   handleClear = () => {
-    this.setState({ images: [] });
-  };
+    this.setState({images: [], lines: [], text: []})
+  }
+
+  handleSubmit = () => {
+    const picture = this.stageRef.getStage().toDataURL()
+    console.log(picture)
+  }
 
   render() {
     return (
       <div className="root-canvas">
         <div className="root-canvas-selection-bar">
-          <SelectionBar click={this.handleClick} />
+          <SelectionBar
+            click={this.handleClick}
+            addText={this.addTextToCanvas}
+          />
         </div>
         <div className="root-canvas-buttons">
+          <div className="root-canvas-move-image">
+            <button type="button" onClick={this.disableDraw}>
+              MOVE
+              <img
+                src="https://cdn1.iconfinder.com/data/icons/web-interface-part-1/32/arrows-outside-2-512.png"
+                height="30"
+                width="30"
+              />
+            </button>
+          </div>
+
+          <div className="root-canvas-draw-line">
+            <button type="button" onClick={this.handleDraw}>
+              DRAW
+              <img
+                src="https://cdn1.iconfinder.com/data/icons/fs-icons-ubuntu-by-franksouza-/512/draw-freehand.png"
+                height="30"
+                width="30"
+              />
+            </button>
+          </div>
+
+          <div className="root-canvas-submit-image">
+            <button type="button" onClick={this.handleSubmit}>
+              submit
+              <img
+                src="https://cdn.pixabay.com/photo/2016/03/31/14/37/check-mark-1292787_1280.png"
+                height="30"
+                width="30"
+              />
+            </button>
+          </div>
+
           <div className="root-canvas-delete-image">
             <button type="button" onClick={this.handleDelete}>
               <img
@@ -92,22 +192,33 @@ export default class extends Component {
           </div>
         </div>
         <div className="root-canvas-info">
-          <Stage width={window.innerWidth} height="700">
+          <Stage
+            width={window.innerWidth}
+            height="700"
+            onMouseDown={this.handleMouseDown}
+            onMouseMove={this.handleMouseMove}
+            onMouseUp={this.handleMouseUp}
+            onClick={this.clickOnStage}
+            ref={node => (this.stageRef = node)}
+          >
             <Layer>
               <Text
                 text="Chapter # - Name Of Chapter"
                 fontSize="30"
                 align="center"
                 fill="blue"
+                x={this.state.width / 2.9}
+                y="10"
               />
               {this.state.canvasBoxPosX.map(pos => {
                 return (
                   <CanvasBox
                     x={pos}
+                    key={pos}
                     width={this.state.width}
                     height={this.state.height}
                   />
-                );
+                )
               })}
               {this.state.images &&
                 this.state.images.map((img, i) => {
@@ -117,12 +228,32 @@ export default class extends Component {
                       image={img}
                       onClickImg={this.handleCanvasImgClick}
                     />
-                  );
+                  )
                 })}
+              {this.state.text &&
+                this.state.text.map(txt => {
+                  return (
+                    <TextOnCanvas
+                      key={txt}
+                      handleCanvasTextClick={this.handleCanvasTextClick}
+                      currText={txt}
+                    />
+                  )
+                })}
+
+              {this.state.lines &&
+                this.state.lines.map((line, i) => (
+                  <Line
+                    key={i}
+                    points={line}
+                    stroke="blue"
+                    onClick={this.handleCanvasLineClick}
+                  />
+                ))}
             </Layer>
           </Stage>
         </div>
       </div>
-    );
+    )
   }
 }
