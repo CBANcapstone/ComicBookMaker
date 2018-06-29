@@ -7,8 +7,8 @@ import CanvasBox from './CanvasBox'
 import TextOnCanvas from './TextOnCanvas'
 
 export default class RootCanvas extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.canvasBoxDisRatio = 3.3
     this.canvasBoxPos = 30
     this.state = {
@@ -16,34 +16,40 @@ export default class RootCanvas extends Component {
       lines: [],
       text: [],
       font: [],
+      canvasBackground: this.props.background || '',
       selectedImageOnCanvas: null,
-      width: window.innerWidth,
-      height: window.innerHeight / 1.5,
-      canvasBoxPosX: [
-        this.canvasBoxPos,
-        this.canvasBoxPos + 30 + window.innerWidth / this.canvasBoxDisRatio,
-        this.canvasBoxPos + 60 + window.innerWidth / this.canvasBoxDisRatio * 2
-      ]
+      numOfBox: this.props.number,
+      canvasBoxPosX: [],
+      canvasBoxPosY: []
     }
   }
 
-  updateDimensions = () => {
-    this.canvasBoxPos = window.innerWidth * 0.02
-    this.setState({
-      width: window.innerWidth,
-      height: window.innerHeight / 2,
-      canvasBoxPosX: [
-        this.canvasBoxPos,
-        this.canvasBoxPos + 20 + window.innerWidth / this.canvasBoxDisRatio,
-        this.canvasBoxPos + 40 + window.innerWidth / this.canvasBoxDisRatio * 2
-      ]
-    })
-  }
   componentDidMount = () => {
-    window.addEventListener('resize', this.updateDimensions)
-  }
-  componentWillUnmount = () => {
-    window.removeEventListener('resize', this.updateDimensions)
+    if (this.props.number === 1) {
+      this.setState({
+        canvasBoxPosX: ['30'],
+        canvasBoxPosY: ['140'],
+        numOfBox: '1'
+      })
+    } else if (this.props.number === 2) {
+      this.setState({
+        canvasBoxPosX: ['40', '720'],
+        canvasBoxPosY: ['140', '140'],
+        numOfBox: '2'
+      })
+    } else if (this.props.number === 3) {
+      this.setState({
+        canvasBoxPosX: ['30', '496', '962'],
+        canvasBoxPosY: ['140', '140', '140'],
+        numOfBox: '3'
+      })
+    } else {
+      this.setState({
+        canvasBoxPosX: ['100', '720', '35', '740'],
+        canvasBoxPosY: ['140', '120', '350', '450'],
+        numOfBox: '4'
+      })
+    }
   }
 
   disableDraw = () => {
@@ -97,6 +103,10 @@ export default class RootCanvas extends Component {
     }
   }
 
+  addBackgroundToCanvas = background => {
+    this.setState({canvasBackground: background})
+  }
+
   addTextToCanvas = (text, font) => {
     this.setState({
       text: [...this.state.text, text],
@@ -142,6 +152,7 @@ export default class RootCanvas extends Component {
           <SelectionBar
             click={this.handleClick}
             addText={this.addTextToCanvas}
+            addCanvasBackground={this.addBackgroundToCanvas}
           />
         </div>
         <div className="root-canvas-buttons">
@@ -199,7 +210,12 @@ export default class RootCanvas extends Component {
             </button>
           </div>
         </div>
-        <div className="root-canvas-info">
+        <div
+          className="root-canvas-info"
+          style={{
+            backgroundImage: 'url(' + `${this.state.canvasBackground}` + ')'
+          }}
+        >
           <Stage
             width={window.innerWidth}
             height="700"
@@ -217,16 +233,17 @@ export default class RootCanvas extends Component {
                 shadowColor="black"
                 align="center"
                 fill="white"
-                x={this.state.width / 3.1}
+                x={window.innerWidth / 3.1}
                 y="10"
               />
-              {this.state.canvasBoxPosX.map(pos => {
+              {this.state.canvasBoxPosX.map((pos, index) => {
                 return (
                   <CanvasBox
+                    number={this.state.numOfBox}
                     x={pos}
+                    y={this.state.canvasBoxPosY[index]}
+                    boxNum={index + 1}
                     key={pos}
-                    width={this.state.width}
-                    height={this.state.height}
                   />
                 )
               })}

@@ -106,8 +106,6 @@ canvas {
 .root-canvas-info {
   border: 3px solid grey;
   margin-top: 1vh;
-  background: url('https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2FBackground%2F11425.jpg?alt=media&token=a00f2a5a-f517-49bb-a932-9ca0100f04c1');
-  background-size: cover;
 }
 
 .root-canvas-buttons {
@@ -123,14 +121,6 @@ canvas {
 
 /* TODO CanvasTextArea */
 /* --------------------- */
-
-/* * {
-  outline: none;
-  border: none;
-  margin: 0px;
-  padding: 0px;
-  font-family: Courier, monospace;
-} */
 
 textarea {
   overflow: hidden;
@@ -344,3 +334,38 @@ textarea {
   position: relative;
   width: 22em;
 }
+
+/* SelectTemplate.js
+//////////////////////*/
+.template-for-story,
+.backgrounds-for-canvas {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+.template-selected,
+.background-selected {
+  padding: 1em;
+  margin-top: 1em;
+}
+
+.template-select-button {
+  margin-left: 33em;
+  cursor: pointer;
+  margin-top: 20px;
+  height: 40px;
+  padding-left: 24px;
+  padding-right: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+  text-shadow: 0px -1px 0px #000000;
+  border-radius: 8px;
+  border-top: 1px solid #fff;
+  box-shadow: 0px 2px 14px #000;
+  background-color: #62add6;
+  background-image: url(https://static.tumblr.com/maopbtg/ZHLmgtok7/button.png);
+  background-repeat: repeat-x;
+}
+/*/////////////////////*/
