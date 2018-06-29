@@ -44,9 +44,9 @@ async function seed() {
       coverImgUrl:
         'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2Falice%20in%20wonderland%2FAlice.in_.Wonderland.full_.1451133-901x605.jpg?alt=media&token=745e7e87-bc0f-4425-a4f4-e8a44fda92df',
       chapters: [
-        'Chapter 1: Down the Rabbit-Hole.',
-        'Chapter 2: The Pool of Tears.',
-        'Chapter 3: A Caucus-Race and a long Tale.'
+        'Down the Rabbit-Hole.',
+        'The Pool of Tears.',
+        'A Caucus-Race and a long Tale.'
       ]
     }),
     Template.create({
@@ -55,9 +55,9 @@ async function seed() {
       coverImgUrl:
         'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2Fcinderella%2Fcinderellacover.jpg?alt=media&token=9a791c10-a004-4ead-aa06-f1a682ac7ac4',
       chapters: [
-        'Chapter 1: Opening Credits.',
-        'Chapter 2: Once Upon a Time...',
-        'Chapter 3: A Dream Is A Wish Your Heart Makes.'
+        'Opening Credits.',
+        'Once Upon a Time...',
+        'A Dream Is A Wish Your Heart Makes.'
       ]
     }),
     Template.create({
@@ -66,9 +66,9 @@ async function seed() {
       coverImgUrl:
         'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2Fpuss%20in%20boots%2Fpuss-in-boots-2-jpg.jpg?alt=media&token=36a5cdfe-73a9-4f74-a514-f6774d582991',
       chapters: [
-        'Chapter 1: Santa.',
-        'Chapter 2: The Toy Factory.',
-        'Chapter 3: Puss in Boots.'
+        'Santa.',
+        'The Toy Factory.',
+        'Puss in Boots.'
       ]
     })
   ]);

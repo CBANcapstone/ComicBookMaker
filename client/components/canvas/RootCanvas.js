@@ -1,17 +1,21 @@
-import React, {Component} from 'react'
-import {Stage, Layer, Text, Line} from 'react-konva'
+import React, { Component } from 'react';
+import { Stage, Layer, Text, Line } from 'react-konva';
 // import Konva from 'konva'
-import SelectionBar from './SelectionBar'
-import ResizeCanvasImage from './ResizeCanvasImage'
-import CanvasBox from './CanvasBox'
-import TextOnCanvas from './TextOnCanvas'
+import SelectionBar from './SelectionBar';
+import ResizeCanvasImage from './ResizeCanvasImage';
+import CanvasBox from './CanvasBox';
+import TextOnCanvas from './TextOnCanvas';
+import axios from 'axios';
+import history from '../../history';
+import { storage } from '../../config/firebase';
 
 export default class RootCanvas extends Component {
   constructor(props) {
-    super(props)
-    this.canvasBoxDisRatio = 3.3
-    this.canvasBoxPos = 30
+    super(props);
+    this.canvasBoxDisRatio = 3.3;
+    this.canvasBoxPos = 30;
     this.state = {
+      chapter: {},
       images: [],
       lines: [],
       text: [],
@@ -21,131 +25,150 @@ export default class RootCanvas extends Component {
       numOfBox: this.props.number,
       canvasBoxPosX: [],
       canvasBoxPosY: []
-    }
+    };
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
+    let { id, chid } = this.props.match.params;
+    let res = await axios.get(`/api/stories/${id}/${chid}`);
+    this.setState({ chapter: res.data });
+
     if (this.props.number === 1) {
       this.setState({
         canvasBoxPosX: ['30'],
         canvasBoxPosY: ['140'],
         numOfBox: '1'
-      })
+      });
     } else if (this.props.number === 2) {
       this.setState({
         canvasBoxPosX: ['40', '720'],
         canvasBoxPosY: ['140', '140'],
         numOfBox: '2'
-      })
+      });
     } else if (this.props.number === 3) {
       this.setState({
         canvasBoxPosX: ['30', '496', '962'],
         canvasBoxPosY: ['140', '140', '140'],
         numOfBox: '3'
-      })
+      });
     } else {
       this.setState({
         canvasBoxPosX: ['100', '720', '35', '740'],
         canvasBoxPosY: ['140', '120', '350', '450'],
         numOfBox: '4'
-      })
+      });
     }
-  }
+  };
 
   disableDraw = () => {
-    this._drawAllowed = false
-  }
+    this._drawAllowed = false;
+  };
 
   handleDraw = () => {
-    this._drawAllowed = true
-  }
+    this._drawAllowed = true;
+  };
 
   handleMouseDown = () => {
-    if (this._drawAllowed) this._drawing = true
+    if (this._drawAllowed) this._drawing = true;
     // add line
     this.setState({
       lines: [...this.state.lines, []]
-    })
-  }
+    });
+  };
 
   handleMouseMove = () => {
     // no drawing - skipping
     if (!this._drawing) {
-      return
+      return;
     }
-    const stage = this.stageRef.getStage()
-    const point = stage.getPointerPosition()
-    const {lines} = this.state
+    const stage = this.stageRef.getStage();
+    const point = stage.getPointerPosition();
+    const { lines } = this.state;
 
-    let lastLine = lines[lines.length - 1]
+    let lastLine = lines[lines.length - 1];
     // add point
-    lastLine = lastLine.concat([point.x, point.y])
+    lastLine = lastLine.concat([point.x, point.y]);
 
     // replace last
-    lines.splice(lines.length - 1, 1, lastLine)
+    lines.splice(lines.length - 1, 1, lastLine);
     this.setState({
       lines: lines.concat()
-    })
-  }
+    });
+  };
 
   handleMouseUp = () => {
-    this._drawing = false
-  }
+    this._drawing = false;
+  };
 
   handleClick = event => {
-    const image = new window.Image()
-    image.crossOrigin = 'Anonymous'
-    image.src = event.target.src
-    image.height = '457'
-    image.width = '432'
+    const image = new window.Image();
+    image.crossOrigin = 'Anonymous';
+    image.src = event.target.src;
+    image.height = '457';
+    image.width = '432';
     image.onload = () => {
-      this.setState({images: [...this.state.images, image]})
-    }
-  }
+      this.setState({ images: [...this.state.images, image] });
+    };
+  };
 
   addBackgroundToCanvas = background => {
-    this.setState({canvasBackground: background})
-  }
+    this.setState({ canvasBackground: background });
+  };
 
   addTextToCanvas = (text, font) => {
     this.setState({
       text: [...this.state.text, text],
       font: [...this.state.font, font]
-    })
-  }
+    });
+  };
 
   handleCanvasImgClick = event => {
-    this._type = 'images'
-    this.setState({selectedImageOnCanvas: event.target.attrs.image})
-  }
+    this._type = 'images';
+    this.setState({ selectedImageOnCanvas: event.target.attrs.image });
+  };
 
   handleCanvasLineClick = event => {
-    this._type = 'lines'
-    this.setState({selectedImageOnCanvas: event.target.attrs.points})
-  }
+    this._type = 'lines';
+    this.setState({ selectedImageOnCanvas: event.target.attrs.points });
+  };
 
   handleCanvasTextClick = event => {
-    this._type = 'text'
-    this.setState({selectedImageOnCanvas: event.target.attrs.text})
-  }
+    this._type = 'text';
+    this.setState({ selectedImageOnCanvas: event.target.attrs.text });
+  };
 
   handleDelete = () => {
     let arr = this.state[this._type].filter(img => {
-      return img !== this.state.selectedImageOnCanvas
-    })
-    this.setState({[this._type]: arr})
-  }
+      return img !== this.state.selectedImageOnCanvas;
+    });
+    this.setState({ [this._type]: arr });
+  };
 
   handleClear = () => {
-    this.setState({images: [], lines: [], text: []})
-  }
+    this.setState({ images: [], lines: [], text: [] });
+  };
 
-  handleSubmit = () => {
-    const picture = this.stageRef.getStage().toDataURL()
-    console.log(picture)
-  }
+  handleSubmit = async () => {
+    const picture = this.stageRef
+      .getStage()
+      .toDataURL()
+      .slice(22);
+
+    var imagesRef = storage.ref().child('saved2.png');
+
+    await imagesRef.putString(picture, 'base64');
+    let url = await imagesRef.getDownloadURL();
+    console.log('Uploaded a blob or file!', url);
+    await axios.post(`/api/stories/chapter/${this.props.match.params.chid}`, {
+      url
+    });
+    history.push(`/stories/${this.props.match.params.id}`);
+    // after user is done =>
+    // save it under the chapter in DB and redirect to STORY main screen
+  };
 
   render() {
+    console.log('CANVAS', this.props);
     return (
       <div className="root-canvas">
         <div className="root-canvas-selection-bar">
@@ -227,8 +250,9 @@ export default class RootCanvas extends Component {
           >
             <Layer>
               <Text
-                text="Chapter # - Name Of Chapter"
-                fontSize="60"
+                text={`Chapter ${this.props.match.params.chorder} - ${this.state
+                  .chapter && this.state.chapter.title}`}
+                fontSize="40"
                 fontFamily="Bangers"
                 shadowColor="black"
                 align="center"
@@ -245,7 +269,7 @@ export default class RootCanvas extends Component {
                     boxNum={index + 1}
                     key={pos}
                   />
-                )
+                );
               })}
               {this.state.images &&
                 this.state.images.map((img, i) => {
@@ -255,7 +279,7 @@ export default class RootCanvas extends Component {
                       image={img}
                       onClickImg={this.handleCanvasImgClick}
                     />
-                  )
+                  );
                 })}
               {this.state.text &&
                 this.state.text.map((txt, fontIdx) => {
@@ -266,7 +290,7 @@ export default class RootCanvas extends Component {
                       currText={txt}
                       font={this.state.font[fontIdx]}
                     />
-                  )
+                  );
                 })}
 
               {this.state.lines &&
@@ -282,6 +306,6 @@ export default class RootCanvas extends Component {
           </Stage>
         </div>
       </div>
-    )
+    );
   }
 }

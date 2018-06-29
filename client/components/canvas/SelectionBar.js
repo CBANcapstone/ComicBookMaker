@@ -14,13 +14,12 @@ export default class SelectionBar extends Component {
       textbubbles: bubblesArr
     }
     this.state = {
-      imageId: ''
+      sampleCategory: null
     }
   }
   handleClick = event => {
-    this.setState({
-      imageId: event.target.id
-    })
+    let isHidden = this.state.sampleCategory === event.target.id ? null : event.target.id
+    this.setState({sampleCategory : isHidden})
   }
 
   render() {
@@ -35,11 +34,11 @@ export default class SelectionBar extends Component {
             })}
         </div>
         <div className="root-canvas-selection-bar-component-images">
-          {this.state.imageId === 'custom-text' ? (
+          {this.state.sampleCategory === 'custom-text' ? (
             <CanvasTextArea sendTextToCanvas={this.props.addText} />
           ) : (
-            this.state.imageId &&
-            this.images[this.state.imageId].map((img, i) => {
+            this.state.sampleCategory &&
+            this.images[this.state.sampleCategory].map((img, i) => {
               return <ImageOptions key={i} src={img} click={this.props.click} />
             })
           )}
