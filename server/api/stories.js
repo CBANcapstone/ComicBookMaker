@@ -62,14 +62,16 @@ router.get('/user/:userId', async (req, res, next) => {
       where: {
         id: req.params.userId
       },
-      include: [{ all: true }]
-    });
-    res.status(200).send(user.stories);
+
+      include: [{all: true}]
+    })
+    console.log('****',user)
+    res.status(200).send(user)
   } catch (err) {
-    next(err);
+    next(err)
   }
 });
-  
+
 
 router.post('/chapter/:chid', async (req, res, next) => {
   try {
