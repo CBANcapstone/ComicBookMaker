@@ -1,28 +1,33 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import ThumbnailsGrid from './ThumbnailsGrid'
-import {getUserStoriesThunk} from '../store'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import ThumbnailsGrid from './ThumbnailsGrid';
+import {
+  getUserStoriesThunk
+} from '../store';
 
 class UserProfile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      created: true
+    };
+  }
+
   componentDidMount() {
-    this.props.getUserStories(this.props.user.id)
+    this.props.getUserStories(this.props.user.id);
   }
 
-  filterCreated() {
-    console.log('created')
-
-  }
-  filterContributed() {
-    console.log('contributed')
-    // stories = this.props.stories.filter(story=>story)
-  }
+  filterCreated = () => {
+    this.setState({created: true})
+  };
+  filterContributed = () => {
+    this.setState({created: false})
+  };
 
   render() {
-    // console.log(this.props)
-    // console.log('(#_#) ',this.state)
-
-    const {name, email, photoUrl} = this.props.user
-    const {stories} = this.props
+    console.log(this.props.stories);
+    const { name, email, photoUrl } = this.props.user;
+    this.stories = this.props.stories;
     return (
       <div className="profile-container">
         <div className="profile-info-container">
@@ -40,26 +45,37 @@ class UserProfile extends Component {
           <button onClick={this.filterCreated}>created</button>
           <button onClick={this.filterContributed}>contributed</button>
         </div>
-
-        <div className="profile-stories-lst">
-          <ThumbnailsGrid list={stories} />
-        </div>
+        {this.state.created ? (
+          <div className="profile-stories-lst">
+            <ThumbnailsGrid list={this.props.createdStories} />
+          </div>
+        ) : (
+          <div className="profile-stories-lst">
+            <ThumbnailsGrid list={this.props.contributedStories} />
+          </div>
+        )}
       </div>
-    )
+    );
   }
 }
 
 function mapState(state) {
   return {
     user: state.user,
-    stories: state.story
-  }
+    stories: state.story,
+    createdStories: state.story.filter(
+      story => story.user_role.role === 'creator'
+    ),
+    contributedStories: state.story.filter(
+      story => story.user_role.role === 'contributor'
+    )
+  };
 }
 
 function mapDispatch(dispatch) {
   return {
-    getUserStories: id => dispatch(getUserStoriesThunk(id))
-  }
+    getUserStories: id => dispatch(getUserStoriesThunk(id)),
+  };
 }
 
-export default connect(mapState, mapDispatch)(UserProfile)
+export default connect(mapState, mapDispatch)(UserProfile);

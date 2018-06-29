@@ -29,9 +29,9 @@ export default class RootCanvas extends Component {
   }
 
   componentDidMount = async () => {
-    let { id, chid } = this.props.match.params;
-    let res = await axios.get(`/api/stories/${id}/${chid}`);
-    this.setState({ chapter: res.data });
+    // let { id, chid } = this.props.match.params;
+    // let res = await axios.get(`/api/stories/${id}/${chid}`);
+    // this.setState({ chapter: res.data });
 
     if (this.props.number === 1) {
       this.setState({

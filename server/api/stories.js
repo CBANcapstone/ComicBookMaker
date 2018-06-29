@@ -47,26 +47,19 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-router.get('/:id/:chapterid', async (req, res, next) => {
-  try {
-    let chapter = await Chapter.findById(req.params.chapterid);
-    res.json(chapter);
-  } catch (err) {
-    next(err);
-  }
-});
+
 
 router.get('/user/:userId', async (req, res, next) => {
   try {
     let user = await User.findOne({
       where: {
         id: req.params.userId
-      },
+      }
+      ,
 
       include: [{all: true}]
     })
-    console.log('****',user)
-    res.status(200).send(user)
+    res.status(200).send(user.stories)
   } catch (err) {
     next(err)
   }
@@ -86,6 +79,15 @@ router.post('/chapter/:chid', async (req, res, next) => {
     next(err)
   }
 })
+
+router.get('/:id/:chapterid', async (req, res, next) => {
+  try {
+    let chapter = await Chapter.findById(req.params.chapterid);
+    res.json(chapter);
+  } catch (err) {
+    next(err);
+  }
+});
 
 router.get('/', (req, res) => {
   Story.findAll().then(stories => res.json(stories));
