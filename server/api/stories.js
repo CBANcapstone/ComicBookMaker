@@ -70,6 +70,20 @@ router.get('/user/:userId', async (req, res, next) => {
   }
 });
 
+router.post('/chapter/:chid', async (req, res, next) => {
+  try {
+  let chapter = await Chapter.findById(req.params.chid)
+  let updated = await chapter.update({
+    imageUrl : req.body.url,
+    completed: true
+  })
+  console.log(updated.get({plain : true}))
+  res.status(201).send()}
+  catch (err) {
+    next(err)
+  }
+})
+
 router.get('/', (req, res) => {
   Story.findAll().then(stories => res.json(stories));
 });

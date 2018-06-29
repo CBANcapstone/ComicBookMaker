@@ -36,7 +36,7 @@ class Routes extends Component {
             {/* Routes placed here are only available after logging in */}
             <Route path="/canvas" component={Canvas} />
             <Route path="/user-profile" component={UserProfile} />
-            <Route exact path="/stories/:id/:chid" component={RootCanvas} />
+            <Route exact path="/stories/:id/:chid/:chorder" component={RootCanvas} />
             <Route path="/stories/:id" component={SingleStoryContainer} />
             <Route path="/templates" component={Templates} />
             <Route component={HomePage} />

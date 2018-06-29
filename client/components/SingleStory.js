@@ -26,11 +26,11 @@ function SingleStory(props) {
       <div className="single-story-chapters">
         <h3 className="center-item">CHAPTERS</h3>
         {chapters &&
-          chapters.map(chapter => {
+          chapters.map((chapter, i) => {
             return (
               <div key={chapter.id} className="single-story-thumbnail">
                 <h3 className="center-item">{chapter.title}</h3>
-                <Link to={`/stories/${props.story.id}/${chapter.id}`}>
+                <Link to={`/stories/${props.story.id}/${chapter.id}/${i+1}`}>
                   <button>EDIT</button>
                 </Link>
               </div>

@@ -23,7 +23,6 @@ export default class SelectionBar extends Component {
   }
 
   render() {
-    console.log('STATE ==>',this.state)
     return (
       <div className="root-canvas-selection-bar-component">
         <div className="root-canvas-selection-bar-component-category">
