@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ThumbnailsGrid from './ThumbnailsGrid';
-import {
-  getUserStoriesThunk
-} from '../store';
+import { getUserStoriesThunk } from '../store';
 
 class UserProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      created: true
+      created: true,
+      defaultPage: true,
+      createdStories: []
     };
+    this.created = [];
+    this.contributor = [];
   }
 
   componentDidMount() {
@@ -18,16 +20,26 @@ class UserProfile extends Component {
   }
 
   filterCreated = () => {
-    this.setState({created: true})
+    let createdStories = this.props.stories.filter(
+      story => story.user_role.role === 'creator'
+    );
+    console.log(createdStories);
+    this.setState({
+      created: true,
+      defaultPage: false,
+      createdStories
+    });
   };
   filterContributed = () => {
-    this.setState({created: false})
+    this.contributor = this.props.stories.filter(
+      story => story.user_role.role === 'contributor'
+    );
+    this.setState({ created: false, defaultPage: false });
   };
 
   render() {
-    console.log(this.props.stories);
     const { name, email, photoUrl } = this.props.user;
-    this.stories = this.props.stories;
+    const { stories } = this.props;
     return (
       <div className="profile-container">
         <div className="profile-info-container">
@@ -40,20 +52,24 @@ class UserProfile extends Component {
             <button>edit profile</button>
           </div>
         </div>
-
         <div className="profile-filter-bar">
           <button onClick={this.filterCreated}>created</button>
           <button onClick={this.filterContributed}>contributed</button>
         </div>
-        {this.state.created ? (
+        {this.state.defaultPage ? (
           <div className="profile-stories-lst">
-            <ThumbnailsGrid list={this.props.createdStories} />
+            <ThumbnailsGrid list={this.props.stories} />
+          </div>
+        ) : this.state.created ? (
+          <div className="profile-stories-lst">
+            <ThumbnailsGrid list={this.state.createdStories} />
           </div>
         ) : (
           <div className="profile-stories-lst">
-            <ThumbnailsGrid list={this.props.contributedStories} />
+            <ThumbnailsGrid list={this.contributor} />
           </div>
         )}
+        }
       </div>
     );
   }
@@ -62,19 +78,13 @@ class UserProfile extends Component {
 function mapState(state) {
   return {
     user: state.user,
-    stories: state.story,
-    createdStories: state.story.filter(
-      story => story.user_role.role === 'creator'
-    ),
-    contributedStories: state.story.filter(
-      story => story.user_role.role === 'contributor'
-    )
+    stories: state.story
   };
 }
 
 function mapDispatch(dispatch) {
   return {
-    getUserStories: id => dispatch(getUserStoriesThunk(id)),
+    getUserStories: id => dispatch(getUserStoriesThunk(id))
   };
 }
 

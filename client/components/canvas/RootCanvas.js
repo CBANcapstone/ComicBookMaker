@@ -250,8 +250,9 @@ export default class RootCanvas extends Component {
           >
             <Layer>
               <Text
-                text={`Chapter ${this.props.match.params.chorder} - ${this.state
-                  .chapter && this.state.chapter.title}`}
+                // text={`Chapter ${this.props.match.params.chorder} - ${this.state
+                //   .chapter && this.state.chapter.title}`}
+                text="Chapter #, Chapter Ttitle"
                 fontSize="40"
                 fontFamily="Bangers"
                 shadowColor="black"

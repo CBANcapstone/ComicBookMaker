@@ -1,26 +1,45 @@
-import React, {Component} from 'react'
-import Category from './Category'
-import ImageOptions from './ImageOptions'
-import CanvasTextArea from './CanvasTextArea'
-import {backgroundsArr, charactersArr, bubblesArr} from '../../initialData'
+import React, { Component } from 'react';
+import Category from './Category';
+import ImageOptions from './ImageOptions';
+import CanvasTextArea from './CanvasTextArea';
+import {
+  backgroundsArr,
+  charactersArr,
+  bubblesArr,
+  eyes,
+  peopleWorldWide,
+  avatars
+} from '../../initialData';
 // import '../../styles/SelectionBar.css';
 export default class SelectionBar extends Component {
   constructor() {
-    super()
-    this.categories = ['background', 'characters', 'textbubbles', 'custom-text']
+    super();
+    this.categories = [
+      'background',
+      'characters',
+      'textbubbles',
+      'custom-text',
+      'eyes',
+      'peopleWorldWide',
+      'avatars'
+    ];
     this.images = {
       background: backgroundsArr,
       characters: charactersArr,
-      textbubbles: bubblesArr
-    }
+      textbubbles: bubblesArr,
+      eyes,
+      peopleWorldWide,
+      avatars
+    };
     this.state = {
       sampleCategory: null
-    }
+    };
   }
   handleClick = event => {
-    let isHidden = this.state.sampleCategory === event.target.id ? null : event.target.id
-    this.setState({sampleCategory : isHidden})
-  }
+    let isHidden =
+      this.state.sampleCategory === event.target.id ? null : event.target.id;
+    this.setState({ sampleCategory: isHidden });
+  };
 
   render() {
     return (
@@ -30,7 +49,7 @@ export default class SelectionBar extends Component {
             this.categories.map(cat => {
               return (
                 <Category key={cat} category={cat} onClick={this.handleClick} />
-              )
+              );
             })}
         </div>
         <div className="root-canvas-selection-bar-component-images">
@@ -39,11 +58,13 @@ export default class SelectionBar extends Component {
           ) : (
             this.state.sampleCategory &&
             this.images[this.state.sampleCategory].map((img, i) => {
-              return <ImageOptions key={i} src={img} click={this.props.click} />
+              return (
+                <ImageOptions key={i} src={img} click={this.props.click} />
+              );
             })
           )}
         </div>
       </div>
-    )
+    );
   }
 }
