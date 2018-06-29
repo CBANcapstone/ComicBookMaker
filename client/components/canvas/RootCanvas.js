@@ -215,7 +215,6 @@ export default class RootCanvas extends Component {
                 fontSize="60"
                 fontFamily="Bangers"
                 shadowColor="black"
-                // shadowBlur="0"
                 align="center"
                 fill="white"
                 x={this.state.width / 3.1}
