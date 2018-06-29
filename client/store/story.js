@@ -41,27 +41,11 @@ export const getUserStoriesThunk = userId => dispatch =>{
   axios
   .get(`/api/stories/user/${userId}`)
   .then(stories => {
-    console.log('---',stories.data)
     dispatch(getUserStories(stories.data));
     // history.push('/templates');
-  // .get(`{/api/stories/${1}}`)
-  //
   })
   .catch(err => console.log(err));
 }
-
-
-// export const getUserStoriesThunk = userId => dispatch =>{
-//   axios
-//   .get(`/api/stories/${userId}`)
-//   .then(stories => {
-//     dispatch(getUserStories(stories.data));
-//     // history.push('/templates');
-//   // .get(`{/api/stories/${1}}`)
-//   //
-//   })
-//   .catch(err => console.log(err));
-// }
 
 export default function(state = [], action) {
   switch (action.type) {

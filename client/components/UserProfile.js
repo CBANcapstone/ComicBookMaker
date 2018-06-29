@@ -9,7 +9,7 @@ class UserProfile extends Component {
   }
 
   filterCreated() {
-    console.log('created')
+    console.log('createeed', this.props.stories )
 
   }
   filterContributed() {
