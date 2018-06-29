@@ -5,6 +5,9 @@ import SelectionBar from './SelectionBar'
 import ResizeCanvasImage from './ResizeCanvasImage'
 import CanvasBox from './CanvasBox'
 import TextOnCanvas from './TextOnCanvas'
+import axios from 'axios'
+import history from '../../history'
+import {storage} from '../../config/firebase'
 
 export default class RootCanvas extends Component {
   constructor() {
@@ -12,6 +15,7 @@ export default class RootCanvas extends Component {
     this.canvasBoxDisRatio = 3.3
     this.canvasBoxPos = 30
     this.state = {
+      chapter : {},
       images: [],
       lines: [],
       text: [],
@@ -39,8 +43,11 @@ export default class RootCanvas extends Component {
       ]
     })
   }
-  componentDidMount = () => {
+  componentDidMount = async () => {
     window.addEventListener('resize', this.updateDimensions)
+    let {id, chid} = this.props.match.params
+    let res = await axios.get(`/api/stories/${id}/${chid}`)
+    this.setState({chapter : res.data})
   }
   componentWillUnmount = () => {
     window.removeEventListener('resize', this.updateDimensions)
@@ -130,12 +137,22 @@ export default class RootCanvas extends Component {
     this.setState({images: [], lines: [], text: []})
   }
 
-  handleSubmit = () => {
-    const picture = this.stageRef.getStage().toDataURL()
-    console.log(picture)
+  handleSubmit = async () => {
+    const picture = this.stageRef.getStage().toDataURL().slice(22)
+
+    var imagesRef = storage.ref().child('saved2.png')
+
+    await imagesRef.putString(picture, 'base64')
+    let url = await imagesRef.getDownloadURL()
+    console.log('Uploaded a blob or file!', url);
+    await axios.post(`/api/stories/chapter/${this.props.match.params.chid}`, {url})
+    history.push(`/stories/${this.props.match.params.id}`)
+    // after user is done => 
+    // save it under the chapter in DB and redirect to STORY main screen
   }
 
   render() {
+    console.log('CANVAS',this.props)
     return (
       <div className="root-canvas">
         <div className="root-canvas-selection-bar">
@@ -211,8 +228,8 @@ export default class RootCanvas extends Component {
           >
             <Layer>
               <Text
-                text="Chapter # - Name Of Chapter"
-                fontSize="60"
+                text={`Chapter ${this.props.match.params.chorder} - ${this.state.chapter && this.state.chapter.title}`}
+                fontSize="40"
                 fontFamily="Bangers"
                 shadowColor="black"
                 // shadowBlur="0"

@@ -5,18 +5,18 @@ import { Link } from 'react-router-dom';
 const HomePage = props => {
   return (
     <div className="home-container">
-      <img
-        src="http://rensyn.com/wp-content/uploads/2014/06/placeholder.png"
+      <img className='home-main-img'
+        src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2FMarvel%2FCover-Comic.jpg?alt=media&token=70866e1a-8064-4b52-9dbf-de8f4c52c91b"
         alt="carousel"
       />
-      <div>
+      <div className='home-button-container'>
         {props.user.id ? (
           <Link to="/templates">
-            <button>Create a story now!</button>
+            <div className="button"><div className="outer"><div className="height"><div className="inner">Create!</div></div></div></div>
           </Link>
         ) : (
           <Link to="/login">
-            <button>Create a story now!</button>
+            <div className="button"><div className="outer"><div className="height"><div className="inner">Create!</div></div></div></div>
           </Link>
         )}
       </div>

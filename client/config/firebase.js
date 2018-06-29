@@ -9,11 +9,11 @@ const config = {
 };
 firebase.initializeApp(config);
 
-export const db = firebase.firestore();
-const settings = { timestampsInSnapshots: true };
-db.settings(settings);
+export const storage = firebase.storage();
+// const settings = { timestampsInSnapshots: true };
+// db.settings(settings);
 
-export const provider = new firebase.auth.GoogleAuthProvider();
-export const auth = firebase.auth();
-export default firebase;
+// export const provider = new firebase.auth.GoogleAuthProvider();
+// export const auth = firebase.auth();
+// export default firebase;
 ``;
