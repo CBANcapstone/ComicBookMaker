@@ -20,9 +20,9 @@ export default class RootCanvas extends Component {
       lines: [],
       text: [],
       font: [],
-      canvasBackground: this.props.background || '',
+      canvasBackground: this.props.location.state.background || '',
       selectedImageOnCanvas: null,
-      numOfBox: this.props.number,
+      numOfBox: this.props.location.state.number,
       canvasBoxPosX: [],
       canvasBoxPosY: []
     };
@@ -33,19 +33,19 @@ export default class RootCanvas extends Component {
     // let res = await axios.get(`/api/stories/${id}/${chid}`);
     // this.setState({ chapter: res.data });
 
-    if (this.props.number === 1) {
+    if (this.props.location.state.number === 1) {
       this.setState({
         canvasBoxPosX: ['30'],
         canvasBoxPosY: ['140'],
         numOfBox: '1'
       });
-    } else if (this.props.number === 2) {
+    } else if (this.props.location.state.number === 2) {
       this.setState({
         canvasBoxPosX: ['40', '720'],
         canvasBoxPosY: ['140', '140'],
         numOfBox: '2'
       });
-    } else if (this.props.number === 3) {
+    } else if (this.props.location.state.number === 3) {
       this.setState({
         canvasBoxPosX: ['30', '496', '962'],
         canvasBoxPosY: ['140', '140', '140'],
@@ -168,7 +168,6 @@ export default class RootCanvas extends Component {
   };
 
   render() {
-    console.log('CANVAS', this.props);
     return (
       <div className="root-canvas">
         <div className="root-canvas-selection-bar">
@@ -250,15 +249,15 @@ export default class RootCanvas extends Component {
           >
             <Layer>
               <Text
-                // text={`Chapter ${this.props.match.params.chorder} - ${this.state
-                //   .chapter && this.state.chapter.title}`}
-                text="Chapter #, Chapter Ttitle"
-                fontSize="40"
                 fontFamily="Bangers"
+                text={`Chapter ${this.props.location.state.chapNum}, ${
+                  this.props.location.state.title
+                }`}
+                fontSize="50"
                 shadowColor="black"
                 align="center"
                 fill="white"
-                x={window.innerWidth / 3.1}
+                x={window.innerWidth / 3.5}
                 y="10"
               />
               {this.state.canvasBoxPosX.map((pos, index) => {

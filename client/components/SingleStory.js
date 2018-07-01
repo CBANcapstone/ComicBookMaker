@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { fetchStoryThunk } from '../store';
 
 function SingleStory(props) {
-  console.log('STORY_SINGLE STORY >>>', props.story);
   const { coverImgUrl, title, chapters } = props.story;
   return (
     <div>
@@ -37,9 +36,17 @@ function SingleStory(props) {
                   <li key={chapter.id} className="single-story-thumbnail">
                     <h3 className="center-item">{chapter.title}</h3>
                     <Link
-                      to={`/stories/${props.story.id}/${chapter.id}/${i + 1}`}
+                      to={{
+                        pathname: '/selectTemplate',
+                        state: {
+                          storyid: props.story.id,
+                          chapterid: chapter.id,
+                          index: i + 1,
+                          title: chapter.title
+                        }
+                      }}
                     >
-                      <button className="grid-thumbnail-btn ">
+                      <button className="grid-thumbnail-btn " type="button">
                         <span>EDIT</span>
                       </button>
                     </Link>
