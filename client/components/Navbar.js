@@ -11,7 +11,10 @@ class Navbar extends Component {
   render() {
     return (
       <div className="navbar-container">
-        <Link to="/home"> home </Link>
+        <Link to="/home" className="home-link">
+          {' '}
+          home{' '}
+        </Link>
 
         {this.props.user.id ? (
           <div className="navbar-links-container">
