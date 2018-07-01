@@ -398,12 +398,17 @@ textarea {
 
 /* SelectTemplate.js
 //////////////////////*/
-.template-for-story,
+.template-for-story {
+  display: flex;
+  padding: 2em;
+}
+
 .backgrounds-for-canvas {
   display: flex;
   /* flex-flow: row wrap; */
   /* justify-content: space-around; */
   overflow: scroll;
+  padding: 2em;
 }
 .template-selected,
 .background-selected {
@@ -414,17 +419,17 @@ textarea {
 
 .active,
 .template-selected:hover {
-  box-shadow: 0 0 50px grey;
-  -webkit-transform: scale(0.8);
-  -ms-transform: scale(0.8);
-  transform: scale(0.8);
+  box-shadow: 0 0 30px grey;
+  -webkit-transform: scale(1.7);
+  -ms-transform: scale(1.7);
+  transform: scale(1.7);
 }
 .activeB,
 .background-selected:hover {
-  box-shadow: 0 0 50px grey;
-  -webkit-transform: scale(0.8);
-  -ms-transform: scale(0.8);
-  transform: scale(0.8);
+  box-shadow: 0 0 30px black;
+  -webkit-transform: scale(1.7);
+  -ms-transform: scale(1.7);
+  transform: scale(1.7);
 }
 
 .template-select-and-next {
@@ -432,25 +437,6 @@ textarea {
   padding: 0 2em;
 }
 
-.template-select-button {
-  margin-left: 33em;
-  cursor: pointer;
-  margin-top: 20px;
-  height: 40px;
-  padding-left: 24px;
-  padding-right: 24px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 20px;
-  color: #fff;
-  text-shadow: 0px -1px 0px #000000;
-  border-radius: 8px;
-  border-top: 1px solid #fff;
-  box-shadow: 0px 2px 14px #000;
-  background-color: #62add6;
-  background-image: url(https://static.tumblr.com/maopbtg/ZHLmgtok7/button.png);
-  background-repeat: repeat-x;
-}
 /*///////// SINGLE STORY////////////*/
 .single-story-container {
   display: flex;
