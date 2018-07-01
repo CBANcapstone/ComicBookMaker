@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Stage, Layer, Text, Line } from 'react-konva';
+import { Stage, Layer, Text, Line, Image } from 'react-konva';
 // import Konva from 'konva'
 import SelectionBar from './SelectionBar';
 import ResizeCanvasImage from './ResizeCanvasImage';
@@ -20,18 +20,28 @@ export default class RootCanvas extends Component {
       lines: [],
       text: [],
       font: [],
-      canvasBackground: this.props.location.state.background || '',
+      canvasBackground: '', //this.props.location.state.background || '',
       selectedImageOnCanvas: null,
       numOfBox: this.props.location.state.number,
       canvasBoxPosX: [],
       canvasBoxPosY: []
     };
+    this.background = null;
   }
 
   componentDidMount = async () => {
     // let { id, chid } = this.props.match.params;
     // let res = await axios.get(`/api/stories/${id}/${chid}`);
     // this.setState({ chapter: res.data });
+    let image = new window.Image();
+    image.crossOrigin = 'Anonymous';
+    image.src = this.props.location.state.background;
+    // image.height = '457';
+    // image.width = '432';
+    image.onload = () => {
+      this.setState({ canvasBackground: image });
+      // this.background = image;
+    };
 
     if (this.props.location.state.number === 1) {
       this.setState({
@@ -232,12 +242,7 @@ export default class RootCanvas extends Component {
             </button>
           </div>
         </div>
-        <div
-          className="root-canvas-info"
-          style={{
-            backgroundImage: 'url(' + `${this.state.canvasBackground}` + ')'
-          }}
-        >
+        <div className="root-canvas-info">
           <Stage
             width={window.innerWidth}
             height="700"
@@ -248,6 +253,11 @@ export default class RootCanvas extends Component {
             ref={node => (this.stageRef = node)}
           >
             <Layer>
+              <Image
+                image={this.state.canvasBackground}
+                width={window.innerWidth}
+                height="700"
+              />
               <Text
                 fontFamily="Bangers"
                 text={`Chapter ${this.props.location.state.chapNum}, ${
