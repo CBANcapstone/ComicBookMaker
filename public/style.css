@@ -401,13 +401,35 @@ textarea {
 .template-for-story,
 .backgrounds-for-canvas {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
+  /* flex-flow: row wrap; */
+  /* justify-content: space-around; */
+  overflow: scroll;
 }
 .template-selected,
 .background-selected {
   padding: 1em;
   margin-top: 1em;
+  transition: 0.5s ease;
+}
+
+.active,
+.template-selected:hover {
+  box-shadow: 0 0 50px grey;
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+}
+.activeB,
+.background-selected:hover {
+  box-shadow: 0 0 50px grey;
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+}
+
+.template-select-and-next {
+  display: flex;
+  padding: 0 2em;
 }
 
 .template-select-button {

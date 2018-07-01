@@ -1,10 +1,13 @@
-import React, {Component} from 'react'
-import {backgroundsArr} from '../initialData'
-import RootCanvas from './canvas/RootCanvas'
-
+import React, { Component } from 'react';
+import { backgroundsArr } from '../initialData';
+import RootCanvas from './canvas/RootCanvas';
+import {
+  HighlightTemplate,
+  HighlightBackground
+} from './SelectTemplateHighlight';
 export default class SelectTemplate extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       numOfBox: '1',
       templates: [
@@ -16,18 +19,22 @@ export default class SelectTemplate extends Component {
       backgrounds: backgroundsArr,
       backgroundSelected: null,
       goToCanvas: false
-    }
+    };
   }
   handleTemplate = templateNum => {
-    this.setState({numOfBox: templateNum})
-  }
+    this.setState({ numOfBox: templateNum });
+  };
   handleBackground = evt => {
-    this.setState({backgroundSelected: evt.target.src})
-  }
+    this.setState({ backgroundSelected: evt.target.src });
+  };
   selectionMade = () => {
-    if (this.state.backgroundSelected) this.setState({goToCanvas: true})
-  }
+    if (this.state.backgroundSelected) this.setState({ goToCanvas: true });
+  };
   render() {
+    HighlightTemplate();
+    HighlightBackground();
+    let nameOfActiveClassTemplate, nameOfActiveClassBackground;
+    ////////
     return this.state.goToCanvas ? (
       <RootCanvas
         number={this.state.numOfBox}
@@ -35,46 +42,87 @@ export default class SelectTemplate extends Component {
       />
     ) : (
       <div>
-        <h1>Select a Template</h1>
-        <div className="template-for-story">
+        <h1
+          style={{
+            textAlign: 'center',
+            color: '#325e78',
+            fontFamily: 'Luckiest Guy',
+            fontSize: '3em',
+            padding: '0 2em'
+          }}
+        >
+          Select a Layout and Background for the Chapter & then Click Next
+        </h1>
+        <div className="template-select-and-next">
+          <h2
+            style={{
+              fontFamily: 'Bungee Inline',
+              fontSize: '2em',
+              color: '#325e78'
+            }}
+          >
+            Click a Layout to Select it
+          </h2>
+          <div>
+            <button
+              type="button"
+              onClick={this.selectionMade}
+              className="template-select-button"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+        <div id="myDIV" className="template-for-story">
           {this.state.templates &&
             this.state.templates.map((template, idx) => {
+              {
+                !idx
+                  ? (nameOfActiveClassTemplate = 'template-selected active')
+                  : (nameOfActiveClassTemplate = 'template-selected');
+              }
               return (
                 <div
-                  className="template-selected"
+                  className={nameOfActiveClassTemplate}
                   key={idx}
                   onClick={() => this.handleTemplate(idx + 1)}
                 >
-                  <img src={template} width="400" height="300" />
+                  <img src={template} width="300" height="200" />
                 </div>
-              )
+              );
             })}
         </div>
-        <h1>Select a Background</h1>
+        <h2
+          style={{
+            fontFamily: 'Bungee Inline',
+            fontSize: '2em',
+            color: '#325e78',
+            padding: '0 1em'
+          }}
+        >
+          Click a Background to Select it
+        </h2>
         <div className="backgrounds-for-canvas">
           {this.state.backgrounds &&
             this.state.backgrounds.map((back, idx) => {
+              {
+                !idx
+                  ? (nameOfActiveClassBackground =
+                      'background-selected activeB')
+                  : (nameOfActiveClassBackground = 'background-selected');
+              }
               return (
                 <div
-                  className="background-selected"
+                  className={nameOfActiveClassBackground}
                   key={idx}
                   onClick={this.handleBackground}
                 >
-                  <img src={back} width="400" height="300" />
+                  <img src={back} width="300" height="200" />
                 </div>
-              )
+              );
             })}
         </div>
-        <div>
-          <button
-            type="button"
-            onClick={this.selectionMade}
-            className="template-select-button"
-          >
-            Next
-          </button>
-        </div>
       </div>
-    )
+    );
   }
 }
