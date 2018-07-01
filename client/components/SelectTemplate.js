@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { backgroundsArr } from '../initialData';
+import { Link } from 'react-router-dom';
 import RootCanvas from './canvas/RootCanvas';
 import {
   HighlightTemplate,
@@ -31,16 +32,11 @@ export default class SelectTemplate extends Component {
     if (this.state.backgroundSelected) this.setState({ goToCanvas: true });
   };
   render() {
+    //Function calls to handle selction of template & background
     HighlightTemplate();
     HighlightBackground();
     let nameOfActiveClassTemplate, nameOfActiveClassBackground;
-    ////////
-    return this.state.goToCanvas ? (
-      <RootCanvas
-        number={this.state.numOfBox}
-        background={this.state.backgroundSelected}
-      />
-    ) : (
+    return (
       <div>
         <h1
           style={{
@@ -64,13 +60,27 @@ export default class SelectTemplate extends Component {
             Click a Layout to Select it
           </h2>
           <div>
-            <button
-              type="button"
-              onClick={this.selectionMade}
-              className="template-select-button"
+            <Link
+              to={{
+                pathname: `/stories/${this.props.location.state.storyid}/${
+                  this.props.location.state.chapterid
+                }/${this.props.location.state.index}`,
+                state: {
+                  number: this.state.numOfBox,
+                  background: this.state.backgroundSelected,
+                  title: this.props.location.state.title,
+                  chapNum: this.props.location.state.index
+                }
+              }}
             >
-              Next
-            </button>
+              <button
+                type="button"
+                onClick={this.selectionMade}
+                className="template-select-button"
+              >
+                Next
+              </button>
+            </Link>
           </div>
         </div>
         <div id="myDIV" className="template-for-story">
