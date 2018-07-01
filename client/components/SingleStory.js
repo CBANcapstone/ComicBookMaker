@@ -89,7 +89,7 @@ function mapState(state) {
 }
 
 function mapDispatch(dispatch, ownProps) {
-  let storyId = +ownProps.match.params.id;
+  let storyId = ownProps.story ?  ownProps.story.id : +ownProps.match.params.id;
   return {
     getStory: () => dispatch(fetchStoryThunk(storyId))
   };
