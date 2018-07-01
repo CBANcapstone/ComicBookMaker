@@ -39,36 +39,65 @@ async function seed() {
 
   const templates = await Promise.all([
     Template.create({
-      title: 'Alice in Wonderland',
-      description: `Alice's Adventures in Wonderland (commonly shortened to Alice in Wonderland) is an 1865 novel written by English author Charles Lutwidge Dodgson under the pseudonym Lewis Carroll.[1] It tells of a girl named Alice falling through a rabbit hole into a fantasy world populated by peculiar, anthropomorphic creatures.`,
+      title: 'Spiderman',
+      description:
+        'Bitten by a radioactive spider, high school student Peter Parker gained the speed, strength and powers of a spider. Adopting the name Spider-Man, Peter hoped to start a career using his new abilities. Taught that with great power comes great responsibility, Spidey has vowed to use his powers to help people.',
       coverImgUrl:
-        'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2Falice%20in%20wonderland%2FAlice.in_.Wonderland.full_.1451133-901x605.jpg?alt=media&token=745e7e87-bc0f-4425-a4f4-e8a44fda92df',
+        'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2FSpiderman%2Fspidy.jpg?alt=media&token=60985e32-453a-4273-93b8-0623118cc2d6',
       chapters: [
-        'Down the Rabbit-Hole.',
-        'The Pool of Tears.',
-        'A Caucus-Race and a long Tale.'
+        'Peter Parker the nerd',
+        'Experiment Gone Wrong',
+        'Do I have powers ...'
       ]
     }),
     Template.create({
-      title: 'Cinderella',
-      description: `Cinderella is a 2015 British-American[3] romantic fantasy film directed by Kenneth Branagh, with a screenplay written by Chris Weitz, and co-produced by Walt Disney Pictures, Kinberg Genre, Allison Shearmur Productions and Beagle Pug Films.`,
+      title: 'Ironman',
+      description:
+        'Wounded, captured and forced to build a weapon by his enemies, billionaire industrialist Tony Stark instead created an advanced suit of armor to save his life and escape captivity. Now with a new outlook on life, Tony uses his money and intelligence to make the world a safer, better place as Iron Man.',
       coverImgUrl:
-        'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2Fcinderella%2Fcinderellacover.jpg?alt=media&token=9a791c10-a004-4ead-aa06-f1a682ac7ac4',
+        'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2FIronman%2Firon.jpg?alt=media&token=928b1e70-36c2-409a-8662-6be519548d07',
       chapters: [
-        'Opening Credits.',
-        'Once Upon a Time...',
-        'A Dream Is A Wish Your Heart Makes.'
+        'Ironman the begining',
+        'Technology has the power',
+        'Eternal Life ...'
       ]
     }),
     Template.create({
-      title: 'Puss in boots',
-      description: `"Master Cat, or The Booted Cat" (Italian: Il gatto con gli stivali; French: Le Maître chat ou le Chat botté), commonly known in English as "Puss in Boots", is a European literary fairy tale about a cat who uses trickery and deceit to gain power, wealth, and the hand of a princess in marriage for his penniless and low-born master.`,
+      title: 'Captain America',
+      description:
+        'Vowing to serve his country any way he could, young Steve Rogers took the super soldier serum to become Americas one-man army. Fighting for the red, white and blue for over 60 years, Captain America is the living, breathing symbol of freedom and liberty',
       coverImgUrl:
-        'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2Fpuss%20in%20boots%2Fpuss-in-boots-2-jpg.jpg?alt=media&token=36a5cdfe-73a9-4f74-a514-f6774d582991',
+        'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2FCaptain%20America%2Fmarvel-captain-america-premium-format-figure-sideshow-feature-300524-1.jpg?alt=media&token=b1d560b7-279a-4685-9011-2c58d0a8aac7',
       chapters: [
-        'Santa.',
-        'The Toy Factory.',
-        'Puss in Boots.'
+        'From soldier to superhero',
+        'Fight for freedom & liberty',
+        'Leading the country to safety ...'
+      ]
+    }),
+    Template.create({
+      title: 'Avengers',
+      description:
+        'Earths Mightiest Heroes joined forces to take on threats that were too big for any one hero to tackle. With a roster that has included Captain America, Iron Man, Ant-Man, Hulk, Thor, Wasp and dozens more over the years, the Avengers have come to be regarded as Earths No. 1 team.',
+      coverImgUrl:
+        'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2FAvengers%2Favengers.jpg?alt=media&token=77763957-172b-4bbe-989f-0f02f82d81af',
+      chapters: [
+        'Threats to Earth asks super heroes to unite',
+        'Team of supers unite to save the world',
+        'Fight the villains ...',
+        'Insipiring next generation to join in ...'
+      ]
+    }),
+    Template.create({
+      title: 'Batman',
+      description:
+        'Detective. Whatever you know him as, wherever you know him from - Batman is proof you don’t need superpowers to be a superhero… and the poster boy for what a bad childhood can do to you.',
+      coverImgUrl:
+        'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2FBatman%2Fbatman-4.jpg?alt=media&token=1da9664c-a4ec-4bbd-b015-2319ea69640d',
+      chapters: [
+        'City needs a saviour',
+        'From a businessman to batman ',
+        'Fighting Villains',
+        'Anyone can make a difference'
       ]
     })
   ]);
