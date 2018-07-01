@@ -1,13 +1,13 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {fetchStoryThunk} from '../store'
+import { fetchStoryThunk } from '../store';
 
 function SingleStory(props) {
-  console.log('STORY_SINGLE STORY >>>', props.story)
-  const {coverImgUrl, title, chapters} = props.story
+  console.log('STORY_SINGLE STORY >>>', props.story);
+  const { coverImgUrl, title, chapters } = props.story;
   return (
-    <div className="single-story-container">
+    <div>
       <div className="single-story-info">
         <img className="single-story-info-img" src={coverImgUrl} alt="cover" />
         <div className="single-story-info-title">
@@ -17,33 +17,45 @@ function SingleStory(props) {
             Contributors:{' '}
             {props.contributors &&
               props.contributors.map(col => {
-                return <p key={col.id}>{col.email}</p>
+                return <p key={col.id}>{col.email}</p>;
               })}
           </div>
-          <button>See completed chapters</button>
+          <button type="button" className="single-story-btn">
+            <span>See completed chapters</span>
+          </button>
         </div>
       </div>
-      <div className="single-story-chapters">
-        <h3 className="center-item">CHAPTERS</h3>
-        {chapters &&
-          chapters.map((chapter, i) => {
-            return (
-              <div key={chapter.id} className="single-story-thumbnail">
-                <h3 className="center-item">{chapter.title}</h3>
-                <Link to={`/stories/${props.story.id}/${chapter.id}/${i+1}`}>
-                  <button>EDIT</button>
-                </Link>
-              </div>
-            )
-          })}
+      <div className="single-story-container">
+        <div className="single-story-chapters">
+          <h3 className="center-item-heading">
+            Select the Chapter You Want To Create
+          </h3>
+          <ol>
+            {chapters &&
+              chapters.map((chapter, i) => {
+                return (
+                  <li key={chapter.id} className="single-story-thumbnail">
+                    <h3 className="center-item">{chapter.title}</h3>
+                    <Link
+                      to={`/stories/${props.story.id}/${chapter.id}/${i + 1}`}
+                    >
+                      <button className="grid-thumbnail-btn ">
+                        <span>EDIT</span>
+                      </button>
+                    </Link>
+                  </li>
+                );
+              })}
+          </ol>
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
 class SingleStoryContainer extends Component {
   componentDidMount() {
-    this.props.getStory()
+    this.props.getStory();
   }
 
   render() {
@@ -53,7 +65,7 @@ class SingleStoryContainer extends Component {
         creator={this.props.creator}
         contributors={this.props.contributors}
       />
-    )
+    );
   }
 }
 
@@ -66,14 +78,14 @@ function mapState(state) {
     contributors:
       state.story.users &&
       state.story.users.filter(user => user.user_role.role == 'contributor')
-  }
+  };
 }
 
 function mapDispatch(dispatch, ownProps) {
-  let storyId = +ownProps.match.params.id
+  let storyId = +ownProps.match.params.id;
   return {
     getStory: () => dispatch(fetchStoryThunk(storyId))
-  }
+  };
 }
 
-export default connect(mapState, mapDispatch)(SingleStoryContainer)
+export default connect(mapState, mapDispatch)(SingleStoryContainer);
