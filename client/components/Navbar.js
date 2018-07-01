@@ -18,6 +18,9 @@ class Navbar extends Component {
 
         {this.props.user.id ? (
           <div className="navbar-links-container">
+            <Link to="/openStories" className="navbar-link">
+              Open Stories
+            </Link>
             <Link to="/user-profile" className="navbar-link">
               my account
             </Link>
