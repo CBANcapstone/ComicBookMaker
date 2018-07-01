@@ -90,5 +90,5 @@ router.get('/:id/:chapterid', async (req, res, next) => {
 });
 
 router.get('/', (req, res) => {
-  Story.findAll().then(stories => res.json(stories));
+  Story.findAll({include: [{ all: true }]}).then(stories => res.json(stories));
 });
