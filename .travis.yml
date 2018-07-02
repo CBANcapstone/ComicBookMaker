@@ -24,4 +24,4 @@ deploy:
   provider: heroku
   app: cban-comic-book-maker # see README
   api_key:
-    secure: YOUR-***ENCRYPTED***-API-KEY-HERE # see README
+    secure: "ARZT6UD0SZPvaSKyJd4UqUOokF/XbPS9S/P1sFt0965GMMQaiuIgnakAjxjxmCBzbod+E/yGesVTR/cXyCS8fDqGVYzP2nYNksretnQN42BS1lIco4dzj8bR+GksSwJ9WHgsLz938xvE3JhXOIjZU0dKelBd2lu804NlpOR0vqNuXqjLy/xIP4BpfM0K0uroFtwl7ncWj33OxQ6QZ8tp1643PVWvaqNXfafqy9aJTrI2E6X99aTOtSxneLKSUGnKOx7e62EfvLLsv97GqVInzYXbsj1FLknpvP64aFwRtUjRIGqUlTRrYCt0guhz4kTdfdWMfWEYMHNDQ3FmrHtACSP61SSbyo0A8kEtH6SoHgZs5MQX7fXF+BmwnWgsvkjS3u/XMZXMVC2fB1uh9HL5qAeaXEdsYUnanBObpfJl4Et9kcsdc6xwa83DAdknsVjitdr9aZhcnErNj+j9iYqXCjlT0zo71kDfwM44LTmdjwoj9UotzimSp3VsKGf49FsRzk/ZNYp7ROuArl1XRP6xHxDSSQ+gjKc6eVdPKgmTpKhxlL3feM2ams4S9nMVJ54g6o0nGzyDAX2bahEecHr8dIaDBN7dWPNPEcF6KsM2NX136MKtzbwlJ/Ls0zITgxbXjBnuvfsW4NJOFTW2CltPX++cQ3YgdSLxgLeBLSnjgM8=" # see README
