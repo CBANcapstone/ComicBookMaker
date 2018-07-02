@@ -795,10 +795,23 @@ textarea {
 }
 
 .single-story-thumbnail {
+  border: 2px solid white;
+  display: flex;
   margin: 2em;
-  width: 50em;
-  height: 8em;
+  /* width: 50em; */
+  height: 30em;
 }
+
+.single-story-thumbnail-info {
+  margin: auto;
+  padding-left: 2em;
+}
+
+.single-story-thumbnail-img {
+  padding: 2em;
+  height: 80%;
+}
+
 .center-item-heading {
   margin: auto;
   padding-top: 3em;

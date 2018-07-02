@@ -34,22 +34,35 @@ function SingleStory(props) {
               chapters.map((chapter, i) => {
                 return (
                   <li key={chapter.id} className="single-story-thumbnail">
-                    <h3 className="center-item">{chapter.title}</h3>
-                    <Link
-                      to={{
-                        pathname: '/selectTemplate',
-                        state: {
-                          storyid: props.story.id,
-                          chapterid: chapter.id,
-                          index: i + 1,
-                          title: chapter.title
-                        }
-                      }}
-                    >
-                      <button className="grid-thumbnail-btn " type="button">
-                        <span>EDIT</span>
-                      </button>
-                    </Link>
+
+                    <div className="single-story-thumbnail-info">
+                      <h3 className="center-item">{chapter.title}</h3>
+                      <Link
+                        to={{
+                          pathname: '/selectTemplate',
+                          state: {
+                            storyid: props.story.id,
+                            chapterid: chapter.id,
+                            index: i + 1,
+                            title: chapter.title
+                          }
+                        }}
+                      >
+                        <button className="grid-thumbnail-btn " type="button">
+                          <span>EDIT</span>
+                        </button>
+                      </Link>
+                    </div>
+                    
+                    {chapter.completed ? (
+                      <img
+                        src={chapter.imageUrl}
+                        alt="chapter-image"
+                        className="single-story-thumbnail-img"
+                      />
+                    ) : (
+                      '' // null
+                    )}
                   </li>
                 );
               })}
@@ -96,3 +109,9 @@ function mapDispatch(dispatch, ownProps) {
 }
 
 export default connect(mapState, mapDispatch)(SingleStoryContainer);
+
+// Still load all chapter : completed and open
+// If chapter is completed => pic is on background of the box and BUTTON is VIEW not EDIT
+// If you click => modal with picture / fullscreen
+// Button 'see completed chaps => view the story => new component
+// ***extra*** edit story name / cover image => modal
