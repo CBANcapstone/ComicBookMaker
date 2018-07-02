@@ -175,7 +175,6 @@ export default class RootCanvas extends Component {
 
     await imagesRef.putString(picture, 'base64');
     let url = await imagesRef.getDownloadURL();
-    console.log('Uploaded a blob or file!', url);
     await axios.post(`/api/stories/chapter/${this.props.match.params.chid}`, {
       url
     });

@@ -68,7 +68,6 @@ router.post('/chapter/:chid', async (req, res, next) => {
       imageUrl: req.body.url,
       completed: true
     });
-    console.log(updated.get({ plain: true }));
     res.status(201).send();
   } catch (err) {
     next(err);

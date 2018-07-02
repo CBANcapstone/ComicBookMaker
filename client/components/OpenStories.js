@@ -23,7 +23,6 @@ export default class extends Component {
         const openStories = stories.filter(story => {
           return !story.completed;
         });
-
         this.setState({
           openStories
         });
@@ -31,7 +30,6 @@ export default class extends Component {
   }
 
   render() {
-    console.log(this.state.openStories);
     return (
       <div className="open-stories">
         {this.state.openStories ? (
