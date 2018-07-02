@@ -53,7 +53,7 @@ export default class SelectionBar extends Component {
               }
               return (
                 <Category
-                  key={cat}
+                  key={idx}
                   category={cat}
                   onClick={this.handleClick}
                   active={active}

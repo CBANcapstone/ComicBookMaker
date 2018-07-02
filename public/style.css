@@ -1020,3 +1020,28 @@ textarea {
   ); /* Chrome10+,Safari5.1+ */
   background: linear-gradient(top, #1d7d12 0%, #4fd342 100%); /* W3C */
 }
+
+/* MODAL ****************/
+
+/* The Modal (background) */
+.Modal {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(240, 243, 67, 0.4);
+}
+
+.modal-image {
+  width: 100%;
+  border: 1px dashed white;
+}
