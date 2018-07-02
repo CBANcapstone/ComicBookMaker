@@ -26,6 +26,7 @@ class UserProfile extends Component {
             </button>
           </div>
         </div>
+
         <div className="profile-filter-bar">
           <button
             className="grid-thumbnail-btn"

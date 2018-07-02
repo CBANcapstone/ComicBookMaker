@@ -7,28 +7,55 @@ const AuthForm = props => {
   const { name, displayName, handleSubmit, error } = props;
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" />
+    <div className="wrapper fadeInDown">
+      <h1 className="auth-form-heading">{displayName} to Create your Comic</h1>
+      <div id="formContent">
+        <div className="fadeIn first">
+          <iframe
+            src="https://giphy.com/embed/TpUxOJmGEaQ5a"
+            width="480"
+            height="364"
+            frameBorder="0"
+            className="giphy-embed"
+          />
         </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
+        <form onSubmit={handleSubmit} name={name}>
+          <div>
+            <label htmlFor="email" />
+            <input
+              name="email"
+              className="fadeIn second"
+              type="text"
+              placeholder="email"
+            />
+          </div>
+          <div>
+            <label htmlFor="password" />
+            <input
+              name="password"
+              className="fadeIn third"
+              type="password"
+              placeholder="password"
+            />
+          </div>
+          <div>
+            <button
+              type="submit"
+              className="fadeIn fourth"
+              id="submit-form-btn"
+            >
+              {displayName}
+            </button>
+          </div>
 
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
-
-      <a href="/auth/google">{displayName} with Google</a>
+          {error && error.response && <div> {error.response.data} </div>}
+        </form>
+        <div id="formFooter">
+          <a href="/auth/google" className="underlineHover">
+            {displayName} with Google
+          </a>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Stage, Layer, Text, Line } from 'react-konva';
+import { Stage, Layer, Text, Line, Image } from 'react-konva';
 // import Konva from 'konva'
 import SelectionBar from './SelectionBar';
 import ResizeCanvasImage from './ResizeCanvasImage';
@@ -20,18 +20,28 @@ export default class RootCanvas extends Component {
       lines: [],
       text: [],
       font: [],
-      canvasBackground: this.props.location.state.background || '',
+      canvasBackground: '', //this.props.location.state.background || '',
       selectedImageOnCanvas: null,
       numOfBox: this.props.location.state.number,
       canvasBoxPosX: [],
       canvasBoxPosY: []
     };
+    this.background = null;
   }
 
   componentDidMount = async () => {
     // let { id, chid } = this.props.match.params;
     // let res = await axios.get(`/api/stories/${id}/${chid}`);
     // this.setState({ chapter: res.data });
+    let image = new window.Image();
+    image.crossOrigin = 'Anonymous';
+    image.src = this.props.location.state.background;
+    // image.height = '457';
+    // image.width = '432';
+    image.onload = () => {
+      this.setState({ canvasBackground: image });
+      // this.background = image;
+    };
 
     if (this.props.location.state.number === 1) {
       this.setState({
@@ -148,6 +158,13 @@ export default class RootCanvas extends Component {
     this.setState({ images: [], lines: [], text: [] });
   };
 
+  handleDownload = () => {
+    var button = document.getElementById('btn-download');
+    let canvas = this.stageRef.getStage();
+    var dataURL = canvas.toDataURL('image/png');
+    button.href = dataURL;
+  };
+
   handleSubmit = async () => {
     const picture = this.stageRef
       .getStage()
@@ -182,7 +199,7 @@ export default class RootCanvas extends Component {
             <button type="button" onClick={this.disableDraw}>
               MOVE
               <img
-                src="https://cdn1.iconfinder.com/data/icons/web-interface-part-1/32/arrows-outside-2-512.png"
+                src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fmove.png?alt=media&token=f06c0ca6-8604-44d0-84c7-96dea64d9f56"
                 height="30"
                 width="30"
               />
@@ -193,7 +210,7 @@ export default class RootCanvas extends Component {
             <button type="button" onClick={this.handleDraw}>
               DRAW
               <img
-                src="https://cdn1.iconfinder.com/data/icons/fs-icons-ubuntu-by-franksouza-/512/draw-freehand.png"
+                src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fdraw.png?alt=media&token=b90dd983-7ecd-4fdc-b979-38cc8aa5a544"
                 height="30"
                 width="30"
               />
@@ -204,7 +221,7 @@ export default class RootCanvas extends Component {
             <button type="button" onClick={this.handleSubmit}>
               SUBMIT
               <img
-                src="https://cdn.pixabay.com/photo/2016/03/31/14/37/check-mark-1292787_1280.png"
+                src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fsubmit.png?alt=media&token=b03c1a37-0ce6-4aa8-bb50-dfa8f50c063f"
                 height="30"
                 width="30"
               />
@@ -215,7 +232,7 @@ export default class RootCanvas extends Component {
             <button type="button" onClick={this.handleDelete}>
               DELETE
               <img
-                src="https://cdn3.iconfinder.com/data/icons/in-and-around-the-house/43/trash_bin-512.png"
+                src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fdelete.png?alt=media&token=f78d08e1-c750-4252-8466-401c93f9f0a0"
                 height="30"
                 width="30"
               />
@@ -225,19 +242,32 @@ export default class RootCanvas extends Component {
             <button type="button" onClick={this.handleClear}>
               CLEAR
               <img
-                src="https://static1.squarespace.com/static/5737ad2a1d07c093e2787063/5ab80fd503ce64c499d79d16/5ab810f3562fa7d514189228/1522012404191/Clear+icon.png?format=300w"
+                src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fclear.png?alt=media&token=23ebcc4c-1f3a-4ab3-b1df-759ab6bc96a0"
                 height="30"
                 width="30"
               />
             </button>
           </div>
+          <div className="root-canvas-download-canvas">
+            <button type="button">
+              <a
+                href="#"
+                className="button"
+                id="btn-download"
+                download="my-file-name.png"
+                onClick={this.handleDownload}
+              >
+                DOWNLOAD
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fdownload.png?alt=media&token=a9954bcd-5a10-4536-b2fc-894da04b319c"
+                  height="30"
+                  width="30"
+                />
+              </a>
+            </button>
+          </div>
         </div>
-        <div
-          className="root-canvas-info"
-          style={{
-            backgroundImage: 'url(' + `${this.state.canvasBackground}` + ')'
-          }}
-        >
+        <div className="root-canvas-info">
           <Stage
             width={window.innerWidth}
             height="700"
@@ -248,6 +278,11 @@ export default class RootCanvas extends Component {
             ref={node => (this.stageRef = node)}
           >
             <Layer>
+              <Image
+                image={this.state.canvasBackground}
+                width={window.innerWidth}
+                height="700"
+              />
               <Text
                 fontFamily="Bangers"
                 text={`Chapter ${this.props.location.state.chapNum}, ${

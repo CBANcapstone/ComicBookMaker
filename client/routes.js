@@ -11,7 +11,8 @@ import {
   RootCanvas,
   Templates,
   SelectTemplate,
-  SingleStoryContainer
+  SingleStoryContainer,
+  OpenStories
 } from './components';
 import { me } from './store';
 
@@ -45,6 +46,7 @@ class Routes extends Component {
             />
             <Route path="/stories/:id" component={SingleStoryContainer} />
             <Route path="/templates" component={Templates} />
+            <Route path="/openStories" component={OpenStories} />
             <Route component={HomePage} />
           </Switch>
         )}
