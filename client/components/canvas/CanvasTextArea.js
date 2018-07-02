@@ -33,7 +33,6 @@ export default class CanvasTextArea extends Component {
   };
 
   render() {
-    console.log('');
     return (
       <div id="wrapper">
         <form id="paper" method="get" onSubmit={this.handleSubmit}>

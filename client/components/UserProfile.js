@@ -23,7 +23,6 @@ class UserProfile extends Component {
     let createdStories = this.props.stories.filter(
       story => story.user_role.role === 'creator'
     );
-    console.log(createdStories);
     this.setState({
       created: true,
       defaultPage: false,
