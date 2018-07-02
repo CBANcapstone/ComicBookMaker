@@ -781,6 +781,7 @@ textarea {
 
 /*///////// SINGLE STORY////////////*/
 .single-story-container {
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -795,7 +796,7 @@ textarea {
 }
 
 .single-story-thumbnail {
-  border: 2px solid white;
+  border: 2px dashed white;
   display: flex;
   margin: 2em;
   /* width: 50em; */
@@ -829,12 +830,13 @@ textarea {
 .single-story-info {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   padding: 3em;
-  width: 150em;
+  width: 100%;
 }
 
 .single-story-info-img {
-  width: 30em;
+  /* width: 30em; */
   height: 20em;
   align-items: flex-start;
   padding: 0 8em;
@@ -1038,7 +1040,7 @@ textarea {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(240, 243, 67, 0.4);
+  background-color: rgba(55, 227, 243, 0.3);
 }
 
 .modal-image {
