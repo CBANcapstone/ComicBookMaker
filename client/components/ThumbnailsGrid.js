@@ -4,7 +4,6 @@ function ThumbnailsGrid(props) {
   const { list } = props;
   return (
     <div className="grid">
-      <h1 className="grid-header">Select a Theme for Your Comic</h1>
       <div className="grid-thumbnails-container">
         {list.length &&
           list.map(item => (

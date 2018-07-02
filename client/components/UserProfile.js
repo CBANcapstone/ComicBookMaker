@@ -1,41 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ThumbnailsGrid from './ThumbnailsGrid';
-import { getUserStoriesThunk } from '../store';
+import { getUserStoriesThunk, setCategory } from '../store';
+import { Link } from 'react-router-dom';
 
 class UserProfile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      created: true,
-      defaultPage: true,
-      createdStories: []
-    };
-    this.created = [];
-    this.contributor = [];
-  }
-
   componentDidMount() {
-    this.props.getUserStories(this.props.user.id);
+    this.props.getUserStories();
   }
-
-  filterCreated = () => {
-    let createdStories = this.props.stories.filter(
-      story => story.user_role.role === 'creator'
-    );
-    console.log(createdStories);
-    this.setState({
-      created: true,
-      defaultPage: false,
-      createdStories
-    });
-  };
-  filterContributed = () => {
-    this.contributor = this.props.stories.filter(
-      story => story.user_role.role === 'contributor'
-    );
-    this.setState({ created: false, defaultPage: false });
-  };
 
   render() {
     const { name, email, photoUrl } = this.props.user;
@@ -49,27 +21,44 @@ class UserProfile extends Component {
           <div className="profile-desc">
             <h1>name: {name}</h1>
             <h1>email: {email}</h1>
-            <button>edit profile</button>
+            <button className="grid-thumbnail-btn " type="button">
+              <span>Edit Profile</span>
+            </button>
           </div>
         </div>
         <div className="profile-filter-bar">
-          <button onClick={this.filterCreated}>created</button>
-          <button onClick={this.filterContributed}>contributed</button>
+          <button
+            className="grid-thumbnail-btn"
+            type="button"
+            value="creator"
+            onClick={this.props.toggleCategory}
+          >
+            Created
+          </button>
+          <button
+            className="grid-thumbnail-btn"
+            type="button"
+            value="contributor"
+            onClick={this.props.toggleCategory}
+          >
+            Contributed
+          </button>
+          <button
+            className="grid-thumbnail-btn"
+            type="button"
+            value="all"
+            onClick={this.props.toggleCategory}
+          >
+            All
+          </button>
         </div>
-        {this.state.defaultPage ? (
+        {this.props.stories.length ? (
           <div className="profile-stories-lst">
             <ThumbnailsGrid list={this.props.stories} />
           </div>
-        ) : this.state.created ? (
-          <div className="profile-stories-lst">
-            <ThumbnailsGrid list={this.state.createdStories} />
-          </div>
         ) : (
-          <div className="profile-stories-lst">
-            <ThumbnailsGrid list={this.contributor} />
-          </div>
+          <h1>You have not created any stories yet!</h1>
         )}
-        }
       </div>
     );
   }
@@ -78,13 +67,14 @@ class UserProfile extends Component {
 function mapState(state) {
   return {
     user: state.user,
-    stories: state.story
+    stories: state.story.filteredStories
   };
 }
 
 function mapDispatch(dispatch) {
   return {
-    getUserStories: id => dispatch(getUserStoriesThunk(id))
+    getUserStories: () => dispatch(getUserStoriesThunk()),
+    toggleCategory: evt => dispatch(setCategory(evt.target.value))
   };
 }
 

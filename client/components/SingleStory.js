@@ -4,14 +4,20 @@ import { Link } from 'react-router-dom';
 import { fetchStoryThunk } from '../store';
 
 function SingleStory(props) {
-  const { coverImgUrl, title, chapters } = props.story;
+  const { coverImgUrl, title } = props.story;
+  const { chapters } = props
+  console.log(chapters)
   return (
     <div>
       <div className="single-story-info">
         <img className="single-story-info-img" src={coverImgUrl} alt="cover" />
         <div className="single-story-info-title">
-          <div>Story name: {title}</div>
-          <div>Creator: {props.creator && props.creator.email}</div>
+          <div>Story name: {title}
+          </div>
+          <button type="button" className="single-story-btn">
+            <span>Edit</span>
+          </button>
+          <div>Creator: {props.creator && props.creator.name}</div>
           <div>
             Contributors:{' '}
             {props.contributors &&
@@ -35,6 +41,7 @@ function SingleStory(props) {
                 return (
                   <li key={chapter.id} className="single-story-thumbnail">
                     <h3 className="center-item">{chapter.title}</h3>
+                    {/* <h4 className="center-item">Not Completed</h4> */}
                     <Link
                       to={{
                         pathname: '/selectTemplate',
@@ -69,6 +76,7 @@ class SingleStoryContainer extends Component {
     return (
       <SingleStory
         story={this.props.story}
+        chapters={this.props.chapters}
         creator={this.props.creator}
         contributors={this.props.contributors}
       />
@@ -78,13 +86,14 @@ class SingleStoryContainer extends Component {
 
 function mapState(state) {
   return {
-    story: state.story,
+    story: state.story.currentStory,
     creator:
-      state.story.users &&
-      state.story.users.filter(user => user.user_role.role == 'creator')[0],
+      state.story.currentStory.users &&
+      state.story.currentStory.users.filter(user => user.user_role.role == 'creator')[0],
     contributors:
-      state.story.users &&
-      state.story.users.filter(user => user.user_role.role == 'contributor')
+      state.story.currentStory.users &&
+      state.story.currentStory.users.filter(user => user.user_role.role == 'contributor'),
+    chapters: state.story.currentStory.id && state.story.currentStory.chapters.filter(chapter => !chapter.completed)
   };
 }
 

@@ -26,8 +26,24 @@ router.post('/createstory', async (req, res, next) => {
       storyId: story.id
     });
     let storyToSend = story.get({ plain: true });
-    storyToSend.chapters = chapters;
+    story.chapters = chapters;
     res.json(storyToSend);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get('/user', async (req, res, next) => {
+  try {
+    let user = await User.findOne({
+      where: {
+        id: req.user.id
+      },
+      include: [{ 
+        model : Story
+      }]
+    });
+    res.status(200).send(user.stories);
   } catch (err) {
     next(err);
   }
@@ -47,38 +63,19 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-
-
-router.get('/user/:userId', async (req, res, next) => {
-  try {
-    let user = await User.findOne({
-      where: {
-        id: req.params.userId
-      }
-      ,
-
-      include: [{all: true}]
-    })
-    res.status(200).send(user.stories)
-  } catch (err) {
-    next(err)
-  }
-});
-
-
 router.post('/chapter/:chid', async (req, res, next) => {
   try {
-  let chapter = await Chapter.findById(req.params.chid)
-  let updated = await chapter.update({
-    imageUrl : req.body.url,
-    completed: true
-  })
-  console.log(updated.get({plain : true}))
-  res.status(201).send()}
-  catch (err) {
-    next(err)
+    let chapter = await Chapter.findById(req.params.chid);
+    let updated = await chapter.update({
+      imageUrl: req.body.url,
+      completed: true
+    });
+    console.log(updated.get({ plain: true }));
+    res.status(201).send();
+  } catch (err) {
+    next(err);
   }
-})
+});
 
 router.get('/:id/:chapterid', async (req, res, next) => {
   try {

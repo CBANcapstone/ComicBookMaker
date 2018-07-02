@@ -17,4 +17,5 @@ const Story = db.define('story', {
   }
 });
 
+
 module.exports = Story;
