@@ -1,119 +1,113 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import firebase from 'firebase';
 
 class UserProfileEdit extends Component {
-  //  const { name, email, photoUrl } = props.user;
-  constructor(){
-    super()
+  constructor() {
+    super();
     this.state = {
       name: '',
       password: '',
       email: '',
       photoUrl: ''
-    }
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-componentDidMount(){
-  const { name, email, photoUrl, password } = this.props.user;
-  this.setState({name, email, photoUrl, password })
-  console.log('-1-',this.state)
-}
+  componentDidMount() {
+    const { name, email, photoUrl, password } = this.props.user;
+    this.setState({ name, email, photoUrl, password });
+  }
 
   handleChange(event) {
-    // console.log(event.target.files[0])
-    this.setState({ [event.target.name]: event.target.value,
-     });
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   }
 
   handleSubmit(evt) {
     evt.preventDefault();
-    console.log('state>>>',this.state);
-     axios.put(`/api/users/${this.props.user.id}`, this.state).then(res => res.data);
+    console.log('state>>>', this.state);
+    axios
+      .put(`/api/users/${this.props.user.id}`, this.state)
+      .then(res => res.data);
     this.props.history.goBack();
   }
 
-render(){
-  console.log('-2-',this.state)
-
-  const { name, email, photoUrl, password } = this.state;
-  return (
-    <div>
-      <form className="user-profile-edit"
-      onSubmit={this.handleSubmit}
-      >
-        <h1>EDIT</h1>
-        <div>
-          <label>Name</label>
+  render() {
+    const { name, email, photoUrl, password } = this.state;
+    return (
+      <div>
+        <form className="user-profile-edit" onSubmit={this.handleSubmit}>
+          <h1>EDIT</h1>
           <div>
-            <input className="user-profile-edit-input"
-            onChange={this.handleChange}
-            value={name}
-            name='name'
-            placeholder="Name" />
+            <label>Name</label>
+            <div>
+              <input
+                className="user-profile-edit-input"
+                onChange={this.handleChange}
+                value={name}
+                name="name"
+                placeholder="Name"
+              />
+            </div>
           </div>
-        </div>
-        <div>
-          <label>Email</label>
           <div>
-            <input className="user-profile-edit-input"
-            name='email'
-            value={email}
-            onChange={this.handleChange}
-            placeholder="Email" />
+            <label>Email</label>
+            <div>
+              <input
+                className="user-profile-edit-input"
+                name="email"
+                value={email}
+                onChange={this.handleChange}
+                placeholder="Email"
+              />
+            </div>
           </div>
-        </div>
-        <div>
-          <label>Password</label>
           <div>
-            <input className="user-profile-edit-input"
-            onChange={this.handleChange}
-            name='password'
-            value={password}
-            placeholder="Password" />
+            <label>Password</label>
+            <div>
+              <input
+                className="user-profile-edit-input"
+                onChange={this.handleChange}
+                name="password"
+                value={password}
+                placeholder="Password"
+              />
+            </div>
           </div>
-        </div>
-        <div>
-        <label>Choose your profile picture</label>
-        <div>
-          <input
-            className="user-profile-edit-input"
-            onChange={this.handleChange}
-            type="file"
-            name="photoUrl"
-            accept="image/*"
-          />
+          <div>
+            <label>Choose your profile picture</label>
+            <div>
+              <input
+                className="user-profile-edit-input"
+                onChange={this.handleChange}
+                type="file"
+                name="photoUrl"
+                accept="image/*"
+              />
+            </div>
           </div>
-        </div>
-        <div >
+          <div>
             <input
               className="user-profile-edit-input"
-              style={{ width: '20%'}}
+              style={{ width: '20%' }}
               value={photoUrl}
               type="submit"
               value="Save Changes"
             />
-        </div>
-      </form>
-    </div>
-  );
-}
+          </div>
+        </form>
+      </div>
+    );
+  }
 }
 
 function mapState(state) {
   return {
-    user: state.user,
+    user: state.user
   };
 }
 
-// function mapDispatch(dispatch) {
-//   return {
-//     getUserStories: id => dispatch(getUserStoriesThunk(id))
-//   };
-// }
-
 export default connect(mapState)(UserProfileEdit);
-// export default UserProfileEdit;
