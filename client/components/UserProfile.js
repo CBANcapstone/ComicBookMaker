@@ -41,35 +41,53 @@ class UserProfile extends Component {
     const { name, email, photoUrl } = this.props.user;
     const { stories } = this.props;
     return (
-      <div className="profile-container">
-        <div className="profile-info-container">
-          <div className="profile-pic">
-            <img src={photoUrl} alt="avatar" />
-          </div>
-          <div className="profile-desc">
-            <h1>name: {name}</h1>
-            <h1>email: {email}</h1>
-            <button>edit profile</button>
+      <div>
+        <div className="profile-container">
+          <div className="profile-info-container">
+            <div className="profile-pic-container">
+              <img src={photoUrl} alt="avatar" className="profile-pic" />
+            </div>
+            <div className="profile-desc">
+              <h1>name: {name}</h1>
+              <h1>email: {email}</h1>
+              <button type="button" className="grid-thumbnail-btn">
+                <span>edit profile</span>
+              </button>
+            </div>
           </div>
         </div>
+
         <div className="profile-filter-bar">
-          <button onClick={this.filterCreated}>created</button>
-          <button onClick={this.filterContributed}>contributed</button>
+          <div className="button__holder">
+            <button type="button" onClick={this.filterCreated} className="plus">
+              created
+            </button>
+          </div>
+          <div className="button__holder">
+            <button
+              type="button"
+              onClick={this.filterContributed}
+              className="plus"
+            >
+              contributed
+            </button>
+          </div>
         </div>
-        {this.state.defaultPage ? (
-          <div className="profile-stories-lst">
-            <ThumbnailsGrid list={this.props.stories} />
-          </div>
-        ) : this.state.created ? (
-          <div className="profile-stories-lst">
-            <ThumbnailsGrid list={this.state.createdStories} />
-          </div>
-        ) : (
-          <div className="profile-stories-lst">
-            <ThumbnailsGrid list={this.contributor} />
-          </div>
-        )}
-        }
+        <div>
+          {this.state.defaultPage ? (
+            <div className="profile-stories-lst">
+              <ThumbnailsGrid list={this.props.stories} profile={true} />
+            </div>
+          ) : this.state.created ? (
+            <div className="profile-stories-lst">
+              <ThumbnailsGrid list={this.state.createdStories} profile={true} />
+            </div>
+          ) : (
+            <div className="profile-stories-lst">
+              <ThumbnailsGrid list={this.contributor} profile={true} />
+            </div>
+          )}
+        </div>
       </div>
     );
   }
