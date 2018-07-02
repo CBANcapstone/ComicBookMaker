@@ -248,11 +248,6 @@ input[type='password']:placeholder {
   width: 60%;
 }
 
-/* * {
-  box-sizing: border-box;
-} */
-/* AuthForm Ends  */
-
 canvas {
   width: 90vw;
   height: 30vh;
@@ -296,10 +291,41 @@ canvas {
   margin-top: 50vh;
 }
 
+.btn-canvas {
+  border: none;
+  outline: none;
+  /* margin-right: 0.7em; */
+  background-color: #f1f1f1;
+  /* background-color: #59aac9; */
+  cursor: pointer;
+  font-size: 0.7em;
+  border-style: dotted;
+  border-width: thin;
+}
+.active-btn,
+.btn-canvas:hover {
+  background-color: #666;
+  color: white;
+}
+
+.active-cat,
+.selection-category:hover {
+  background-color: #9accdf;
+  color: white;
+}
+
+.root-canvas-selection-bar {
+  overflow: scroll;
+}
+
 .root-canvas-selection-bar-component-category {
   cursor: pointer;
   display: flex;
   flex-direction: row;
+}
+
+.selection-bar-images-container {
+  background: white;
 }
 
 .root-canvas-selection-bar-component-images {
@@ -445,7 +471,7 @@ canvas {
 
 .root-canvas-info {
   border: 3px solid grey;
-  margin-top: 1vh;
+  margin-top: 0vh;
 }
 
 .root-canvas-buttons {
@@ -536,6 +562,9 @@ textarea {
   height: auto;
   margin: 0 auto;
 }
+.canvas-add-text {
+  padding: 0 2em;
+}
 #paper {
   display: block;
   width: 700px;
@@ -549,7 +578,7 @@ textarea {
 .canvas-text-area-fonts {
   align-content: center;
   display: flex;
-  background-color: #ddd;
+  background-color: #59aac9;
   width: 100%;
   overflow: scroll;
 }
@@ -564,9 +593,9 @@ textarea {
 }
 
 .canvas-text-area-font-each {
-  background-color: whitesmoke;
-  width: 3em;
-  height: 3em;
+  background-color: #cce9f4;
+  width: 2.7em;
+  height: 2em;
   text-align: center;
   margin-left: 1em;
   margin-right: 1em;
