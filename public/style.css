@@ -781,7 +781,7 @@ textarea {
 
 /*///////// SINGLE STORY////////////*/
 .single-story-container {
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1021,6 +1021,17 @@ textarea {
     #4fd342 100%
   ); /* Chrome10+,Safari5.1+ */
   background: linear-gradient(top, #1d7d12 0%, #4fd342 100%); /* W3C */
+}
+.user-profile-edit {
+  width: 100%;
+  text-align: center;
+}
+
+.user-profile-edit-input {
+    width: 80%;
+    height: 2em;
+    text-align: center;
+    font-size: 1em;
 }
 
 /* MODAL ****************/
