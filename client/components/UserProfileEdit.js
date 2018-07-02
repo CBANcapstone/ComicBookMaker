@@ -17,6 +17,11 @@ class UserProfileEdit extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
+componentDidMount(){
+  const { name, email, photoUrl, password } = this.props.user;
+  this.setState({name, email, photoUrl, password })
+  console.log('-1-',this.state)
+}
 
   handleChange(event) {
     // console.log(event.target.files[0])
@@ -32,7 +37,9 @@ class UserProfileEdit extends Component {
   }
 
 render(){
-  const { name, email, photoUrl, password } = this.props.user;
+  console.log('-2-',this.state)
+
+  const { name, email, photoUrl, password } = this.state;
   return (
     <div>
       <form className="user-profile-edit"
@@ -44,7 +51,7 @@ render(){
           <div>
             <input className="user-profile-edit-input"
             onChange={this.handleChange}
-            value={this.state.name}
+            value={name}
             name='name'
             placeholder="Name" />
           </div>
