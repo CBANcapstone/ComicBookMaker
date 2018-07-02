@@ -1,8 +1,8 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react';
 
 export default class CanvasTextArea extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       fonts: [
         'Courier, monospace',
@@ -20,20 +20,20 @@ export default class CanvasTextArea extends Component {
         'Ultra'
       ],
       selectedFont: 'Courier, monospace'
-    }
+    };
   }
   handleFontSelected = font => {
-    this.setState({selectedFont: font})
-  }
+    this.setState({ selectedFont: font });
+  };
 
   handleSubmit = evt => {
-    evt.preventDefault()
-    this.props.sendTextToCanvas(evt.target.text.value, this.state.selectedFont)
-    evt.target.text.value = ''
-  }
+    evt.preventDefault();
+    this.props.sendTextToCanvas(evt.target.text.value, this.state.selectedFont);
+    evt.target.text.value = '';
+  };
 
   render() {
-    console.log('')
+    console.log('');
     return (
       <div id="wrapper">
         <form id="paper" method="get" onSubmit={this.handleSubmit}>
@@ -42,12 +42,12 @@ export default class CanvasTextArea extends Component {
             id="text"
             name="text"
             rows="4"
-            style={{fontFamily: this.state.selectedFont}}
+            style={{ fontFamily: this.state.selectedFont }}
           />
           <input id="buttonForText" type="submit" value="Add" />
         </form>
 
-        <div style={{fontSize: '2em'}}>Font Styles</div>
+        <div style={{ fontSize: '2em' }}>Font Styles</div>
         <div className="canvas-text-area-fonts">
           <br />
           <div className="canvas-text-area-fonts-options">
@@ -57,19 +57,19 @@ export default class CanvasTextArea extends Component {
                   return (
                     <li
                       key={idx}
-                      style={{fontFamily: font}}
+                      style={{ fontFamily: font }}
                       className="canvas-text-area-font-each"
                       onClick={() => this.handleFontSelected(font)}
                     >
                       Text
                     </li>
-                  )
+                  );
                 })}
             </ul>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

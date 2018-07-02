@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Category = props => {
   return (
@@ -9,7 +9,7 @@ const Category = props => {
     >
       {props.category}
     </div>
-  )
-}
+  );
+};
 
-export default Category
+export default Category;
