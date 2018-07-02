@@ -5,6 +5,7 @@ import SelectionBar from './SelectionBar';
 import ResizeCanvasImage from './ResizeCanvasImage';
 import CanvasBox from './CanvasBox';
 import TextOnCanvas from './TextOnCanvas';
+import { HighlightButton } from '../SelectTemplateHighlight';
 import axios from 'axios';
 import history from '../../history';
 import { storage } from '../../config/firebase';
@@ -20,27 +21,20 @@ export default class RootCanvas extends Component {
       lines: [],
       text: [],
       font: [],
-      canvasBackground: '', //this.props.location.state.background || '',
+      canvasBackground: '',
       selectedImageOnCanvas: null,
       numOfBox: this.props.location.state.number,
       canvasBoxPosX: [],
       canvasBoxPosY: []
     };
-    this.background = null;
   }
 
-  componentDidMount = async () => {
-    // let { id, chid } = this.props.match.params;
-    // let res = await axios.get(`/api/stories/${id}/${chid}`);
-    // this.setState({ chapter: res.data });
+  componentDidMount = () => {
     let image = new window.Image();
     image.crossOrigin = 'Anonymous';
     image.src = this.props.location.state.background;
-    // image.height = '457';
-    // image.width = '432';
     image.onload = () => {
       this.setState({ canvasBackground: image });
-      // this.background = image;
     };
 
     if (this.props.location.state.number === 1) {
@@ -110,12 +104,13 @@ export default class RootCanvas extends Component {
     this._drawing = false;
   };
 
+  //stores Image on state for canvas
   handleClick = event => {
     const image = new window.Image();
     image.crossOrigin = 'Anonymous';
     image.src = event.target.src;
-    image.height = '457';
-    image.width = '432';
+    image.height = '170';
+    image.width = '150';
     image.onload = () => {
       this.setState({ images: [...this.state.images, image] });
     };
@@ -170,20 +165,18 @@ export default class RootCanvas extends Component {
       .getStage()
       .toDataURL()
       .slice(22);
-
-    var imagesRef = storage.ref().child('saved2.png');
-
+    const {id, chid} = this.props.match.params
+    var imagesRef = storage.ref().child(`storyID_${id}chapterID_${chid}.png`);
     await imagesRef.putString(picture, 'base64');
     let url = await imagesRef.getDownloadURL();
-    await axios.post(`/api/stories/chapter/${this.props.match.params.chid}`, {
+    await axios.post(`/api/stories/chapter/${chid}`, {
       url
     });
-    history.push(`/stories/${this.props.match.params.id}`);
-    // after user is done =>
-    // save it under the chapter in DB and redirect to STORY main screen
+    history.push(`/stories/${id}`);
   };
 
   render() {
+    HighlightButton();
     return (
       <div className="root-canvas">
         <div className="root-canvas-selection-bar">
@@ -195,7 +188,11 @@ export default class RootCanvas extends Component {
         </div>
         <div className="root-canvas-buttons">
           <div className="root-canvas-move-image">
-            <button type="button" onClick={this.disableDraw}>
+            <button
+              type="button"
+              className="btn-canvas active-btn"
+              onClick={this.disableDraw}
+            >
               MOVE
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fmove.png?alt=media&token=f06c0ca6-8604-44d0-84c7-96dea64d9f56"
@@ -206,7 +203,11 @@ export default class RootCanvas extends Component {
           </div>
 
           <div className="root-canvas-draw-line">
-            <button type="button" onClick={this.handleDraw}>
+            <button
+              type="button"
+              className="btn-canvas"
+              onClick={this.handleDraw}
+            >
               DRAW
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fdraw.png?alt=media&token=b90dd983-7ecd-4fdc-b979-38cc8aa5a544"
@@ -217,7 +218,11 @@ export default class RootCanvas extends Component {
           </div>
 
           <div className="root-canvas-submit-image">
-            <button type="button" onClick={this.handleSubmit}>
+            <button
+              type="button"
+              className="btn-canvas"
+              onClick={this.handleSubmit}
+            >
               SUBMIT
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fsubmit.png?alt=media&token=b03c1a37-0ce6-4aa8-bb50-dfa8f50c063f"
@@ -228,7 +233,11 @@ export default class RootCanvas extends Component {
           </div>
 
           <div className="root-canvas-delete-image">
-            <button type="button" onClick={this.handleDelete}>
+            <button
+              type="button"
+              className="btn-canvas"
+              onClick={this.handleDelete}
+            >
               DELETE
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fdelete.png?alt=media&token=f78d08e1-c750-4252-8466-401c93f9f0a0"
@@ -238,7 +247,11 @@ export default class RootCanvas extends Component {
             </button>
           </div>
           <div className="root-canvas-clear-canvas">
-            <button type="button" onClick={this.handleClear}>
+            <button
+              type="button"
+              className="btn-canvas"
+              onClick={this.handleClear}
+            >
               CLEAR
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fclear.png?alt=media&token=23ebcc4c-1f3a-4ab3-b1df-759ab6bc96a0"
@@ -248,7 +261,7 @@ export default class RootCanvas extends Component {
             </button>
           </div>
           <div className="root-canvas-download-canvas">
-            <button type="button">
+            <button type="button" className="btn-canvas">
               <a
                 href="#"
                 className="button"
@@ -291,7 +304,7 @@ export default class RootCanvas extends Component {
                 shadowColor="black"
                 align="center"
                 fill="white"
-                x={window.innerWidth / 3.5}
+                x={window.innerWidth / 6}
                 y="10"
               />
               {this.state.canvasBoxPosX.map((pos, index) => {

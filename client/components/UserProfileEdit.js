@@ -28,7 +28,6 @@ class UserProfileEdit extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    console.log('state>>>', this.state);
     axios
       .put(`/api/users/${this.props.user.id}`, this.state)
       .then(res => res.data);
@@ -36,7 +35,7 @@ class UserProfileEdit extends Component {
   }
 
   render() {
-    const { name, email, photoUrl, password } = this.state;
+    const { name, email, password } = this.state;
     return (
       <div>
         <form className="user-profile-edit" onSubmit={this.handleSubmit}>
@@ -48,6 +47,7 @@ class UserProfileEdit extends Component {
                 className="user-profile-edit-input"
                 onChange={this.handleChange}
                 value={name}
+                type="text"
                 name="name"
                 placeholder="Name"
               />
@@ -58,6 +58,7 @@ class UserProfileEdit extends Component {
             <div>
               <input
                 className="user-profile-edit-input"
+                type="text"
                 name="email"
                 value={email}
                 onChange={this.handleChange}
@@ -72,6 +73,7 @@ class UserProfileEdit extends Component {
                 className="user-profile-edit-input"
                 onChange={this.handleChange}
                 name="password"
+                type="text"
                 value={password}
                 placeholder="Password"
               />
@@ -93,7 +95,6 @@ class UserProfileEdit extends Component {
             <input
               className="user-profile-edit-input"
               style={{ width: '20%' }}
-              value={photoUrl}
               type="submit"
               value="Save Changes"
             />
