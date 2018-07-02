@@ -8,3 +8,4 @@ export { default as UnitStory } from './UnitStory';
 export { Login, Signup } from './AuthForm';
 export { default as SelectTemplate } from './SelectTemplate';
 export { default as OpenStories } from './OpenStories';
+export { default as UserProfileEdit } from './UserProfileEdit';

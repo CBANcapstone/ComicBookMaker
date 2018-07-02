@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import ThumbnailsGrid from './ThumbnailsGrid';
-import { getUserStoriesThunk } from '../store';
+import { getUserStoriesThunk, me } from '../store';
 
 class UserProfile extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class UserProfile extends Component {
   }
 
   componentDidMount() {
+    this.props.getUser()
     this.props.getUserStories(this.props.user.id);
   }
 
@@ -49,9 +51,11 @@ class UserProfile extends Component {
             <div className="profile-desc">
               <h1>name: {name}</h1>
               <h1>email: {email}</h1>
+              <Link to="/user-profile/edit">
               <button type="button" className="grid-thumbnail-btn">
                 <span>edit profile</span>
               </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -101,7 +105,8 @@ function mapState(state) {
 
 function mapDispatch(dispatch) {
   return {
-    getUserStories: id => dispatch(getUserStoriesThunk(id))
+    getUserStories: id => dispatch(getUserStoriesThunk(id)),
+    getUser: () => dispatch(me())
   };
 }
 
