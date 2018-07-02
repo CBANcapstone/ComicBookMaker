@@ -6,6 +6,6 @@ const backgroundsArr = [
   'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2FBackground%2F1540.jpg?alt=media&token=b870e07b-b4ba-4bf7-9436-66f92284f660',
   'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2FBackground%2F4599.jpg?alt=media&token=6c4887b1-e223-4d87-9519-1022276c98b5',
   'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2FBackground%2F11425.jpg?alt=media&token=a00f2a5a-f517-49bb-a932-9ca0100f04c1'
-]
+];
 
-export default backgroundsArr
+export default backgroundsArr;

@@ -7,4 +7,4 @@ export { default as SingleStoryContainer } from './SingleStory';
 export { default as UnitStory } from './UnitStory';
 export { Login, Signup } from './AuthForm';
 export { default as SelectTemplate } from './SelectTemplate';
-export { default as OpenStories} from './OpenStories';
+export { default as OpenStories } from './OpenStories';
