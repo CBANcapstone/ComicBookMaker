@@ -4,7 +4,6 @@ import history from '../history';
 function ThumbnailsGrid(props) {
   // profile tells that the component is being rendered in User Profile
   const { list, profile } = props;
-  console.log('PROFILEGRID>>>>', profile);
   return (
     <div className="grid">
       {profile ? (
@@ -30,12 +29,10 @@ function ThumbnailsGrid(props) {
 function Thumbnail(props) {
   // profile tells that the component is being rendered in User Profile
   const goToStory = id => {
-    console.log('HIT THE BUTTON >>>>', id);
     history.push(`/stories/${id}`);
   };
   const { profile } = props;
   const { title, coverImgUrl, description, id } = props.item;
-  console.log('props.item>>>>', props.item);
   return (
     <div className="grid-thumbnail">
       <img className="grid-thumbnail-image" src={coverImgUrl} />

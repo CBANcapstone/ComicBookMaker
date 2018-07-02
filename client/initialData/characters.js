@@ -16,6 +16,6 @@ const charactersArr = [
   'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2FMarvel%2FIronman.svg?alt=media&token=d01604fd-8c32-49fe-9eb1-d1dd11a0a04b',
   'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2FMarvel%2FSpiderman.svg?alt=media&token=fda61ed6-b9c9-433c-ab4a-17718d9337a4',
   'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2FMarvel%2FSuperman.svg?alt=media&token=2ff37cad-a74c-40f6-9dd8-03810f97917b'
-]
+];
 
-export default charactersArr
+export default charactersArr;
