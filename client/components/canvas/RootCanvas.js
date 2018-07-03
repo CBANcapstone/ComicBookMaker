@@ -165,7 +165,7 @@ export default class RootCanvas extends Component {
       .getStage()
       .toDataURL()
       .slice(22);
-    const {id, chid} = this.props.match.params
+    const { id, chid } = this.props.match.params;
     var imagesRef = storage.ref().child(`storyID_${id}chapterID_${chid}.png`);
     await imagesRef.putString(picture, 'base64');
     let url = await imagesRef.getDownloadURL();
