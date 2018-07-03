@@ -4,6 +4,11 @@ module.exports = io => {
       `A socket connection to the server has been made: ${socket.id}`
     );
 
+    socket.on('RECEIVE_USER', data => {
+      console.log('in receive', data)
+      socket.emit('UPDATE_USER', data)
+    })
+
     socket.on('disconnect', () => {
       console.log(`Connection ${socket.id} has left the building`);
     });
