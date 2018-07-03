@@ -30,7 +30,7 @@ class SingleStory extends Component {
   }
 
   render() {
-    const { coverImgUrl, title, chapters } = this.props.story;
+    const { coverImgUrl, title, chapters, id } = this.props.story;
     const { creator, contributors } = this.props;
     return (
       <div>
@@ -74,7 +74,9 @@ class SingleStory extends Component {
                   })}
               </div>
               <button type="button" className="single-story-btn">
-                <span>View The Story</span>
+                <Link to={`/${id}/completedChapters`}>
+                  <span style={{ color: 'white' }}>View The Story</span>
+                </Link>
               </button>
             </div>
           </div>
