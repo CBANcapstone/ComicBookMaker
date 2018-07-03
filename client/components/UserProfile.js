@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ThumbnailsGrid from './ThumbnailsGrid';
-import { getUserStoriesThunk, me } from '../store';
+import { fetchOpenStoriesThunk, getUserStoriesThunk, me } from '../store';
 
 class UserProfile extends Component {
   constructor(props) {
@@ -19,6 +19,10 @@ class UserProfile extends Component {
   componentDidMount() {
     this.props.getUser()
     this.props.getUserStories(this.props.user.id);
+  }
+
+  componentWillUnmount() {
+    this.props.getOpenStories();
   }
 
   filterCreated = () => {
@@ -106,6 +110,9 @@ function mapState(state) {
 function mapDispatch(dispatch) {
   return {
     getUserStories: id => dispatch(getUserStoriesThunk(id)),
+    getOpenStories: () => {
+      dispatch(fetchOpenStoriesThunk())
+    },
     getUser: () => dispatch(me())
   };
 }
