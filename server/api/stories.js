@@ -33,6 +33,16 @@ router.post('/createstory', async (req, res, next) => {
   }
 });
 
+router.get('/openStories', (req, res) => {
+  Story.findAll({
+    where : {
+      completed : false
+    },
+    include : [{ all: true }]
+  })
+  .then(stories => res.json(stories));
+});
+
 router.get('/:id', async (req, res, next) => {
   try {
     let story = await Story.findOne({
@@ -47,6 +57,18 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
+<<<<<<< HEAD
+router.get('/:id/chapters', (req, res, next) => {
+  Chapter.findAll({
+    where : {
+      storyId: req.params.id
+    }
+  })
+    .then(chapters => res.status(200).send(chapters))
+})
+
+=======
+>>>>>>> master
 router.get('/user/:userId', async (req, res, next) => {
   try {
     let user = await User.findOne({
