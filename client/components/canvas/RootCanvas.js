@@ -165,7 +165,7 @@ export default class RootCanvas extends Component {
       .getStage()
       .toDataURL()
       .slice(22);
-
+    console.log('picture>>>', this.stageRef.getStage().toDataURL());
     var imagesRef = storage.ref().child('saved2.png');
 
     await imagesRef.putString(picture, 'base64');
