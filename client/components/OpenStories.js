@@ -1,45 +1,42 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
 import { UnitStory } from '/';
+import { fetchOpenStoriesThunk } from '../store';
 
-export default class extends Component {
-  constructor() {
+class OpenStories extends Component{
+
+  constructor(){
     super();
-
-    this.state = {
-      openStories: []
-    };
+  }
+  componentDidMount(){
+    this.props.getOpenStories();
   }
 
-  componentDidMount() {
-    this.getOpenStories();
+  render(){
+    return(
+      <div className='open-stories'>
+        {this.props.openStories ? this.props.openStories.map(story => {
+                                    return <UnitStory story={story} />
+                                  }): <h1>There are no open stories yet.</h1>
+        }
   }
-
-  getOpenStories() {
-    axios
-      .get('/api/stories')
-      .then(res => res.data)
-      .then(stories => {
-        const openStories = stories.filter(story => {
-          return !story.completed;
-        });
-        this.setState({
-          openStories
-        });
-      });
-  }
-
-  render() {
-    return (
-      <div className="open-stories">
-        {this.state.openStories ? (
-          this.state.openStories.map(story => {
-            return <UnitStory story={story} />;
-          })
-        ) : (
-          <h1>There are no open stories yet.</h1>
-        )}
       </div>
     );
   }
 }
+
+const mapToState = (state) => {
+  return{
+    openStories: state.stories
+  }
+}
+
+const mapDispatch = (dispatch) => {
+  return{
+    getOpenStories: () => {
+      dispatch(fetchOpenStoriesThunk())
+    }
+  }
+}
+
+export default connect(mapToState, mapDispatch)(OpenStories);
