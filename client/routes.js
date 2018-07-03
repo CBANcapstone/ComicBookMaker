@@ -6,13 +6,16 @@ import {
   Login,
   Signup,
   UserProfile,
+  UserProfileEdit,
   HomePage,
   Canvas,
   RootCanvas,
   Templates,
   SelectTemplate,
   SingleStoryContainer,
-  OpenStories
+  OpenStories,
+  Custom,
+  CompletedChapter
 } from './components';
 import { me } from './store';
 
@@ -32,12 +35,16 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/home" component={HomePage} />
+        <Route path='/openStories' component={OpenStories} />
+        <Route path='/custom' component={Custom} />
+        <Route path='/:storyId/completedChapters' component={CompletedChapter} />
 
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/selectTemplate" component={SelectTemplate} />
             <Route path="/canvas" component={Canvas} />
+            <Route path="/user-profile/edit" component={UserProfileEdit} />
             <Route path="/user-profile" component={UserProfile} />
             <Route
               exact
