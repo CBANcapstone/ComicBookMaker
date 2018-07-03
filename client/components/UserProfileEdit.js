@@ -37,74 +37,95 @@ class UserProfileEdit extends Component {
     axios
       .put(`/api/users/${this.props.user.id}`, this.state)
       .then(res => res.data);
+
     this.props.history.goBack();
   }
 
   render() {
     const { name, email, password } = this.state;
     return (
-      <div>
-        <form className="user-profile-edit" onSubmit={this.handleSubmit}>
-          <h1>EDIT</h1>
-          <div>
-            <label>Name</label>
-            <div>
-              <input
-                className="user-profile-edit-input"
-                onChange={this.handleChange}
-                value={name}
-                type="text"
-                name="name"
-                placeholder="Name"
-              />
+      <div className="container" style={{ height: '100vh', marginTop: '0' }}>
+        <div className="body-div">
+          <form
+            id="form"
+            className="user-profile-edit"
+            onSubmit={this.handleSubmit}
+          >
+            <h1 id="message">EDIT</h1>
+
+            <small id="smallMessage" />
+            <div className="input-box-type">
+              <h3>Name</h3>
+              <div className="field">
+                <input
+                  className="user-profile-edit-input"
+                  onChange={this.handleChange}
+                  value={name}
+                  // type="text"
+                  name="name"
+                  placeholder="Name"
+                  style={{ width: '15em' }}
+                />
+                <label htmlFor="name">Name</label>
+              </div>
             </div>
-          </div>
-          <div>
-            <label>Email</label>
-            <div>
-              <input
-                className="user-profile-edit-input"
-                type="text"
-                name="email"
-                value={email}
-                onChange={this.handleChange}
-                placeholder="Email"
-              />
+            <div className="input-box-type">
+              <h3>Email</h3>
+              <div className="field">
+                <input
+                  className="user-profile-edit-input"
+                  // type="text"
+                  name="email"
+                  id="email"
+                  value={email}
+                  onChange={this.handleChange}
+                  placeholder="Email"
+                  style={{ width: '15em' }}
+                />
+                <label htmlFor="email">Email</label>
+              </div>
             </div>
-          </div>
-          <div>
-            <label>Password</label>
-            <div>
-              <input
-                className="user-profile-edit-input"
-                onChange={this.handleChange}
-                name="password"
-                type="text"
-                value={password}
-                placeholder="Password"
-              />
+            <div className="input-box-type">
+              <h3>Password</h3>
+              <div className="field">
+                <input
+                  className="user-profile-edit-input"
+                  onChange={this.handleChange}
+                  name="password"
+                  // type="text"
+                  value={password}
+                  placeholder="Password"
+                  style={{ width: '15em' }}
+                />
+                <label htmlFor="password">Password</label>
+              </div>
             </div>
-          </div>
-          <div>
-            <label>Choose your profile picture</label>
-            <div>
-              <input
-                className="user-profile-edit-input"
-                onChange={this.handleChange}
-                type="file"
-                accept="image/*"
-              />
+            <div className="input-box-type">
+              <h3>Choose your profile picture</h3>
+              <div className="field">
+                <input
+                  className="user-profile-edit-input"
+                  onChange={this.handleChange}
+                  type="file"
+                  accept="image/*"
+                />
+                <label htmlFor="password">Choose your profile picture</label>
+              </div>
             </div>
-          </div>
-          <div>
-            <input
-              className="user-profile-edit-input"
-              style={{ width: '20%' }}
-              type="submit"
-              value="Save Changes"
-            />
-          </div>
-        </form>
+
+            <div className="input-box-type">
+              <div className="field">
+                <input
+                  className="user-profile-edit-input"
+                  type="submit"
+                  value="Save Changes"
+                  style={{ width: '15em' }}
+                />
+                <label htmlFor="password">Upload Profile Picture</label>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
