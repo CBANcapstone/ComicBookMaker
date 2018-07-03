@@ -46,7 +46,7 @@ export const fetchStoryThunk = storyId => async dispatch => {
 
 export const getUserStoriesThunk = userId => async dispatch => {
   try {
-    let stories = await axios.get(`/api/stories/user/${userId}`);
+    let stories = await axios.get(`/api/stories/user-stories`);
     dispatch(getUserStories(stories.data));
   } catch (err) {
     console.error('Error fetching user stories', err);
@@ -56,6 +56,7 @@ export const getUserStoriesThunk = userId => async dispatch => {
 export const fetchOpenStoriesThunk = () => async dispatch => {
   try {
     let res = await axios.get('/api/stories/open-stories');
+    console.log('???', res.data)
     dispatch(getOpenStories(res.data));
   } catch (err) {
     console.error('Error fetching open stories', err);

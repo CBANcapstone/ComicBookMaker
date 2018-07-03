@@ -12,15 +12,16 @@ class OpenStories extends Component {
   }
 
   render() {
+    console.log('OPEN STORIES', this.props.openStories )
     return (
       <div className="open-stories">
-        {this.props.openStories ? (
-          this.props.openStories.map((story, i) => {
-            return <UnitStory key={i} story={story} />;
+        {this.props.openStories.length ? (
+          this.props.openStories.map(story => {
+            return <UnitStory key={story.id} story={story} />;
           })
         ) : (
           <h1>There are no open stories yet.</h1>
-        )}
+        )
         }
       </div>
     );

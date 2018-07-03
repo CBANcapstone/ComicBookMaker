@@ -17,14 +17,4 @@ const Story = db.define('story', {
   }
 });
 
-Story.findOpenStories = async function() {
-  let allStories = await Story.findAll({
-    where : {
-      completed : false
-    },
-    include : [{all : true}]
-  })
-  return allStories
-}
-
 module.exports = Story;
