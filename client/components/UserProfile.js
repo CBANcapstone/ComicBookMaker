@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ThumbnailsGrid from './ThumbnailsGrid';
-<<<<<<< HEAD
-import { fetchOpenStoriesThunk, getUserStoriesThunk } from '../store';
-=======
-import { getUserStoriesThunk, me } from '../store';
->>>>>>> master
+import { fetchOpenStoriesThunk, getUserStoriesThunk, me } from '../store';
 
 class UserProfile extends Component {
   constructor(props) {
@@ -114,13 +110,10 @@ function mapState(state) {
 function mapDispatch(dispatch) {
   return {
     getUserStories: id => dispatch(getUserStoriesThunk(id)),
-<<<<<<< HEAD
     getOpenStories: () => {
       dispatch(fetchOpenStoriesThunk())
-    }
-=======
+    },
     getUser: () => dispatch(me())
->>>>>>> master
   };
 }
 
