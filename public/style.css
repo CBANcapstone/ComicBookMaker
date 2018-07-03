@@ -491,7 +491,7 @@ canvas {
   z-index: 3;
   position: absolute;
   left: 55%;
-  top: 10%;
+  top: 50%;
   transform: translate(-50%, -50%);
   font-size: 5em;
 }
@@ -906,8 +906,12 @@ textarea {
   width: 100%;
   height: 100vh;
   background-color: rgba(38, 38, 38, 0.5);
+  
 }
+svg {
+  margin: auto;
 
+}
 .home-container-dimensions {
   width: 100%;
   height: 100vh;
