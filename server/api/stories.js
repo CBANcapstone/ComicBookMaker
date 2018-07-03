@@ -57,7 +57,7 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-<<<<<<< HEAD
+
 router.get('/:id/chapters', (req, res, next) => {
   Chapter.findAll({
     where : {
@@ -67,8 +67,6 @@ router.get('/:id/chapters', (req, res, next) => {
     .then(chapters => res.status(200).send(chapters))
 })
 
-=======
->>>>>>> master
 router.get('/user/:userId', async (req, res, next) => {
   try {
     let user = await User.findOne({
