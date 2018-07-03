@@ -467,6 +467,7 @@ canvas {
 
 .home-main-img {
   width: 100%;
+  height: 100vh;
   z-index: -1;
 }
 
@@ -484,6 +485,15 @@ canvas {
 .root-canvas-selection-bar-component-images {
   display: flex;
   flex-direction: row;
+}
+
+#container {
+  z-index: 3;
+  position: absolute;
+  left: 55%;
+  top: 10%;
+  transform: translate(-50%, -50%);
+  font-size: 5em;
 }
 
 /* TODO CanvasTextArea */
@@ -889,10 +899,24 @@ textarea {
 }
 /* SINGLE STORY ENDS --------*/
 
-/* ------------------button ----- */
+/* ------------------Home button ----- */
+.home-image-wrapper {
+  position: absolute;
+  top: 60px;
+  width: 100%;
+  height: 110vh;
+  background-color: rgba(38, 38, 38, 0.5);
+}
+
+.home-container-dimensions {
+  width: 100%;
+  height: 100vh;
+}
+
 .home-button-container {
   position: absolute;
-  top: 40em;
+  z-index: 2;
+  top: 38em;
 }
 .button {
   height: 80px;
@@ -1201,9 +1225,7 @@ input#img-5:checked ~ .nav-dots label#img-dot-5,
 input#img-6:checked ~ .nav-dots label#img-dot-6 {
   background: rgba(0, 0, 0, 0.8);
 }
-/* Completed Chapters ENDS */
 
-/* temp.js */
 @import url('https://fonts.googleapis.com/css?family=Arima+Madurai:300');
 
 .container {
@@ -1335,4 +1357,4 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
   }
 }
 
-/* temp ends */
+/* Completed Chapters ENDS */
