@@ -19,10 +19,10 @@ class Navbar extends Component {
         {this.props.user.id ? (
           <div className="navbar-links-container">
             <Link to="/openStories" className="navbar-link">
-              Open Stories
+              open-stories
             </Link>
             <Link to="/user-profile" className="navbar-link">
-              my account
+              profile
             </Link>
             <a className="navbar-link" onClick={this.handleLogout}>
               logout
@@ -30,8 +30,14 @@ class Navbar extends Component {
           </div>
         ) : (
           <div className="navbar-links-container">
-            <Link to="/login"> log in </Link>
-            <Link to="/signup"> sign up </Link>
+            <Link to="/login" className="navbar-link">
+              {' '}
+              log in{' '}
+            </Link>
+            <Link to="/signup" className="navbar-link">
+              {' '}
+              sign up{' '}
+            </Link>
           </div>
         )}
       </div>

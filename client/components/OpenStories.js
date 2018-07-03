@@ -8,7 +8,6 @@ class OpenStories extends Component{
   constructor(){
     super();
   }
-
   componentDidMount(){
     this.props.getOpenStories();
   }
@@ -20,8 +19,9 @@ class OpenStories extends Component{
                                     return <UnitStory story={story} />
                                   }): <h1>There are no open stories yet.</h1>
         }
+  }
       </div>
-    )
+    );
   }
 }
 

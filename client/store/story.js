@@ -28,7 +28,6 @@ export const createStoryThunk = templateId => dispatch => {
 
 export const fetchStoryThunk = storyId => async dispatch => {
   let story = await axios.get(`/api/stories/${storyId}`);
-  console.log('FETCHED STORY', story.data);
   dispatch(getStory(story.data));
 };
 

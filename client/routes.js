@@ -6,6 +6,7 @@ import {
   Login,
   Signup,
   UserProfile,
+  UserProfileEdit,
   HomePage,
   Canvas,
   RootCanvas,
@@ -43,6 +44,7 @@ class Routes extends Component {
             {/* Routes placed here are only available after logging in */}
             <Route path="/selectTemplate" component={SelectTemplate} />
             <Route path="/canvas" component={Canvas} />
+            <Route path="/user-profile/edit" component={UserProfileEdit} />
             <Route path="/user-profile" component={UserProfile} />
             <Route
               exact
@@ -51,6 +53,7 @@ class Routes extends Component {
             />
             <Route path="/stories/:id" component={SingleStoryContainer} />
             <Route path="/templates" component={Templates} />
+            <Route path="/openStories" component={OpenStories} />
             <Route component={HomePage} />
           </Switch>
         )}

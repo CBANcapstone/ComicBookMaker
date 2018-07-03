@@ -42,13 +42,22 @@ export default class SelectionBar extends Component {
   };
 
   render() {
+    let active = '';
     return (
       <div className="root-canvas-selection-bar-component">
         <div className="root-canvas-selection-bar-component-category">
           {this.categories &&
-            this.categories.map(cat => {
+            this.categories.map((cat, idx) => {
+              {
+                !idx ? (active = 'active-cat') : (active = '');
+              }
               return (
-                <Category key={cat} category={cat} onClick={this.handleClick} />
+                <Category
+                  key={idx}
+                  category={cat}
+                  onClick={this.handleClick}
+                  active={active}
+                />
               );
             })}
         </div>
@@ -59,7 +68,9 @@ export default class SelectionBar extends Component {
             this.state.sampleCategory &&
             this.images[this.state.sampleCategory].map((img, i) => {
               return (
-                <ImageOptions key={i} src={img} click={this.props.click} />
+                <div className="selection-bar-images-container">
+                  <ImageOptions key={i} src={img} click={this.props.click} />
+                </div>
               );
             })
           )}

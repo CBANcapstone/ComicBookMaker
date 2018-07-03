@@ -10,3 +10,5 @@ export { Login, Signup } from './AuthForm';
 export { default as SelectTemplate } from './SelectTemplate';
 export { default as OpenStories} from './OpenStories';
 export { default as CompletedChapter } from './CompletedChapter';
+export { default as UserProfileEdit } from './UserProfileEdit';
+

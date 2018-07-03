@@ -57,6 +57,7 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
+<<<<<<< HEAD
 router.get('/:id/chapters', (req, res, next) => {
   Chapter.findAll({
     where : {
@@ -66,36 +67,34 @@ router.get('/:id/chapters', (req, res, next) => {
     .then(chapters => res.status(200).send(chapters))
 })
 
+=======
+>>>>>>> master
 router.get('/user/:userId', async (req, res, next) => {
   try {
     let user = await User.findOne({
       where: {
         id: req.params.userId
-      }
-      ,
-
-      include: [{all: true}]
-    })
-    res.status(200).send(user.stories)
+      },
+      include: [{ all: true }]
+    });
+    res.status(200).send(user.stories);
   } catch (err) {
-    next(err)
+    next(err);
   }
 });
 
-
 router.post('/chapter/:chid', async (req, res, next) => {
   try {
-  let chapter = await Chapter.findById(req.params.chid)
-  let updated = await chapter.update({
-    imageUrl : req.body.url,
-    completed: true
-  })
-  console.log(updated.get({plain : true}))
-  res.status(201).send()}
-  catch (err) {
-    next(err)
+    let chapter = await Chapter.findById(req.params.chid);
+    let updated = await chapter.update({
+      imageUrl: req.body.url,
+      completed: true
+    });
+    res.status(201).send();
+  } catch (err) {
+    next(err);
   }
-})
+});
 
 router.get('/:id/:chapterid', async (req, res, next) => {
   try {
@@ -107,5 +106,7 @@ router.get('/:id/:chapterid', async (req, res, next) => {
 });
 
 router.get('/', (req, res) => {
-  Story.findAll({include: [{ all: true }]}).then(stories => res.json(stories));
+  Story.findAll({ include: [{ all: true }] }).then(stories =>
+    res.json(stories)
+  );
 });

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-export default class extends Component{
-
-  render(){
+export default class extends Component {
+  render() {
     const story = this.props.story;
     const { coverImgUrl, title, chapters } = story;
     return(
@@ -25,8 +24,11 @@ export default class extends Component{
                 See completed chapters
               </Link>
             </div>
-          </div>
+          <button type="button" className="single-story-btn">
+            <span>See completed chapters</span>
+          </button>
         </div>
-    )
+      </div>
+    );
   }
 }
