@@ -13,15 +13,16 @@ function SingleStory(props) {
           <div>Story name: {title}</div>
           <div>Creator: {props.creator && props.creator.email}</div>
           <div>
-            Contributors:{' '}
             {props.contributors &&
               props.contributors.map(col => {
                 return <p key={col.id}>{col.email}</p>;
               })}
           </div>
-          <button type="button" className="single-story-btn">
-            <span>See completed chapters</span>
-          </button>
+          <div className="single-story-btn">
+            <Link to={`/${props.story.id}/completedChapters`}>
+              See completed chapters
+            </Link>
+          </div>
         </div>
       </div>
       <div className="single-story-container">

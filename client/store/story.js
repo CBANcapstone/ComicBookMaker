@@ -14,7 +14,6 @@ const getUserStories = stories => ({
   stories
 });
 
-
 export const createStoryThunk = templateId => dispatch => {
   axios
     .post('/api/stories/createstory', {
@@ -42,7 +41,6 @@ export const getUserStoriesThunk = userId => dispatch => {
     })
     .catch(err => console.log(err));
 };
-
 
 export default function(state = [], action) {
   switch (action.type) {

@@ -15,15 +15,16 @@ export default class extends Component{
             <div>Story name: {title}</div>
             <div>Creator: {story.users[0] && story.users[0].email}</div>
             <div>
-              Contributors:{' '}
               {story.users &&
                 story.users.map(col => {
                 return <p key={col.id}>{col.email}</p>;
               })}
             </div>
-            <button type="button" className="single-story-btn">
-              <span>See completed chapters</span>
-            </button>
+            <div className="single-story-btn">
+              <Link to={`/${story.id}/completedChapters`}>
+                See completed chapters
+              </Link>
+            </div>
           </div>
         </div>
     )

@@ -12,7 +12,9 @@ import {
   Templates,
   SelectTemplate,
   SingleStoryContainer,
-  OpenStories
+  OpenStories,
+  Custom,
+  CompletedChapter
 } from './components';
 import { me } from './store';
 
@@ -33,6 +35,8 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         <Route path="/home" component={HomePage} />
         <Route path='/openStories' component={OpenStories} />
+        <Route path='/custom' component={Custom} />
+        <Route path='/:storyId/completedChapters' component={CompletedChapter} />
 
         {isLoggedIn && (
           <Switch>
