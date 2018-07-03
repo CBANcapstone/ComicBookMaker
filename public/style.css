@@ -467,6 +467,7 @@ canvas {
 
 .home-main-img {
   width: 100%;
+  height: 100vh;
   z-index: -1;
 }
 
@@ -484,6 +485,15 @@ canvas {
 .root-canvas-selection-bar-component-images {
   display: flex;
   flex-direction: row;
+}
+
+#container {
+  z-index: 3;
+  position: absolute;
+  left: 55%;
+  top: 10%;
+  transform: translate(-50%, -50%);
+  font-size: 5em;
 }
 
 /* TODO CanvasTextArea */
@@ -889,10 +899,24 @@ textarea {
 }
 /* SINGLE STORY ENDS --------*/
 
-/* ------------------button ----- */
+/* ------------------Home button ----- */
+.home-image-wrapper {
+  position: absolute;
+  top: 60px;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(38, 38, 38, 0.5);
+}
+
+.home-container-dimensions {
+  width: 100%;
+  height: 100vh;
+}
+
 .home-button-container {
   position: absolute;
-  top: 40em;
+  z-index: 2;
+  top: 35em;
 }
 .button {
   height: 80px;
@@ -1022,18 +1046,155 @@ textarea {
   ); /* Chrome10+,Safari5.1+ */
   background: linear-gradient(top, #1d7d12 0%, #4fd342 100%); /* W3C */
 }
+
+/* UserProfileEdit */
 .user-profile-edit {
-  width: 100%;
   text-align: center;
 }
 
 .user-profile-edit-input {
-  width: 80%;
-  height: 2em;
   text-align: center;
   font-size: 1em;
 }
 
+.input-box-type {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.body-div {
+  font-family: 'Lato', sans-serif;
+  background: #ff8473;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  color: white;
+}
+.container-form-edit {
+  width: 400px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  padding: 2rem 2rem 2rem 2rem;
+  position: relative;
+}
+form::before,
+form::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s ease;
+}
+form::before {
+  z-index: -1;
+  background: transparent;
+  transform: translateX(-3.5rem) translateY(-3.75rem);
+  border: 6px solid #0e39fe;
+}
+form::after {
+  background: #0ea8ec;
+  z-index: -2;
+  transform: translateX(-2rem) translateY(-2.25rem);
+}
+form h1 {
+  text-align: center;
+  margin: 0 0 0.25rem 0;
+  padding: 0;
+  font-size: 1.5rem;
+}
+form small {
+  display: block;
+  margin: 0 auto 1rem;
+  padding: 0;
+  font-size: 14px;
+}
+form:focus-within {
+  background: #0ea8ec;
+}
+form:focus-within::before {
+  width: 0%;
+  height: 0%;
+  transform: translatex(0px) translatey(0px);
+}
+form .field {
+  display: flex;
+  flex-flow: column-reverse;
+  margin-bottom: 1em;
+}
+form label,
+form input {
+  transition: all 0.3s ease;
+  touch-action: manipulation;
+}
+form label {
+  opacity: 0;
+}
+form input {
+  padding: 10px 20px;
+  border: 4px solid white;
+  margin: 0 1.5rem;
+  background-color: transparent !important;
+  -webkit-appearance: none;
+  color: white;
+}
+form input:-webkit-autofill {
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0px 1000px #0ea8ec inset;
+  -webkit-text-fill-color: white !important;
+}
+form input::placeholder {
+  color: white;
+}
+form input:focus {
+  color: #0e39fe;
+  font-weight: bold;
+  outline: 0;
+  border: 6px solid #0e39fe;
+}
+form input::-webkit-input-placeholder {
+  opacity: 1;
+  transition: inherit;
+}
+form input:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+form button {
+  border: none;
+  padding: 0.85rem 1rem;
+  margin-top: 2rem;
+  background-color: #0e39fe;
+  color: white;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  width: 65%;
+  position: absolute;
+  bottom: -20px;
+  right: 18%;
+  letter-spacing: 0.15em;
+  transition: all 0.3s ease;
+}
+form button:hover {
+  border: 6px solid #090c9b;
+}
+form p {
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  margin: 0.5rem 1.5rem 1.75rem 1.5rem;
+}
+form p.success-message {
+  font-size: 1.25rem;
+  text-align: center;
+  line-height: 2rem;
+  margin: 1.5rem auto 5rem auto;
+}
+
+/* UserProfileEdit ENDS*/
 /* MODAL ****************/
 
 /* The Modal (background) */
@@ -1201,9 +1362,7 @@ input#img-5:checked ~ .nav-dots label#img-dot-5,
 input#img-6:checked ~ .nav-dots label#img-dot-6 {
   background: rgba(0, 0, 0, 0.8);
 }
-/* Completed Chapters ENDS */
 
-/* temp.js */
 @import url('https://fonts.googleapis.com/css?family=Arima+Madurai:300');
 
 .container {
@@ -1335,4 +1494,4 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
   }
 }
 
-/* temp ends */
+/* Completed Chapters ENDS */
