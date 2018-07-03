@@ -92,7 +92,6 @@ class UserProfileEdit extends Component {
                 className="user-profile-edit-input"
                 onChange={this.handleChange}
                 type="file"
-                name="photoUrl"
                 accept="image/*"
               />
             </div>
