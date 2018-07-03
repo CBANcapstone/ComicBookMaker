@@ -165,17 +165,14 @@ export default class RootCanvas extends Component {
       .getStage()
       .toDataURL()
       .slice(22);
-    console.log('picture>>>', this.stageRef.getStage().toDataURL());
-    var imagesRef = storage.ref().child('saved2.png');
-
+    const { id, chid } = this.props.match.params;
+    var imagesRef = storage.ref().child(`storyID_${id}chapterID_${chid}.png`);
     await imagesRef.putString(picture, 'base64');
     let url = await imagesRef.getDownloadURL();
-    await axios.post(`/api/stories/chapter/${this.props.match.params.chid}`, {
+    await axios.post(`/api/stories/chapter/${chid}`, {
       url
     });
-    history.push(`/stories/${this.props.match.params.id}`);
-    // after user is done =>
-    // save it under the chapter in DB and redirect to STORY main screen
+    history.push(`/stories/${id}`);
   };
 
   render() {

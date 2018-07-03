@@ -781,6 +781,7 @@ textarea {
 
 /*///////// SINGLE STORY////////////*/
 .single-story-container {
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -795,10 +796,23 @@ textarea {
 }
 
 .single-story-thumbnail {
+  border: 2px dashed white;
+  display: flex;
   margin: 2em;
-  width: 50em;
-  height: 8em;
+  /* width: 50em; */
+  height: 30em;
 }
+
+.single-story-thumbnail-info {
+  margin: auto;
+  padding-left: 2em;
+}
+
+.single-story-thumbnail-img {
+  padding: 2em;
+  height: 80%;
+}
+
 .center-item-heading {
   margin: auto;
   padding-top: 3em;
@@ -816,12 +830,13 @@ textarea {
 .single-story-info {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   padding: 3em;
-  width: 150em;
+  width: 100%;
 }
 
 .single-story-info-img {
-  width: 30em;
+  /* width: 30em; */
   height: 20em;
   align-items: flex-start;
   padding: 0 8em;
@@ -1006,4 +1021,40 @@ textarea {
     #4fd342 100%
   ); /* Chrome10+,Safari5.1+ */
   background: linear-gradient(top, #1d7d12 0%, #4fd342 100%); /* W3C */
+}
+.user-profile-edit {
+  width: 100%;
+  text-align: center;
+}
+
+.user-profile-edit-input {
+    width: 80%;
+    height: 2em;
+    text-align: center;
+    font-size: 1em;
+}
+
+/* MODAL ****************/
+
+/* The Modal (background) */
+.Modal {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(55, 227, 243, 0.3);
+}
+
+.modal-image {
+  width: 100%;
+  border: 1px dashed white;
 }
