@@ -15,7 +15,9 @@ const avatars = [
   'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/avatar%2Favatar-22.svg?alt=media&token=e189ec8b-99c1-4d7e-bb9d-44ce382c2460',
   'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/avatar%2Favatar-23.svg?alt=media&token=19fca654-c900-49de-b7e4-637fc57b6800',
   'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/avatar%2Favatar-24.svg?alt=media&token=2e0268a0-7bd9-4b16-8832-178f8bbf38e0',
-  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/avatar%2Favatar-25.svg?alt=media&token=b20c1aa8-4198-46f6-9089-40b4ec5c1a12'
+  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/avatar%2Favatar-25.svg?alt=media&token=b20c1aa8-4198-46f6-9089-40b4ec5c1a12',
+
+
 ];
 
 export default avatars;
