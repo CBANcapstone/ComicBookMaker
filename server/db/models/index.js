@@ -67,7 +67,7 @@ Chapter.createChapter = async function(chapterId, user, imageUrl) {
     });
     let story = await Story.findById(chapter.storyId)
     if(story.creatorId !== user.id) {
-      await story.setContributors([user.id])
+      await story.addContributors([user.id])
     }
   } catch (err) {
     console.error(err);

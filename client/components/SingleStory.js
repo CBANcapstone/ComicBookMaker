@@ -30,8 +30,8 @@ class SingleStory extends Component {
   }
 
   render() {
-    const { coverImgUrl, title, chapters, id } = this.props.story;
-    const { creator, contributors } = this.props;
+    const { coverImgUrl, title, chapters, id, creator, contributors } = this.props.story;
+    console.log('CONTRIBUTORS',contributors)
     return (
       <div>
         <div className="single-story-container">
@@ -146,12 +146,7 @@ class SingleStory extends Component {
 function mapState(state) {
   return {
     story: state.stories.currentStory,
-    creator:
-      state.stories.currentStory.users &&
-      state.stories.currentStory.users.filter(user => user.user_role.role == 'creator')[0],
-    contributors:
-      state.stories.currentStory.users &&
-      state.stories.currentStory.users.filter(user => user.user_role.role == 'contributor')
+    creator: state.stories.currentStory.creator
   };
 }
 
