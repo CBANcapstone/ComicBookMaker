@@ -22,7 +22,7 @@ Story.findOpenStories = async function() {
     where : {
       completed : false
     },
-    include : ['chapters']
+    include : [{all : true}]
   })
   return allStories
 }

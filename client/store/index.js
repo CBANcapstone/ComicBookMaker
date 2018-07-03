@@ -4,14 +4,12 @@ import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import user from './user';
 import templates from './templates';
-import story from './story';
 import stories from './stories';
 import chapters from './chapters';
 
 const reducer = combineReducers({
   user,
   templates,
-  story,
   stories,
   chapters
 });
@@ -23,7 +21,6 @@ const store = createStore(reducer, middleware);
 export default store;
 export * from './user';
 export * from './templates';
-export * from './story';
 export * from './stories';
 export * from './chapters';
 

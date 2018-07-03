@@ -145,13 +145,13 @@ class SingleStory extends Component {
 
 function mapState(state) {
   return {
-    story: state.story,
+    story: state.stories.currentStory,
     creator:
-      state.story.users &&
-      state.story.users.filter(user => user.user_role.role == 'creator')[0],
+      state.stories.currentStory.users &&
+      state.stories.currentStory.users.filter(user => user.user_role.role == 'creator')[0],
     contributors:
-      state.story.users &&
-      state.story.users.filter(user => user.user_role.role == 'contributor')
+      state.stories.currentStory.users &&
+      state.stories.currentStory.users.filter(user => user.user_role.role == 'contributor')
   };
 }
 

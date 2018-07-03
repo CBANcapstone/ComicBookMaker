@@ -31,9 +31,10 @@ class CompletedChapter extends Component {
 }
 
 const mapToState = state => {
+  console.log(state.stories.currentStory)
   return {
     completedChapters: state.chapters,
-    story: state.story
+    story: state.stories.currentStory
   };
 };
 

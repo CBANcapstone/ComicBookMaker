@@ -15,8 +15,8 @@ class OpenStories extends Component {
     return (
       <div className="open-stories">
         {this.props.openStories ? (
-          this.props.openStories.map(story => {
-            return <UnitStory story={story} />;
+          this.props.openStories.map((story, i) => {
+            return <UnitStory key={i} story={story} />;
           })
         ) : (
           <h1>There are no open stories yet.</h1>
@@ -29,7 +29,7 @@ class OpenStories extends Component {
 
 const mapToState = state => {
   return {
-    openStories: state.stories
+    openStories: state.stories.openStories
   };
 };
 

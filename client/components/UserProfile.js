@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ThumbnailsGrid from './ThumbnailsGrid';
-import { fetchOpenStoriesThunk, getUserStoriesThunk, me } from '../store';
+import { getUserStoriesThunk, me } from '../store';
 
 class UserProfile extends Component {
   constructor(props) {
@@ -21,10 +21,6 @@ class UserProfile extends Component {
     this.props.getUserStories(this.props.user.id);
   }
 
-  componentWillUnmount() {
-    this.props.getOpenStories();
-  }
-
   filterCreated = () => {
     let createdStories = this.props.stories.filter(
       story => story.user_role.role === 'creator'
@@ -35,6 +31,7 @@ class UserProfile extends Component {
       createdStories
     });
   };
+
   filterContributed = () => {
     this.contributor = this.props.stories.filter(
       story => story.user_role.role === 'contributor'
@@ -103,16 +100,13 @@ class UserProfile extends Component {
 function mapState(state) {
   return {
     user: state.user,
-    stories: state.story
+    stories: state.stories.userStories
   };
 }
 
 function mapDispatch(dispatch) {
   return {
     getUserStories: id => dispatch(getUserStoriesThunk(id)),
-    getOpenStories: () => {
-      dispatch(fetchOpenStoriesThunk())
-    },
     getUser: () => dispatch(me())
   };
 }
