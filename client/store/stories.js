@@ -8,7 +8,7 @@ const getOpenStories = stories => ({
 })
 
 export const fetchOpenStoriesThunk = () => dispatch => {
-  axios.get('/api/stories/openStories')
+  axios.get('/api/stories/open-stories')
     .then(res => {
       dispatch(getOpenStories(res.data))
     })
@@ -23,3 +23,4 @@ export default function(state = [], action) {
       return state;
   }
 }
+

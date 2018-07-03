@@ -14,16 +14,13 @@ const getUserStories = stories => ({
   stories
 });
 
-export const createStoryThunk = templateId => dispatch => {
-  axios
-    .post('/api/stories/createstory', {
-      templateId
-    })
-    .then(res => {
-      // dispatch(getStory(res.data))
-      history.push(`/stories/${res.data.id}`);
-    })
-    .catch(err => console.log(err));
+export const createStoryThunk = templateId => async () => {
+  try {
+    let res = await axios.post('/api/stories/', {templateId})
+    history.push(`/stories/${res.data.id}`);
+  } catch (err) {
+    console.err('Create story route', err)
+  }
 };
 
 export const fetchStoryThunk = storyId => async dispatch => {
@@ -35,7 +32,8 @@ export const getUserStoriesThunk = userId => dispatch => {
   axios
     .get(`/api/stories/user/${userId}`)
     .then(stories => {
-      dispatch(getUserStories(stories.data));
+      console.log(stories)
+      // dispatch(getUserStories(stories.data));
       // history.push('/templates');
     })
     .catch(err => console.log(err));
