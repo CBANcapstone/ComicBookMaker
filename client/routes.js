@@ -35,9 +35,12 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/home" component={HomePage} />
-        <Route path='/openStories' component={OpenStories} />
-        <Route path='/custom' component={Custom} />
-        <Route path='/:storyId/completedChapters' component={CompletedChapter} />
+        <Route path="/openStories" component={OpenStories} />
+        <Route path="/custom" component={Custom} />
+        <Route
+          path="/:storyId/completedChapters"
+          component={CompletedChapter}
+        />
 
         {isLoggedIn && (
           <Switch>
@@ -54,6 +57,7 @@ class Routes extends Component {
             <Route path="/stories/:id" component={SingleStoryContainer} />
             <Route path="/templates" component={Templates} />
             <Route path="/openStories" component={OpenStories} />
+
             <Route component={HomePage} />
           </Switch>
         )}
