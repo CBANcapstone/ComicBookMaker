@@ -367,6 +367,7 @@ canvas {
 .profile-pic {
   border-radius: 4em;
   box-shadow: 0 0 5em grey;
+  width: 300px;
 }
 
 .profile-desc {
