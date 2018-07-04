@@ -6,20 +6,15 @@ canvas {
 
 .root-canvas-info {
   border: 3px solid grey;
-  /* position: relative; */
   margin-top: 50vh;
 }
 
 .btn-canvas {
   border: none;
   outline: none;
-  /* margin-right: 0.7em; */
   background-color: #9accdf;
-  /* background-color: #59aac9; */
   cursor: pointer;
   font-size: 0.7em;
-  /* border-style: dotted;
-  border-width: thin; */
   border-style: solid;
   border-width: 0.2em;
   border-color: rgb(50, 94, 120);
@@ -97,7 +92,6 @@ canvas {
   font-size: 5em;
 }
 
-/* ------------------------- */
 .tooltip {
   position: relative;
   display: inline-block;

@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin: 1em; */
 }
 
 .home-main-img {
@@ -11,7 +10,6 @@
   z-index: -1;
 }
 
-/* ------------------Home button ----- */
 .home-image-wrapper {
   position: absolute;
   top: 60px;
@@ -159,7 +157,6 @@
   background: linear-gradient(top, #1d7d12 0%, #4fd342 100%); /* W3C */
 }
 
-/* UserProfileEdit */
 .user-profile-edit {
   text-align: center;
 }

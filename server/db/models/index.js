@@ -4,7 +4,7 @@ const Chapter = require('./chapter');
 const Resource = require('./resource');
 const Template = require('./template');
 const Sequelize = require('sequelize');
-const Op = Sequelize.Op
+const Op = Sequelize.Op;
 
 User.belongsToMany(Story, { through: 'UserStory' });
 Story.belongsToMany(User, { through: 'UserStory', as: 'contributors' });
@@ -33,7 +33,6 @@ Story.findOpenStories = async function() {
       'contributors'
     ]
   });
-  // console.log(allStories[0].get({ plain: true }));
   return allStories;
 };
 
@@ -64,12 +63,12 @@ Chapter.createChapter = async function(chapterId, user, imageUrl) {
     let chapter = await Chapter.findById(chapterId);
     await chapter.update({
       imageUrl,
-      creatorId : user.id,
+      creatorId: user.id,
       completed: true
     });
-    let story = await Story.findById(chapter.storyId)
-    if(story.creatorId !== user.id) {
-      await story.addContributors([user.id])
+    let story = await Story.findById(chapter.storyId);
+    if (story.creatorId !== user.id) {
+      await story.addContributors([user.id]);
     }
   } catch (err) {
     console.error(err);
@@ -79,33 +78,35 @@ Chapter.createChapter = async function(chapterId, user, imageUrl) {
 Story.findByUser = async function(user, category) {
   const creator = () => {
     return Story.findAll({
-      where : {
-        creatorId : user.id // replace with user.id
+      where: {
+        creatorId: user.id // replace with user.id
       }
-    })
-  }
+    });
+  };
   const contributor = () => {
     return Story.findAll({
-      include : [{
-        model : User,
-        as: 'contributors',
-        where : {
-          id : user.id
+      include: [
+        {
+          model: User,
+          as: 'contributors',
+          where: {
+            id: user.id
+          }
         }
-      }]
-    })
-  }
+      ]
+    });
+  };
   switch (category) {
     case 'creator':
-      return await creator()
+      return await creator();
     case 'contributor':
-      return await contributor()
+      return await contributor();
     default:
-      let cr = await creator()
-      let con = await contributor()
-      return [...cr, ...con]
+      let cr = await creator();
+      let con = await contributor();
+      return [...cr, ...con];
   }
-}
+};
 
 module.exports = {
   User,
