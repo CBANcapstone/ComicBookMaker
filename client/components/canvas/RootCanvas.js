@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Stage, Layer, Text, Line, Image } from 'react-konva';
-// import Konva from 'konva'
+import Konva from 'konva';
 import SelectionBar from './SelectionBar';
 import ResizeCanvasImage from './ResizeCanvasImage';
 import CanvasBox from './CanvasBox';
@@ -145,6 +145,8 @@ export default class RootCanvas extends Component {
   };
 
   handleDelete = () => {
+    this._transformer = this._transformer || new Konva.Transformer();
+    this._layerofTransformer = this._layerofTransformer || new Konva.Layer();
     let arr =
       this.state[this._type] &&
       this.state[this._type].map(img => {
