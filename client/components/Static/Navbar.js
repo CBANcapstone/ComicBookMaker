@@ -21,6 +21,9 @@ class Navbar extends Component {
             <Link to="/open-stories" className="navbar-link">
               open-stories
             </Link>
+            <Link to="/templates" className="navbar-link">
+              create-new-story
+            </Link>
             <Link to="/user-profile" className="navbar-link">
               profile
             </Link>

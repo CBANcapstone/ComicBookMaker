@@ -129,6 +129,7 @@ export default class RootCanvas extends Component {
 
   handleCanvasImgClick = event => {
     this._type = 'images';
+    console.log('image clicked >>>>>', event.target.attrs.image.zIndex);
     this.setState({ selectedImageOnCanvas: event.target.attrs.image });
   };
 
@@ -188,95 +189,125 @@ export default class RootCanvas extends Component {
         </div>
         <div className="root-canvas-buttons">
           <div className="root-canvas-move-image">
-            <button
-              type="button"
-              className="btn-canvas active-btn"
-              onClick={this.disableDraw}
-            >
-              MOVE
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fmove.png?alt=media&token=f06c0ca6-8604-44d0-84c7-96dea64d9f56"
-                height="30"
-                width="30"
-              />
-            </button>
-          </div>
-
-          <div className="root-canvas-draw-line">
-            <button
-              type="button"
-              className="btn-canvas"
-              onClick={this.handleDraw}
-            >
-              DRAW
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fdraw.png?alt=media&token=b90dd983-7ecd-4fdc-b979-38cc8aa5a544"
-                height="30"
-                width="30"
-              />
-            </button>
-          </div>
-
-          <div className="root-canvas-submit-image">
-            <button
-              type="button"
-              className="btn-canvas"
-              onClick={this.handleSubmit}
-            >
-              SUBMIT
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fsubmit.png?alt=media&token=b03c1a37-0ce6-4aa8-bb50-dfa8f50c063f"
-                height="30"
-                width="30"
-              />
-            </button>
-          </div>
-
-          <div className="root-canvas-delete-image">
-            <button
-              type="button"
-              className="btn-canvas"
-              onClick={this.handleDelete}
-            >
-              DELETE
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fdelete.png?alt=media&token=f78d08e1-c750-4252-8466-401c93f9f0a0"
-                height="30"
-                width="30"
-              />
-            </button>
-          </div>
-          <div className="root-canvas-clear-canvas">
-            <button
-              type="button"
-              className="btn-canvas"
-              onClick={this.handleClear}
-            >
-              CLEAR
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fclear.png?alt=media&token=23ebcc4c-1f3a-4ab3-b1df-759ab6bc96a0"
-                height="30"
-                width="30"
-              />
-            </button>
-          </div>
-          <div className="root-canvas-download-canvas">
-            <button type="button" className="btn-canvas">
-              <a
-                href="#"
-                className="button"
-                id="btn-download"
-                download="my-file-name.png"
-                onClick={this.handleDownload}
+            <div className="tooltip">
+              <button
+                type="button"
+                className="btn-canvas active-btn"
+                onClick={this.disableDraw}
               >
-                DOWNLOAD
+                MOVE
                 <img
-                  src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fdownload.png?alt=media&token=a9954bcd-5a10-4536-b2fc-894da04b319c"
+                  src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fmove.png?alt=media&token=f06c0ca6-8604-44d0-84c7-96dea64d9f56"
                   height="30"
                   width="30"
                 />
-              </a>
-            </button>
+              </button>
+              <span className="tooltiptext-btn">
+                Click to Move Stickers around
+              </span>
+            </div>
+          </div>
+
+          <div className="root-canvas-draw-line">
+            <div className="tooltip">
+              <button
+                type="button"
+                className="btn-canvas"
+                onClick={this.handleDraw}
+              >
+                DRAW
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fdraw.png?alt=media&token=b90dd983-7ecd-4fdc-b979-38cc8aa5a544"
+                  height="30"
+                  width="30"
+                />
+              </button>
+              <span className="tooltiptext-btn">Click to Draw</span>
+            </div>
+          </div>
+
+          <div className="root-canvas-submit-image">
+            <div className="tooltip">
+              <button
+                type="button"
+                className="btn-canvas"
+                onClick={this.handleSubmit}
+              >
+                SUBMIT
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fsubmit.png?alt=media&token=b03c1a37-0ce6-4aa8-bb50-dfa8f50c063f"
+                  height="30"
+                  width="30"
+                />
+              </button>
+
+              <span className="tooltiptext-btn">
+                Click to submit your Comic Strip
+              </span>
+            </div>
+          </div>
+
+          <div className="root-canvas-delete-image">
+            <div className="tooltip">
+              <button
+                type="button"
+                className="btn-canvas"
+                onClick={this.handleDelete}
+              >
+                DELETE
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fdelete.png?alt=media&token=f78d08e1-c750-4252-8466-401c93f9f0a0"
+                  height="30"
+                  width="30"
+                />
+              </button>
+              <span className="tooltiptext-btn">
+                click on a sticker/ text/ drawing and then click this button to
+                delete
+              </span>
+            </div>
+          </div>
+          <div className="root-canvas-clear-canvas">
+            <div className="tooltip">
+              <button
+                type="button"
+                className="btn-canvas"
+                onClick={this.handleClear}
+              >
+                CLEAR
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fclear.png?alt=media&token=23ebcc4c-1f3a-4ab3-b1df-759ab6bc96a0"
+                  height="30"
+                  width="30"
+                />
+              </button>
+              <span className="tooltiptext-btn">
+                Click to get a clean comic strip
+              </span>
+            </div>
+          </div>
+          <div className="root-canvas-download-canvas">
+            <div className="tooltip">
+              <button type="button" className="btn-canvas">
+                <a
+                  href="#"
+                  className="button"
+                  id="btn-download"
+                  download="my-file-name.png"
+                  onClick={this.handleDownload}
+                >
+                  DOWNLOAD
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/Canvas%20Editing%20Buttons%20Images%2Fdownload.png?alt=media&token=a9954bcd-5a10-4536-b2fc-894da04b319c"
+                    height="30"
+                    width="30"
+                  />
+                </a>
+              </button>
+              <span className="tooltiptext-btn">
+                Click to download your comic strip
+              </span>
+            </div>
           </div>
         </div>
         <div className="root-canvas-info">

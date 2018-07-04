@@ -8,6 +8,8 @@ const typeName = () => {
 
     l.append(p);
 
+    // l.setAttributeNS(null, 'y', y + 10);
+
     p.attr({
       fill: blue,
       stroke: '#0066CC'
@@ -16,7 +18,7 @@ const typeName = () => {
     setTimeout(function() {
       var logoTitle = 'Comic Book Maker';
       var logoRandom = '';
-      var logoTitleContainer = l.text(0, '98%', '');
+      var logoTitleContainer = l.text(0, '38%', '');
       var possible = '-+*/|}{[]~\\":;?/.><=+-_)(*&^%$#@!)}';
       logoTitleContainer.attr({
         fontSize: '15em',

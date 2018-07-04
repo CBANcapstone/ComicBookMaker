@@ -11,12 +11,13 @@ const AuthForm = props => {
       <h1 className="auth-form-heading">{displayName} to Create your Comic</h1>
       <div id="formContent">
         <div className="fadeIn first">
-          <iframe
-            src="https://giphy.com/embed/TpUxOJmGEaQ5a"
-            width="480"
-            height="364"
-            frameBorder="0"
-            className="giphy-embed"
+          <img
+            src="https://i.gifer.com/1kxR.gif"
+            style={{
+              margin: '1em 0',
+              boxShadow: '5px 5px rgba(0,0,0,0.5)',
+              borderRadius: '2em'
+            }}
           />
         </div>
         <form onSubmit={handleSubmit} name={name}>
