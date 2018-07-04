@@ -12,7 +12,6 @@ class OpenStories extends Component {
   }
 
   render() {
-    
     return (
       <div className="open-stories">
         {this.props.openStories.length ? (
@@ -21,38 +20,38 @@ class OpenStories extends Component {
           })
         ) : (
           <h1>There are no open stories yet.</h1>
-        )
-        }
+        )}
       </div>
     );
   }
 }
 
-function UnitStory (props) {
-    const { coverImgUrl, title, contributors, creator, id } = props.story;
-    console.log('OPEN STORIES', props.story)
-    return (
-      <div className="single-story-info">
-        <img className="single-story-info-img" src={coverImgUrl} alt="cover" />
-        <div className="single-story-info-title">
-          <div>Story name: {title}</div>
-          <div>Creator: {creator.name}</div> 
-          <div>
-            CONTRIBUTORS:
-            {!contributors.length ? ' No contributors yet' :
-              contributors.map((contr, i) => {
+function UnitStory(props) {
+  const { coverImgUrl, title, contributors, creator, id } = props.story;
+
+  return (
+    <div className="single-story-info">
+      <img className="single-story-info-img" src={coverImgUrl} alt="cover" />
+      <div className="single-story-info-title">
+        <div>Story name: {title}</div>
+        <div>Creator: {creator.name}</div>
+        <div>
+          CONTRIBUTORS:
+          {!contributors.length
+            ? ' No contributors yet'
+            : contributors.map((contr, i) => {
                 return <p key={i}>{contr.email}</p>;
               })}
-          </div>
-          <div type="button" className="single-story-btn">
-            <Link to={`/stories/${id}`}>
-              <span style={{ color: 'white' }}> Go to Story</span>
-            </Link>
-          </div>
+        </div>
+        <div type="button" className="single-story-btn">
+          <Link to={`/stories/${id}`}>
+            <span style={{ color: 'white' }}> Go to Story</span>
+          </Link>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
 const mapToState = state => {
   return {

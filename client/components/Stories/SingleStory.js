@@ -30,7 +30,14 @@ class SingleStory extends Component {
   }
 
   render() {
-    const { coverImgUrl, title, chapters, id, creator, contributors } = this.props.story;
+    const {
+      coverImgUrl,
+      title,
+      chapters,
+      id,
+      creator,
+      contributors
+    } = this.props.story;
     return (
       <div>
         <div className="single-story-container">

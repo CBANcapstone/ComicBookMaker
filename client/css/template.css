@@ -1,136 +1,135 @@
 .template-thumbnail {
-    display: flex;
-    width: 20em;
-    height: 10em;
-    background: none;
-    border: 1px solid black;
-  }
-  
-  /* FIX THIS*/
-  .create-story-container {
-    border: 1px solid black;
-  }
-  
-  .create-story-container-img {
-    width: 20em;
-    height: 20em;
-  }
-  
-  .grid {
-    display: flex;
-    flex-flow: column wrap;
-    margin: auto;
-    padding: 3em;
-    width: 80%;
-  }
-  
-  
-  
-  .grid-header {
-    margin: auto;
-    font-size: 3em;
-    font-family: 'Luckiest Guy';
-    color: #325e78;
-  }
-  
-  .grid-thumbnails-container {
-    display: flex;
-    flex-flow: row wrap;
-  }
-  
-  .grid-thumbnail-title {
-    font-family: 'Luckiest Guy';
-    font-weight: bold;
-    color: #325e78;
-    font-size: 1.7em;
-    padding: 0.5em 0;
-  }
-  .grid-thumbnail-description {
-    font-family: 'Courier, monospace';
-    padding-bottom: 0.5em;
-  }
-  
-  .grid-thumbnail {
-    display: flex;
-    position: relative;
-    height: 20em;
-    margin: 1em;
-    width: 20em;
-    border-radius: 75px;
-    transition: box-shadow 0.3s;
-    border: 1px solid grey;
-  }
-  
-  .grid-thumbnail-image {
-    opacity: 1;
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: 0.5s ease;
-    backface-visibility: hidden;
-    border-radius: 75px;
-  }
-  
-  .middle {
-    transition: 0.5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    border-radius: 75px;
-  }
-  
-  .grid-thumbnail:hover {
-    box-shadow: 0 0 50px rgba(33, 33, 33, 1);
-  }
-  
-  .grid-thumbnail:hover .grid-thumbnail-image {
-    opacity: 0.3;
-  }
-  
-  .grid-thumbnail:hover .middle {
-    opacity: 1;
-  }
-  
-  .grid-thumbnail-btn {
-    border-radius: 4px;
-    font-family: 'Luckiest Guy';
-    background-color: #59aac9;
-    opacity: 0.8;
-    border: none;
-    color: #ffffff;
-    text-align: center;
-    font-size: 1.5em;
-    padding: 0.3em;
-    width: 10em;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 5px;
-  }
-  
-  .grid-thumbnail-btn span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-  }
-  
-  .grid-thumbnail-btn span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-  }
-  
-  .grid-thumbnail-btn:hover span {
-    padding-right: 25px;
-  }
-  
-  .grid-thumbnail-btn:hover span:after {
-    opacity: 1;
-    right: 0;
-  }
+  display: flex;
+  width: 20em;
+  height: 10em;
+  background: none;
+  border: 1px solid black;
+}
+
+.create-story-container {
+  border: 1px solid black;
+}
+
+.create-story-container-img {
+  width: 20em;
+  height: 20em;
+}
+
+.grid {
+  display: flex;
+  flex-flow: column wrap;
+  margin: auto;
+  padding: 3em;
+  width: 80%;
+}
+
+.grid-header {
+  text-align: center;
+  padding: 0.5em 0;
+  margin: auto;
+  font-size: 3em;
+  font-family: 'Luckiest Guy';
+  color: #325e78;
+}
+
+.grid-thumbnails-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.grid-thumbnail-title {
+  font-family: 'Luckiest Guy';
+  font-weight: bold;
+  color: #325e78;
+  font-size: 1.7em;
+  padding: 0.5em 0;
+}
+.grid-thumbnail-description {
+  font-family: 'Courier, monospace';
+  padding-bottom: 0.5em;
+}
+
+.grid-thumbnail {
+  display: flex;
+  position: relative;
+  height: 20em;
+  margin: 1em;
+  width: 20em;
+  border-radius: 75px;
+  transition: box-shadow 0.3s;
+  border: 1px solid grey;
+}
+
+.grid-thumbnail-image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+  border-radius: 75px;
+}
+
+.middle {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  border-radius: 75px;
+}
+
+.grid-thumbnail:hover {
+  box-shadow: 0 0 50px rgba(33, 33, 33, 1);
+}
+
+.grid-thumbnail:hover .grid-thumbnail-image {
+  opacity: 0.3;
+}
+
+.grid-thumbnail:hover .middle {
+  opacity: 1;
+}
+
+.grid-thumbnail-btn {
+  border-radius: 4px;
+  font-family: 'Luckiest Guy';
+  background-color: #59aac9;
+  opacity: 0.8;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 1.5em;
+  padding: 0.3em;
+  width: 10em;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.grid-thumbnail-btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.grid-thumbnail-btn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.grid-thumbnail-btn:hover span {
+  padding-right: 25px;
+}
+
+.grid-thumbnail-btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}

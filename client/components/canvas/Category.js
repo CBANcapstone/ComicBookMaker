@@ -20,9 +20,15 @@ const Category = props => {
         >
           {props.category}
         </div>
-        <span className="tooltiptext-cat">
-          Click on a sticker to add it to your comic strip
-        </span>
+        {props.category === 'custom-text' ? (
+          <span className="tooltiptext-cat">
+            Click on text to resize & Double Click to remove border
+          </span>
+        ) : (
+          <span className="tooltiptext-cat">
+            Click on a sticker to add it to your comic strip
+          </span>
+        )}
       </div>
     </div>
   );
