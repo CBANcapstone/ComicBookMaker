@@ -3,6 +3,8 @@ const Story = require('./story');
 const Chapter = require('./chapter');
 const Resource = require('./resource');
 const Template = require('./template');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op
 
 User.belongsToMany(Story, { through: 'UserStory' });
 Story.belongsToMany(User, { through: 'UserStory', as: 'contributors' });
@@ -73,6 +75,37 @@ Chapter.createChapter = async function(chapterId, user, imageUrl) {
     console.error(err);
   }
 };
+
+Story.findByUser = async function(user, category) {
+  const creator = () => {
+    return Story.findAll({
+      where : {
+        creatorId : 2 // replace with user.id
+      }
+    })
+  }
+  const contributor = () => {
+    return Story.findAll({
+      include : [{
+        model : User,
+        as: 'contributors',
+        where : {
+          id : 1
+        }
+      }]
+    })
+  }
+  switch (category) {
+    case 'creator':
+      return await creator()
+    case 'contributor':
+      return await contributor()
+    default:
+      let cr = await creator()
+      let con = await contributor()
+      return [...cr, ...con]
+  }
+}
 
 module.exports = {
   User,

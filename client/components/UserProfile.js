@@ -41,7 +41,7 @@ class UserProfile extends Component {
 
   render() {
     const { name, email, photoUrl } = this.props.user;
-    const { stories } = this.props;
+    const { userStories } = this.props;
     return (
       <div>
         <div className="profile-container">
@@ -76,6 +76,11 @@ class UserProfile extends Component {
               contributed
             </button>
           </div>
+          <div className="button__holder">
+            <button type="button" onClick='#' className="plus">
+              all
+            </button>
+          </div>
         </div>
         <div>
           {this.state.defaultPage ? (
@@ -96,6 +101,9 @@ class UserProfile extends Component {
     );
   }
 }
+
+
+// refactor into the 3 thunks : all user stories; all created stories; all stories where user is a contributor
 
 function mapState(state) {
   return {

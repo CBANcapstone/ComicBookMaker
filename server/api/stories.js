@@ -25,17 +25,21 @@ router.get('/open-stories', async (req, res, next) => {
 
 // route to get user stories
 router.get('/user-stories', async (req, res, next) => {
-  try {
-    let user = await User.findOne({
-      where: {
-        id: req.user.id
-      },
-      include: [{ all: true }]
-    });
-    res.status(200).send(user.stories);
-  } catch (err) {
-    next(err);
-  }
+  console.log('QUERY', req.query)
+  let stories = await Story.findByUser(req.user, req.query.category)
+
+  // try {
+  //   let user = await User.findOne({
+  //     where: {
+  //       id: id
+  //     },
+  //     include: [{ all: true }]
+  //   });
+  //   res.status(200).send(user);
+  // } catch (err) {
+  //   next(err);
+  // }
+  res.status(200).send(stories);
 });
 
 // route which creates a chapter when user submit his comic
