@@ -9,4 +9,5 @@ export { default as OpenStories } from './Stories/OpenStories';
 export { default as CompletedChapter } from './Stories/CompletedChapter';
 export { default as HomePage } from './HomePage/HomePage';
 export { default as RootCanvas } from './canvas/RootCanvas';
+export { default as ThumbnailsGrid } from './Static/ThumbnailsGrid'
 //export { default as Custom } from './CustomHomeOne';

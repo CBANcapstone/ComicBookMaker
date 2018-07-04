@@ -444,10 +444,16 @@ canvas {
     0 0 1px 30px rgba(237, 28, 91, 0.1), 0 0 1px 45px rgba(237, 28, 91, 0.1);
 }
 
+.profile-stories-wrapper{
+  display : flex;
+  flex-direction: column;
+}
+
 .profile-stories-lst {
   display: flex;
-  /* justify-content: center; */
-  flex-flow: row wrap;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   padding-left: 3em;
 }
 
@@ -641,6 +647,8 @@ textarea {
   padding: 3em;
   width: 80%;
 }
+
+
 
 .grid-header {
   margin: auto;

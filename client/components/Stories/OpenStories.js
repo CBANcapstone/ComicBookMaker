@@ -12,6 +12,7 @@ class OpenStories extends Component {
   }
 
   render() {
+    
     return (
       <div className="open-stories">
         {this.props.openStories.length ? (
@@ -29,6 +30,7 @@ class OpenStories extends Component {
 
 function UnitStory (props) {
     const { coverImgUrl, title, contributors, creator, id } = props.story;
+    console.log('OPEN STORIES', props.story)
     return (
       <div className="single-story-info">
         <img className="single-story-info-img" src={coverImgUrl} alt="cover" />

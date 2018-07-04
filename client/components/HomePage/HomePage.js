@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import typeName from './HomePageNameDisplay';
+// import typeName from './HomePageNameDisplay';
 
 const HomePage = props => {
   // typeName();

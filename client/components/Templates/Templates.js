@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getTemplatesThunk, createStoryThunk } from '../../store';
-import ThumbnailsGrid from '../';
+import ThumbnailsGrid from '../Static/ThumbnailsGrid';
 
 class TemplatesContainer extends Component {
   componentDidMount() {

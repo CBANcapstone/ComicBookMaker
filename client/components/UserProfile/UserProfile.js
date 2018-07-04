@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ThumbnailsGrid from '../';
+import ThumbnailsGrid from '../Static/ThumbnailsGrid';
 import { getUserStoriesThunk, me } from '../../store';
 
 class UserProfile extends Component {
@@ -64,10 +64,13 @@ class UserProfile extends Component {
               all
             </button>
           </div>
-        </div>
-        <h1 className="grid-header">Stories</h1> {/*CENTER THIS*/}
+        </div >
+        <div className='profile-stories-wrapper'>
+        <h1 className="grid-header">Stories</h1>
         <div className="profile-stories-lst">
+        
           <ThumbnailsGrid list={stories} profile={true} label='Go to Story'/>
+        </div>
         </div>
       </div>
     );
