@@ -35,11 +35,11 @@ function UnitStory (props) {
       <div className="single-story-info">
         <img className="single-story-info-img" src={coverImgUrl} alt="cover" />
         <div className="single-story-info-title">
-          <div>Story name: {title}</div>
-          <div>Creator: {creator.name}</div> 
+          <div>Story name: <span className='single-story-info-title-text'>{title}</span></div>
+          <div>Creator: <span className='single-story-info-title-text'>{creator.name}</span></div> 
           <div>
             CONTRIBUTORS:
-            {!contributors.length ? ' No contributors yet' :
+            {!contributors.length ? <span className='single-story-info-title-text'> No contributors yet</span> :
               contributors.map((contr, i) => {
                 return <p key={i}>{contr.email}</p>;
               })}

@@ -4,10 +4,14 @@
     position: fixed;
     flex-direction: column;
     align-items: center;
+    justify-content: center
   }
   
   .home-main-img {
-    width: 100vw;
+    border: 2px solid white;
+    margin-left: -1%;
+    border-radius: 20px;
+    width: 102vw;
     z-index: -1;
   }
 
@@ -301,34 +305,4 @@
     margin: 1.5rem auto 5rem auto;
   }
 
-  .home-link {
-    color: white;
-    font-size: 1.7em;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: black;
-  }
   
-  .navbar-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    background-image: url('https://cdn-images-1.medium.com/max/2000/0*RsslpZpeNiQE5DG8.jpg');
-    padding: 1%;
-    text-shadow: 2px 2px #ff0000;
-  }
-  
-  .navbar-links-container {
-    display: flex;
-    justify-content: space-around;
-    width: 40em;
-  }
-  
-  .navbar-link {
-    color: white;
-    font-size: 1.8em;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: black;
-    cursor: pointer;
-    display: flex;
-  }
-
