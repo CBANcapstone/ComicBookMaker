@@ -6,8 +6,14 @@ export default class UnitStory extends Component {
     const story = this.props.story;
     const { coverImgUrl, title, chapters } = story;
     return (
-      <div className="single-story-info">
-        <img className="single-story-info-img" src={coverImgUrl} alt="cover" />
+      <div className="single-story-info-unit">
+        <img
+          className="single-story-info-img"
+          src={coverImgUrl}
+          alt="cover"
+          width="40%"
+          height="50%"
+        />
 
         <div className="single-story-info-title">
           <div>Story name: {title}</div>
