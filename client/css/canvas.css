@@ -113,7 +113,8 @@ canvas {
     z-index: 3;
     position: absolute;
     left: 55%;
-    top: 10%;
-    transform: translate(-50%, -50%);
+    top: 5em;
+    height: 10em;
+    /* transform: translate(-50%, -50%); */
     font-size: 5em;
   }
