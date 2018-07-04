@@ -256,7 +256,7 @@ canvas {
 
 .home-link {
   color: white;
-  font-size: 1.7em;
+  font-size: 1.8em;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
 }
@@ -277,7 +277,7 @@ canvas {
 
 .navbar-link {
   color: white;
-  font-size: 1.7em;
+  font-size: 1.8em;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
   cursor: pointer;
@@ -294,7 +294,7 @@ canvas {
   border: none;
   outline: none;
   /* margin-right: 0.7em; */
-  background-color: #f1f1f1;
+  background-color: #bad3de;
   /* background-color: #59aac9; */
   cursor: pointer;
   font-size: 0.7em;
@@ -303,7 +303,7 @@ canvas {
 }
 .active-btn,
 .btn-canvas:hover {
-  background-color: #666;
+  background-color: #4F87A2;;
   color: white;
 }
 
@@ -312,6 +312,7 @@ canvas {
   background-color: #9accdf;
   color: white;
 }
+
 
 .root-canvas-selection-bar {
   overflow: scroll;
@@ -470,6 +471,8 @@ canvas {
   border: 3px solid grey;
   margin-top: 0vh;
 }
+
+
 
 .root-canvas-buttons {
   display: flex;
