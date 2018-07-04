@@ -32,6 +32,7 @@ class SingleStory extends Component {
   render() {
     const { coverImgUrl, title, chapters, id } = this.props.story;
     const { creator, contributors } = this.props;
+    chapters && chapters.sort((a, b) => a.id - b.id);
     return (
       <div>
         <div className="single-story-container">

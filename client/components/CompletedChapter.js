@@ -15,6 +15,7 @@ class CompletedChapter extends Component {
   render() {
     const { title } = this.props.story;
     const { completedChapters } = this.props;
+    completedChapters.sort((a, b) => a.id - b.id);
     return (
       <div className="container">
         <div className="completed-chapters">

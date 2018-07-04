@@ -256,7 +256,7 @@ canvas {
 
 .home-link {
   color: white;
-  font-size: 1.7em;
+  font-size: 1.8em;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
 }
@@ -264,7 +264,6 @@ canvas {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  /* background-color: #ddd; */
   background-image: url('https://cdn-images-1.medium.com/max/2000/0*RsslpZpeNiQE5DG8.jpg');
   padding: 1%;
   text-shadow: 2px 2px #ff0000;
@@ -273,12 +272,12 @@ canvas {
 .navbar-links-container {
   display: flex;
   justify-content: space-around;
-  width: 25em;
+  width: 40em;
 }
 
 .navbar-link {
   color: white;
-  font-size: 1.7em;
+  font-size: 1.8em;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
   cursor: pointer;
@@ -294,9 +293,7 @@ canvas {
 .btn-canvas {
   border: none;
   outline: none;
-  /* margin-right: 0.7em; */
-  background-color: #f1f1f1;
-  /* background-color: #59aac9; */
+  background-color: #bad3de;
   cursor: pointer;
   font-size: 0.7em;
   border-style: dotted;
@@ -304,7 +301,7 @@ canvas {
 }
 .active-btn,
 .btn-canvas:hover {
-  background-color: #666;
+  background-color: #4F87A2;;
   color: white;
 }
 
@@ -314,6 +311,7 @@ canvas {
   color: white;
 }
 
+
 .root-canvas-selection-bar {
   overflow: scroll;
 }
@@ -322,10 +320,6 @@ canvas {
   cursor: pointer;
   display: flex;
   flex-direction: row;
-}
-
-.selection-bar-images-container {
-  background: white;
 }
 
 .root-canvas-selection-bar-component-images {
@@ -476,9 +470,76 @@ canvas {
   margin-top: 0vh;
 }
 
+
+
 .root-canvas-buttons {
   display: flex;
   flex-direction: row-reverse;
+  justify-content: center;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext-btn {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+.tooltip:hover .tooltiptext-btn {
+  visibility: visible;
+}
+
+.tooltip .tooltiptext-cat {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 5;
+  top: -5px;
+  left: 110%;
+}
+
+.tooltip .tooltiptext-cat::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
+
+.tooltip:hover .tooltiptext-cat {
+  visibility: visible;
 }
 
 .root-canvas-selection-bar-component-category,
@@ -488,7 +549,7 @@ canvas {
 }
 
 #container {
-  z-index: 3;
+  z-index: 2;
   position: absolute;
   left: 55%;
   top: 50%;
@@ -837,11 +898,20 @@ textarea {
   font-family: 'Bungee Inline';
 }
 
+.single-story-info-unit{
+  margin-left: -4em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 3em 0;
+  width: 100%;
+}
+
 .single-story-info {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 3em;
+  padding: 3em 0;
   width: 100%;
 }
 
@@ -917,7 +987,7 @@ svg {
 
 .home-button-container {
   position: absolute;
-  z-index: 2;
+  z-index: 5;
   top: 35em;
 }
 .button {
@@ -1497,3 +1567,11 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
 }
 
 /* Completed Chapters ENDS */
+
+/* OPEN STORIES *?
+.open-stories{
+
+}
+
+
+/*----- OPEN STORIES ENDS------*?
