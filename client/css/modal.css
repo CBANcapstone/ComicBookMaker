@@ -1,0 +1,21 @@
+.Modal {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+  }
+  
+  .Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(55, 227, 243, 0.3);
+  }
+  
+  .modal-image {
+    width: 100%;
+    border: 1px dashed white;
+  }

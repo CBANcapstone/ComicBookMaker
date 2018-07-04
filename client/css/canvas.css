@@ -1,0 +1,119 @@
+
+canvas {
+    width: 90vw;
+    height: 30vh;
+    border: 5px solid black;
+  }
+  
+  .home-link {
+    color: white;
+    font-size: 1.7em;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+  }
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* background-color: #ddd; */
+    background-image: url('https://cdn-images-1.medium.com/max/2000/0*RsslpZpeNiQE5DG8.jpg');
+    padding: 1%;
+    text-shadow: 2px 2px #ff0000;
+  }
+  
+  .navbar-links-container {
+    display: flex;
+    justify-content: space-around;
+    width: 25em;
+  }
+  
+  .navbar-link {
+    color: white;
+    font-size: 1.7em;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    cursor: pointer;
+    display: flex;
+  }
+  
+  .root-canvas-info {
+    border: 3px solid grey;
+    /* position: relative; */
+    margin-top: 50vh;
+  }
+  
+  .btn-canvas {
+    border: none;
+    outline: none;
+    /* margin-right: 0.7em; */
+    background-color: #f1f1f1;
+    /* background-color: #59aac9; */
+    cursor: pointer;
+    font-size: 0.7em;
+    border-style: dotted;
+    border-width: thin;
+  }
+  .active-btn,
+  .btn-canvas:hover {
+    background-color: #666;
+    color: white;
+  }
+  
+  .active-cat,
+  .selection-category:hover {
+    background-color: #9accdf;
+    color: white;
+  }
+  
+  .root-canvas-selection-bar {
+    overflow: scroll;
+  }
+  
+  .root-canvas-selection-bar-component-category {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .selection-bar-images-container {
+    background: white;
+  }
+  
+  .root-canvas-selection-bar-component-images {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+  }
+  
+  .root-canvas-selection-bar-category,
+  .root-canvas-selection-bar-images-options {
+    cursor: pointer;
+    padding: 1em;
+  }
+
+
+.root-canvas-info {
+    border: 3px solid grey;
+    margin-top: 0vh;
+  }
+  
+  .root-canvas-buttons {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  
+  .root-canvas-selection-bar-component-category,
+  .root-canvas-selection-bar-component-images {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  #container {
+    z-index: 3;
+    position: absolute;
+    left: 55%;
+    top: 10%;
+    transform: translate(-50%, -50%);
+    font-size: 5em;
+  }
