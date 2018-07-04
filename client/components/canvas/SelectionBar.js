@@ -10,7 +10,7 @@ import {
   peopleWorldWide,
   avatars
 } from '../../initialData';
-// import '../../styles/SelectionBar.css';
+
 export default class SelectionBar extends Component {
   constructor() {
     super();

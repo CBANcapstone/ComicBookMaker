@@ -1,5 +1,5 @@
 import React from 'react';
-import { HighlightCategory } from '../SelectTemplateHighlight';
+import { HighlightCategory } from '../Templates/SelectTemplateHighlight';
 
 const Category = props => {
   HighlightCategory();

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logout } from '../store';
+import { logout } from '../../store';
 
 class Navbar extends Component {
   handleLogout = () => {
@@ -18,7 +18,7 @@ class Navbar extends Component {
 
         {this.props.user.id ? (
           <div className="navbar-links-container">
-            <Link to="/openStories" className="navbar-link">
+            <Link to="/open-stories" className="navbar-link">
               open-stories
             </Link>
             <Link to="/templates" className="navbar-link">

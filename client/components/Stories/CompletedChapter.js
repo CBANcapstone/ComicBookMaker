@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchChaptersThunk, fetchStoryThunk } from '../store';
+import { fetchChaptersThunk, fetchStoryThunk } from '../../store';
 
 class CompletedChapter extends Component {
   componentDidMount() {
@@ -103,9 +103,10 @@ class CompletedChapter extends Component {
 }
 
 const mapToState = state => {
+  console.log(state.stories.currentStory)
   return {
     completedChapters: state.chapters,
-    story: state.story
+    story: state.stories.currentStory
   };
 };
 

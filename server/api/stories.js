@@ -3,46 +3,57 @@ const { Story, Chapter, Template, User, UserRole } = require('../db/models');
 
 module.exports = router;
 
-router.post('/createstory', async (req, res, next) => {
+// route creating a story
+router.post('/', async (req, res, next) => {
   try {
-    let template = await Template.findById(req.body.templateId);
-    let { title, description, coverImgUrl } = template;
-    let story = await Story.create({
-      title,
-      description,
-      coverImgUrl
-    });
-    let chapters = await Promise.all(
-      template.chapters.map(chapter => {
-        return Chapter.create({
-          title: chapter,
-          storyId: story.id
-        });
-      })
-    );
-    await UserRole.create({
-      role: 'creator',
-      userId: req.user.id,
-      storyId: story.id
-    });
-    let storyToSend = story.get({ plain: true });
-    storyToSend.chapters = chapters;
-    res.json(storyToSend);
+    let story = await Template.createStory(req.body.templateId, req.user);
+    res.json(story);
   } catch (err) {
     next(err);
   }
 });
 
-router.get('/openStories', (req, res) => {
-  Story.findAll({
-    where : {
-      completed : false
-    },
-    include : [{ all: true }]
-  })
-  .then(stories => res.json(stories));
+// route to get all open stories 
+router.get('/open-stories', async (req, res, next) => {
+  try {
+    let allStories = await Story.findOpenStories();
+    res.json(allStories);
+  } catch (err) {
+    next(err);
+  }
 });
 
+// route to get user stories
+router.get('/user-stories', async (req, res, next) => {
+  console.log('QUERY', req.query)
+  let stories = await Story.findByUser(req.user, req.query.category)
+
+  // try {
+  //   let user = await User.findOne({
+  //     where: {
+  //       id: id
+  //     },
+  //     include: [{ all: true }]
+  //   });
+  //   res.status(200).send(user);
+  // } catch (err) {
+  //   next(err);
+  // }
+  res.status(200).send(stories);
+});
+
+// route which creates a chapter when user submit his comic
+router.post('/chapter/:chid', async (req, res, next) => {
+  try {
+    Chapter.createChapter(req.params.chid, req.user, req.body.url);
+    res.status(201).send();
+  } catch (err) {
+    next(err);
+  }
+});
+
+// get single story for single view
+// need to make the right order of the chapters
 router.get('/:id', async (req, res, next) => {
   try {
     let story = await Story.findOne({
@@ -57,41 +68,11 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
+// not sure what these routes do
 
-router.get('/:id/chapters', (req, res, next) => {
-  Chapter.findAll({
-    where : {
-      storyId: req.params.id
-    }
-  })
-    .then(chapters => res.status(200).send(chapters))
-})
-
-router.get('/user/:userId', async (req, res, next) => {
-  try {
-    let user = await User.findOne({
-      where: {
-        id: req.params.userId
-      },
-      include: [{ all: true }]
-    });
-    res.status(200).send(user.stories);
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.post('/chapter/:chid', async (req, res, next) => {
-  try {
-    let chapter = await Chapter.findById(req.params.chid);
-    let updated = await chapter.update({
-      imageUrl: req.body.url,
-      completed: true
-    });
-    res.status(201).send();
-  } catch (err) {
-    next(err);
-  }
+router.get('/:id/chapters', async (req, res, next) => {
+  let chapters = await Chapter.findAll({ where: { storyId: req.params.id } });
+  res.status(200).send(chapters);
 });
 
 router.get('/:id/:chapterid', async (req, res, next) => {
@@ -101,10 +82,4 @@ router.get('/:id/:chapterid', async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-});
-
-router.get('/', (req, res) => {
-  Story.findAll({ include: [{ all: true }] }).then(stories =>
-    res.json(stories)
-  );
 });

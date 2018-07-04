@@ -5,7 +5,7 @@ import SelectionBar from './SelectionBar';
 import ResizeCanvasImage from './ResizeCanvasImage';
 import CanvasBox from './CanvasBox';
 import TextOnCanvas from './TextOnCanvas';
-import { HighlightButton } from '../SelectTemplateHighlight';
+import { HighlightButton } from '../Templates/SelectTemplateHighlight';
 import axios from 'axios';
 import history from '../../history';
 import { storage } from '../../config/firebase';

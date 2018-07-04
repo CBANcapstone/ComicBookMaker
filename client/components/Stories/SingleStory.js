@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchStoryThunk } from '../store';
+import { fetchStoryThunk } from '../../store';
 import Modal from 'react-modal';
 
 Modal.setAppElement('#app');
@@ -30,9 +30,7 @@ class SingleStory extends Component {
   }
 
   render() {
-    const { coverImgUrl, title, chapters, id } = this.props.story;
-    const { creator, contributors } = this.props;
-    chapters && chapters.sort((a, b) => a.id - b.id);
+    const { coverImgUrl, title, chapters, id, creator, contributors } = this.props.story;
     return (
       <div>
         <div className="single-story-container">
@@ -146,13 +144,8 @@ class SingleStory extends Component {
 
 function mapState(state) {
   return {
-    story: state.story,
-    creator:
-      state.story.users &&
-      state.story.users.filter(user => user.user_role.role == 'creator')[0],
-    contributors:
-      state.story.users &&
-      state.story.users.filter(user => user.user_role.role == 'contributor')
+    story: state.stories.currentStory,
+    creator: state.stories.currentStory.creator
   };
 }
 

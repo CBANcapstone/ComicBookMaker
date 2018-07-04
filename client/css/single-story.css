@@ -1,0 +1,106 @@
+.single-story-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 3em;
+    width: 90%;
+  }
+  
+  .single-story-chapters {
+    display: flex;
+    flex-flow: column wrap;
+  }
+  
+  .single-story-thumbnail {
+    border: 2px dashed white;
+    display: flex;
+    margin: 2em;
+    /* width: 50em; */
+    height: 30em;
+  }
+  
+  .single-story-thumbnail-info {
+    margin: auto;
+    padding-left: 2em;
+  }
+  
+  .single-story-thumbnail-img {
+    padding: 2em;
+    height: 80%;
+  }
+  
+  .center-item-heading {
+    margin: auto;
+    padding-top: 3em;
+    color: #325e78;
+    font-size: 3em;
+    font-family: 'Luckiest Guy';
+  }
+  .center-item {
+    margin: auto;
+    padding-top: 1.5em;
+    font-size: 2em;
+    font-family: 'Bungee Inline';
+  }
+  
+  .single-story-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 3em;
+    width: 100%;
+  }
+  
+  .single-story-info-img {
+    /* width: 30em; */
+    height: 20em;
+    align-items: flex-start;
+    padding: 0 8em;
+  }
+  
+  .single-story-info-title {
+    font-family: 'Luckiest Guy';
+    color: #325e78;
+    font-size: 2em;
+    padding: 1.5em;
+    border: 1px dashed #ddd;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 5px #ddd, 0 0 0 10px #fff, 0 0 2px 10px #eee;
+  }
+  
+  .single-story-btn {
+    border-radius: 4px;
+    font-family: 'Luckiest Guy';
+    background-color: #59aac9;
+    opacity: 0.8;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 0.7em;
+    padding: 0.5em;
+    width: 15em;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  .single-story-btn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  .single-story-btn span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  .single-story-btn:hover span {
+    padding-right: 25px;
+  }
+  .single-story-btn:hover span:after {
+    opacity: 1;
+    right: 0;
+  }

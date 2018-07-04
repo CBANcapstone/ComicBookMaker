@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { storage } from '../config/firebase';
+import { storage } from '../../config/firebase';
 
 class UserProfileEdit extends Component {
   constructor(props) {
@@ -27,8 +27,8 @@ class UserProfileEdit extends Component {
     });
     const file = event.target.files[0];
     const storageRef = storage.ref('/user-images' + file.name);
-    const uploadTask = storageRef.put(file, { contentType: file.type });
-    let photoUrl = await uploadTask.snapshot.ref.getDownloadURL();
+    const uploadTask = await storageRef.put(file, { contentType: file.type });
+    let photoUrl = await uploadTask.ref.getDownloadURL();
     this.setState({ photoUrl });
   }
 
