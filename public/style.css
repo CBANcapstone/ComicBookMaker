@@ -293,9 +293,7 @@ canvas {
 .btn-canvas {
   border: none;
   outline: none;
-  /* margin-right: 0.7em; */
   background-color: #bad3de;
-  /* background-color: #59aac9; */
   cursor: pointer;
   font-size: 0.7em;
   border-style: dotted;
