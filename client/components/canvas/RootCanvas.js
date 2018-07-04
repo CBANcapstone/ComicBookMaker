@@ -129,6 +129,7 @@ export default class RootCanvas extends Component {
 
   handleCanvasImgClick = event => {
     this._type = 'images';
+    console.log('image clicked >>>>>', event.target.attrs.image.zIndex);
     this.setState({ selectedImageOnCanvas: event.target.attrs.image });
   };
 

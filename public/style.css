@@ -488,7 +488,7 @@ canvas {
 }
 
 #container {
-  z-index: 3;
+  z-index: 2;
   position: absolute;
   left: 55%;
   top: 50%;
@@ -917,7 +917,7 @@ svg {
 
 .home-button-container {
   position: absolute;
-  z-index: 2;
+  z-index: 5;
   top: 35em;
 }
 .button {
