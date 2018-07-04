@@ -1,14 +1,13 @@
 
 .home-container {
     display: flex;
+    position: fixed;
     flex-direction: column;
     align-items: center;
-    /* margin: 1em; */
   }
   
   .home-main-img {
-    width: 100%;
-    height: 100vh;
+    width: 100vw;
     z-index: -1;
   }
 
@@ -21,11 +20,6 @@
     background-color: rgba(38, 38, 38, 0.5);
   }
   
-  .home-container-dimensions {
-    width: 100%;
-    height: 100vh;
-  }
-  
   .home-button-container {
     position: absolute;
     z-index: 2;
@@ -35,7 +29,7 @@
     height: 80px;
     width: 180px;
     cursor: pointer;
-    margin: 10px auto;
+    margin: -8em auto;
   }
   .button .outer {
     position: relative;
