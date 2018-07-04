@@ -1,10 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import typeName from './HomePageNameDisplay';
 
-const HomePage = props => {
-  typeName();
+class HomePage extends Component {
+  constructor(props) {
+    super(props)
+  }
+  componentDidMount() {
+    typeName();
+  }
+  
+  render(){
+    
   return (
     <div className="home-container">
       <div className="home-container-dimensions">
@@ -29,7 +37,7 @@ const HomePage = props => {
       </div>
 
       <div className="home-button-container">
-        {props.user.id ? (
+        {this.props.user.id ? (
           <Link to="/templates">
             <div className="button">
               <div className="outer">
@@ -53,7 +61,7 @@ const HomePage = props => {
       </div>
     </div>
   );
-};
+}};
 
 function mapState(state) {
   return {

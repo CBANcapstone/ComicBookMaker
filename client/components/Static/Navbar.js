@@ -11,7 +11,7 @@ class Navbar extends Component {
   render() {
     return (
       <div className="navbar-container">
-        <Link to="/home" className="home-link">
+        <Link to="/" className="home-link">
           {' '}
           home{' '}
         </Link>

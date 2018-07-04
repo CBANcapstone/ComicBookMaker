@@ -25,20 +25,7 @@ router.get('/open-stories', async (req, res, next) => {
 
 // route to get user stories
 router.get('/user-stories', async (req, res, next) => {
-  console.log('QUERY', req.query)
   let stories = await Story.findByUser(req.user, req.query.category)
-
-  // try {
-  //   let user = await User.findOne({
-  //     where: {
-  //       id: id
-  //     },
-  //     include: [{ all: true }]
-  //   });
-  //   res.status(200).send(user);
-  // } catch (err) {
-  //   next(err);
-  // }
   res.status(200).send(stories);
 });
 
