@@ -44,9 +44,9 @@ export const fetchStoryThunk = storyId => async dispatch => {
   }
 };
 
-export const getUserStoriesThunk = userId => async dispatch => {
+export const getUserStoriesThunk = category => async dispatch => {
   try {
-    let stories = await axios.get(`/api/stories/user-stories`);
+    let stories = await axios.get(`/api/stories/user-stories?category=${category}`);
     dispatch(getUserStories(stories.data));
   } catch (err) {
     console.error('Error fetching user stories', err);

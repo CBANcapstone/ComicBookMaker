@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchStoryThunk } from '../store';
+import { fetchStoryThunk } from '../../store';
 import Modal from 'react-modal';
 
 Modal.setAppElement('#app');

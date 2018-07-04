@@ -1,18 +1,12 @@
 import React from 'react';
-import history from '../history';
+import { Link } from 'react-router-dom';
 
 function ThumbnailsGrid(props) {
-  // profile tells that the component is being rendered in User Profile
   const { list, profile } = props;
   return (
     <div className="grid">
-      {profile ? (
-        <h1 className="grid-header">Stories</h1>
-      ) : (
-        <h1 className="grid-header">Select a Theme for Your Comic</h1>
-      )}
       <div className="grid-thumbnails-container">
-        {list.length &&
+        {!!list.length &&
           list.map(item => (
             <Thumbnail
               item={item}
@@ -28,9 +22,6 @@ function ThumbnailsGrid(props) {
 
 function Thumbnail(props) {
   // profile tells that the component is being rendered in User Profile
-  const goToStory = id => {
-    history.push(`/stories/${id}`);
-  };
   const { profile } = props;
   const { title, coverImgUrl, description, id } = props.item;
   return (
@@ -40,9 +31,11 @@ function Thumbnail(props) {
         <div className="grid-thumbnail-title">{title}</div>
         <div className="grid-thumbnail-description">{description}</div>
         {profile ? (
-          <div className="grid-thumbnail-btn" onClick={() => goToStory(id)}>
+          <Link to={`/stories/${id}`}>
+          <div className="grid-thumbnail-btn">
             <span>Go to Story</span>
           </div>
+          </Link>
         ) : (
           <div
             className="grid-thumbnail-btn"
@@ -52,8 +45,6 @@ function Thumbnail(props) {
           </div>
         )}
       </div>
-
-      {/* TODO: Attach handler to create story in DB and set it to the state as selected story*/}
     </div>
   );
 }

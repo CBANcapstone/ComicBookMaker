@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchChaptersThunk, fetchStoryThunk } from '../store';
+import { fetchChaptersThunk, fetchStoryThunk } from '../../store';
 
 class CompletedChapter extends Component {
   componentDidMount() {

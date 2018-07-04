@@ -80,7 +80,7 @@ Story.findByUser = async function(user, category) {
   const creator = () => {
     return Story.findAll({
       where : {
-        creatorId : 2 // replace with user.id
+        creatorId : user.id // replace with user.id
       }
     })
   }
@@ -90,7 +90,7 @@ Story.findByUser = async function(user, category) {
         model : User,
         as: 'contributors',
         where : {
-          id : 1
+          id : user.id
         }
       }]
     })

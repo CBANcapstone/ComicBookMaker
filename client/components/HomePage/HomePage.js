@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import typeName from './HomePageNameDisplay';
 
 const HomePage = props => {
-  typeName();
+  // typeName();
   return (
     <div className="home-container">
       <div className="home-container-dimensions">

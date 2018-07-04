@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getTemplatesThunk, createStoryThunk } from '../store';
-import ThumbnailsGrid from './ThumbnailsGrid';
+import { getTemplatesThunk, createStoryThunk } from '../../store';
+import ThumbnailsGrid from '../';
 
 class TemplatesContainer extends Component {
   componentDidMount() {
@@ -9,11 +9,14 @@ class TemplatesContainer extends Component {
   }
   render() {
     return (
+      <div>
+      <h1 className="grid-header">Select a Theme for Your Comic</h1>
       <ThumbnailsGrid
         list={this.props.templates}
         createStory={this.props.createStory}
         profile={false}
       />
+      </div>
     );
   }
 }

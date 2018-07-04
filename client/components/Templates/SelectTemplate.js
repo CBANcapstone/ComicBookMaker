@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { backgroundsArr } from '../initialData';
+import { backgroundsArr } from '../../initialData';
 import { Link } from 'react-router-dom';
-import RootCanvas from './canvas/RootCanvas';
+
 import {
   HighlightTemplate,
   HighlightBackground
