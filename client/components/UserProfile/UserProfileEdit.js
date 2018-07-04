@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { storage } from '../../config/firebase';
+import history from '../../history';
 
 class UserProfileEdit extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class UserProfileEdit extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleUpload = this.handleUpload.bind(this)
   }
 
   componentDidMount() {
@@ -21,30 +23,32 @@ class UserProfileEdit extends Component {
     this.setState({ name, email, photoUrl, password });
   }
 
-  async handleChange(event) {
+  handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
     });
+  }
+
+  async handleUpload(event) {
     const file = event.target.files[0];
     const storageRef = storage.ref('/user-images' + file.name);
     const uploadTask = await storageRef.put(file, { contentType: file.type });
     let photoUrl = await uploadTask.ref.getDownloadURL();
-    this.setState({ photoUrl });
+    this.setState({ photoUrl }); 
   }
 
   handleSubmit(evt) {
     evt.preventDefault();
     axios
-      .put(`/api/users/${this.props.user.id}`, this.state)
-      .then(res => res.data);
-
-    this.props.history.goBack();
+      .put(`/api/users/`, this.state)
+      .then(res => history.push('/user-profile'))
+      .catch(err => console.error(err))
   }
 
   render() {
     const { name, email, password } = this.state;
     return (
-      <div className="container" style={{ height: '100vh', marginTop: '0' }}>
+      <div className="container" style={{ height: '100vh', marginTop: '0' , display: 'flex'}}>
         <div className="body-div">
           <form
             id="form"
@@ -92,7 +96,7 @@ class UserProfileEdit extends Component {
                   className="user-profile-edit-input"
                   onChange={this.handleChange}
                   name="password"
-                  // type="text"
+                  type="text"
                   value={password}
                   placeholder="Password"
                   style={{ width: '15em' }}
@@ -105,9 +109,10 @@ class UserProfileEdit extends Component {
               <div className="field">
                 <input
                   className="user-profile-edit-input"
-                  onChange={this.handleChange}
+                  onChange={this.handleUpload}
                   type="file"
                   accept="image/*"
+                  style={{ width: '15em' }}
                 />
                 <label htmlFor="password">Choose your profile picture</label>
               </div>
