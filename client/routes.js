@@ -34,10 +34,12 @@ class Routes extends Component {
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/home" component={HomePage} />
-        <Route path='/open-stories' component={OpenStories} />
-        <Route path='/custom' component={Custom} />
-        <Route path='/:storyId/completedChapters' component={CompletedChapter} />
+        <Route path="/open-stories" component={OpenStories} />
+        <Route path="/custom" component={Custom} />
+        <Route
+          path="/:storyId/completedChapters"
+          component={CompletedChapter}
+        />
 
         {isLoggedIn && (
           <Switch>

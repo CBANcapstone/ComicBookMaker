@@ -28,7 +28,6 @@ Story.findOpenStories = async function() {
       {
         model: User,
         as: 'creator'
-        // !!!! need to exclude password and salt!!!!///
       },
       'contributors'
     ]

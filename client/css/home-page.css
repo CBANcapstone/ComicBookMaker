@@ -1,12 +1,16 @@
 .home-container {
   display: flex;
+  position: fixed;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .home-main-img {
-  width: 100%;
-  height: 100vh;
+  border: 2px solid white;
+  margin-left: -1%;
+  border-radius: 20px;
+  width: 102vw;
   z-index: -1;
 }
 

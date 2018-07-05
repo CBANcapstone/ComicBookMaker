@@ -32,9 +32,9 @@ function Thumbnail(props) {
         <div className="grid-thumbnail-description">{description}</div>
         {profile ? (
           <Link to={`/stories/${id}`}>
-          <div className="grid-thumbnail-btn">
-            <span>Go to Story</span>
-          </div>
+            <div className="grid-thumbnail-btn">
+              <span>Go to Story</span>
+            </div>
           </Link>
         ) : (
           <div

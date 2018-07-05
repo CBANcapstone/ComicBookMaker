@@ -1,36 +1,36 @@
 .template-for-story {
-    display: flex;
-    padding: 2em;
-  }
-  
-  .backgrounds-for-canvas {
-    display: flex;
-    overflow: scroll;
-    padding: 2em;
-  }
-  .template-selected,
-  .background-selected {
-    padding: 1em;
-    margin-top: 1em;
-    transition: 0.5s ease;
-  }
-  
-  .active,
-  .template-selected:hover {
-    box-shadow: 0 0 30px grey;
-    -webkit-transform: scale(1.7);
-    -ms-transform: scale(1.7);
-    transform: scale(1.7);
-  }
-  .activeB,
-  .background-selected:hover {
-    box-shadow: 0 0 30px black;
-    -webkit-transform: scale(1.7);
-    -ms-transform: scale(1.7);
-    transform: scale(1.7);
-  }
-  
-  .template-select-and-next {
-    display: flex;
-    padding: 0 2em;
-  }
+  display: flex;
+  padding: 2em;
+}
+
+.backgrounds-for-canvas {
+  display: flex;
+  overflow: scroll;
+  padding: 2em;
+}
+.template-selected,
+.background-selected {
+  padding: 1em;
+  margin-top: 1em;
+  transition: 0.5s ease;
+}
+
+.active,
+.template-selected:hover {
+  box-shadow: 0 0 30px grey;
+  -webkit-transform: scale(1.7);
+  -ms-transform: scale(1.7);
+  transform: scale(1.7);
+}
+.activeB,
+.background-selected:hover {
+  box-shadow: 0 0 30px black;
+  -webkit-transform: scale(1.7);
+  -ms-transform: scale(1.7);
+  transform: scale(1.7);
+}
+
+.template-select-and-next {
+  display: flex;
+  padding: 0 2em;
+}

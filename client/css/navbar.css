@@ -1,0 +1,34 @@
+.navbar-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8em;
+  text-shadow: 1px 1px #ff0000;
+  border: 1px solid #ff0000;
+  border-radius: 13px;
+  font-size: 0.9em;
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/0_RsslpZpeNiQE5DG8%20copy.jpg?alt=media&token=5bd2caa0-80e2-4309-900f-776f16687c30');
+}
+
+.navbar-container .navbar-links-container {
+  display: flex;
+  justify-content: space-around;
+  width: 40em;
+}
+
+.navbar-link {
+  color: white;
+  font-size: 1.8em;
+  -webkit-text-stroke-width: 1.1px;
+  -webkit-text-stroke-color: #6d0303;
+  cursor: pointer;
+  display: flex;
+  opacity: 1;
+}
+
+.home-link {
+  color: white;
+  font-size: 1.8em;
+  -webkit-text-stroke-width: 1.1px;
+  -webkit-text-stroke-color: #6d0303;
+}

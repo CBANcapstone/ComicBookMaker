@@ -16,10 +16,9 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-
-router.put("/:id", function(req, res, next) {
-  const id = req.params.id;
-  User.findById(id)
+router.put('/', function(req, res, next) {
+  User.findById(req.user.id)
     .then(user => user.update(req.body))
     .catch(next);
+  res.status(201).send();
 });
