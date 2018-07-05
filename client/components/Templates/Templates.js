@@ -10,12 +10,12 @@ class TemplatesContainer extends Component {
   render() {
     return (
       <div>
-      <h1 className="grid-header">Select a Theme for Your Comic</h1>
-      <ThumbnailsGrid
-        list={this.props.templates}
-        createStory={this.props.createStory}
-        profile={false}
-      />
+        <h1 className="grid-header">Select a Theme for Your Comic</h1>
+        <ThumbnailsGrid
+          list={this.props.templates}
+          createStory={this.props.createStory}
+          profile={false}
+        />
       </div>
     );
   }

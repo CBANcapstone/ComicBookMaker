@@ -13,7 +13,7 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-// route to get all open stories 
+// route to get all open stories
 router.get('/open-stories', async (req, res, next) => {
   try {
     let allStories = await Story.findOpenStories();
@@ -25,7 +25,7 @@ router.get('/open-stories', async (req, res, next) => {
 
 // route to get user stories
 router.get('/user-stories', async (req, res, next) => {
-  let stories = await Story.findByUser(req.user, req.query.category)
+  let stories = await Story.findByUser(req.user, req.query.category);
   res.status(200).send(stories);
 });
 

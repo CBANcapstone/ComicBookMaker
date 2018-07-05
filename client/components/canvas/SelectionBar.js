@@ -7,8 +7,10 @@ import {
   charactersArr,
   bubblesArr,
   eyes,
-  peopleWorldWide,
-  avatars
+  people,
+  avatars,
+  stickers,
+  buildings
 } from '../../initialData';
 
 export default class SelectionBar extends Component {
@@ -20,16 +22,20 @@ export default class SelectionBar extends Component {
       'textbubbles',
       'custom-text',
       'eyes',
-      'peopleWorldWide',
-      'avatars'
+      'people',
+      'avatars',
+      'stickers',
+      'buildings'
     ];
     this.images = {
       background: backgroundsArr,
       characters: charactersArr,
       textbubbles: bubblesArr,
       eyes,
-      peopleWorldWide,
-      avatars
+      people,
+      avatars,
+      stickers,
+      buildings
     };
     this.state = {
       sampleCategory: null

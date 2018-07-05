@@ -10,12 +10,14 @@ export default class TextOnCanvas extends Component {
   }
   //attaching transformer on Text
   transformShow = e => {
+    this.props.handleCanvasTextClick(this.props.currText);
     let stage = e.target.getStage();
     stage.add(this.layer2);
     this.tr = new Konva.Transformer();
     this.layer2.add(this.tr);
     this.tr.attachTo(e.target);
     this.layer2.draw();
+    this.props.handleCanvasTextClick(this.props.currText, this.tr, this.layer2);
   };
   // redraw transformer when mouse drags the text
   dragMove = e => {
@@ -35,15 +37,14 @@ export default class TextOnCanvas extends Component {
     return (
       <Text
         text={this.props.currText}
-        onMouseOver={this.transformShow}
         onDragMove={this.dragMove}
+        onClick={this.transformShow}
         onDblClick={this.transformHide}
         fontSize="40"
         fontFamily={this.props.font}
         align="center"
         fill="black"
         draggable
-        onClick={this.props.handleCanvasTextClick}
         onTransform={this.handleTransform}
       />
     );

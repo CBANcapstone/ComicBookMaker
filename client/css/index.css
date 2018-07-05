@@ -10,8 +10,11 @@
 @import './user-profile.css';
 @import './navbar.css';
 @import './open-stories.css';
+@import './user-profile-edit.css';
 
-html { height: 100%; }
+html {
+  height: 100%;
+}
 
 body {
   height: 100%;
@@ -25,4 +28,3 @@ a {
   text-decoration-line: none;
   color: black;
 }
-

@@ -64,13 +64,12 @@ class UserProfile extends Component {
               all
             </button>
           </div>
-        </div >
-        <div className='profile-stories-wrapper'>
-        <h1 className="grid-header">Stories</h1>
-        <div className="profile-stories-lst">
-        
-          <ThumbnailsGrid list={stories} profile={true} label='Go to Story'/>
         </div>
+        <div className="profile-stories-wrapper">
+          <h1 className="grid-header">Stories</h1>
+          <div className="profile-stories-lst">
+            <ThumbnailsGrid list={stories} profile={true} label="Go to Story" />
+          </div>
         </div>
       </div>
     );

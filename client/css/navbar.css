@@ -1,5 +1,5 @@
 .navbar-container {
-    position:relative;
+  position: relative;
   display: flex;
   justify-content: space-between;
   padding: 0.8em;
@@ -8,7 +8,6 @@
   border-radius: 13px;
   font-size: 0.9em;
   background-image: url('https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/0_RsslpZpeNiQE5DG8%20copy.jpg?alt=media&token=5bd2caa0-80e2-4309-900f-776f16687c30');
-
 }
 
 .navbar-container .navbar-links-container {

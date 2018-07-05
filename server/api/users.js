@@ -20,5 +20,5 @@ router.put('/', function(req, res, next) {
   User.findById(req.user.id)
     .then(user => user.update(req.body))
     .catch(next);
-  res.status(201).send()
+  res.status(201).send();
 });

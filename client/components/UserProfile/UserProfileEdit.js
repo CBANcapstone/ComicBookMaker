@@ -15,7 +15,7 @@ class UserProfileEdit extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleUpload = this.handleUpload.bind(this)
+    this.handleUpload = this.handleUpload.bind(this);
   }
 
   componentDidMount() {
@@ -34,7 +34,7 @@ class UserProfileEdit extends Component {
     const storageRef = storage.ref('/user-images' + file.name);
     const uploadTask = await storageRef.put(file, { contentType: file.type });
     let photoUrl = await uploadTask.ref.getDownloadURL();
-    this.setState({ photoUrl }); 
+    this.setState({ photoUrl });
   }
 
   handleSubmit(evt) {
@@ -42,13 +42,16 @@ class UserProfileEdit extends Component {
     axios
       .put(`/api/users/`, this.state)
       .then(res => history.push('/user-profile'))
-      .catch(err => console.error(err))
+      .catch(err => console.error(err));
   }
 
   render() {
     const { name, email, password } = this.state;
     return (
-      <div className="container" style={{ height: '100vh', marginTop: '0' , display: 'flex'}}>
+      <div
+        className="container"
+        style={{ height: '100vh', marginTop: '0', display: 'flex' }}
+      >
         <div className="body-div">
           <form
             id="form"

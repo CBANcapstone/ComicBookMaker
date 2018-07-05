@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Stage, Layer, Text, Line, Image } from 'react-konva';
-// import Konva from 'konva'
+import Konva from 'konva';
 import SelectionBar from './SelectionBar';
 import ResizeCanvasImage from './ResizeCanvasImage';
 import CanvasBox from './CanvasBox';
@@ -129,7 +129,6 @@ export default class RootCanvas extends Component {
 
   handleCanvasImgClick = event => {
     this._type = 'images';
-    console.log('image clicked >>>>>', event.target.attrs.image.zIndex);
     this.setState({ selectedImageOnCanvas: event.target.attrs.image });
   };
 
@@ -138,15 +137,26 @@ export default class RootCanvas extends Component {
     this.setState({ selectedImageOnCanvas: event.target.attrs.points });
   };
 
-  handleCanvasTextClick = event => {
+  handleCanvasTextClick = (eventText, transformer, currLayer) => {
+    this._transformer = transformer;
+    this._layerofTransformer = currLayer;
     this._type = 'text';
-    this.setState({ selectedImageOnCanvas: event.target.attrs.text });
+    this.setState({ selectedImageOnCanvas: eventText });
   };
 
   handleDelete = () => {
-    let arr = this.state[this._type].filter(img => {
-      return img !== this.state.selectedImageOnCanvas;
-    });
+    this._transformer = this._transformer || new Konva.Transformer();
+    this._layerofTransformer = this._layerofTransformer || new Konva.Layer();
+    let arr =
+      this.state[this._type] &&
+      this.state[this._type].map(img => {
+        if (img !== this.state.selectedImageOnCanvas) {
+          return img;
+        }
+      });
+    // deleting the transformers
+    this._transformer.destroy();
+    this._layerofTransformer.destroy();
     this.setState({ [this._type]: arr });
   };
 
@@ -363,7 +373,7 @@ export default class RootCanvas extends Component {
                 this.state.text.map((txt, fontIdx) => {
                   return (
                     <TextOnCanvas
-                      key={txt}
+                      key={fontIdx}
                       handleCanvasTextClick={this.handleCanvasTextClick}
                       currText={txt}
                       font={this.state.font[fontIdx]}

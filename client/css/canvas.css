@@ -1,152 +1,157 @@
-
 canvas {
-    width: 90vw;
-    height: 30vh;
-    border: 5px solid black;
-  }
-  
-  .root-canvas-info {
-    border: 3px solid grey;
-    /* position: relative; */
-    margin-top: 50vh;
-  }
-  
-  .btn-canvas {
-    border: none;
-    outline: none;
-    /* margin-right: 0.7em; */
-    background-color: #f1f1f1;
-    /* background-color: #59aac9; */
-    cursor: pointer;
-    font-size: 0.7em;
-    border-style: dotted;
-    border-width: thin;
-  }
-  .active-btn,
-  .btn-canvas:hover {
-    background-color: #666;
-    color: white;
-  }
-  
-  .active-cat,
-  .selection-category:hover {
-    background-color: #9accdf;
-    color: white;
-  }
-  
-  .root-canvas-selection-bar {
-    overflow: scroll;
-  }
-  
-  .root-canvas-selection-bar-component-category {
-    cursor: pointer;
-    display: flex;
-    flex-direction: row;
-  }
-
-  .selection-bar-images-container {
-    background: white;
-  }
-  
-  .root-canvas-selection-bar-component-images {
-    cursor: pointer;
-    display: flex;
-    flex-direction: row;
-    overflow: scroll;
-  }
-  
-  .root-canvas-selection-bar-category,
-  .root-canvas-selection-bar-images-options {
-    cursor: pointer;
-    padding: 1em;
-  }
-
+  width: 90vw;
+  height: 30vh;
+  border: 5px solid black;
+}
 
 .root-canvas-info {
-    border: 3px solid grey;
-    margin-top: 0vh;
-  }
-  
-  .root-canvas-buttons {
-    display: flex;
-    flex-direction: row-reverse;
-  }
-  
-  .root-canvas-selection-bar-component-category,
-  .root-canvas-selection-bar-component-images {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  #container {
-    z-index: 2;
-    position: absolute;
-    left: 55%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 5em;
-  }
+  border: 3px solid grey;
+  margin-top: 50vh;
+}
 
-  .tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-  }
-  
-  .tooltip .tooltiptext-btn {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    top: 150%;
-    left: 50%;
-    margin-left: -60px;
-  }
-  
-  .tooltip .tooltiptext-btn::after {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent black transparent;
-  }
-  .tooltip:hover .tooltiptext-btn {
-    visibility: visible;
-  }
-  
-  .tooltip .tooltiptext-cat {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 5;
-    top: -5px;
-    left: 110%;
-  }
-  
-  .tooltip .tooltiptext-cat::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: 100%;
-    margin-top: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent black transparent transparent;
-  }
-  
-  .tooltip:hover .tooltiptext-cat {
-    visibility: visible;
-  }
+.btn-canvas {
+  border: none;
+  outline: none;
+  background-color: #9accdf;
+  cursor: pointer;
+  font-size: 0.7em;
+  border-style: solid;
+  border-width: 0.2em;
+  border-color: rgb(50, 94, 120);
+}
+.active-btn,
+.btn-canvas:hover {
+  background-color: #666;
+  color: white;
+}
+
+.active-cat,
+.selection-category:hover {
+  background-color: #9accdf;
+  color: white;
+}
+
+.root-canvas-selection-bar {
+  overflow: scroll;
+}
+
+.root-canvas-selection-bar-component-category {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+}
+
+.selection-bar-images-container {
+  border: 1px solid rgb(50, 94, 120);
+}
+.selection-bar-images-container:hover {
+  box-shadow: 5px 5px 5px grey;
+  border-color: transparent;
+  -webkit-transform: scale(1.3);
+  -ms-transform: scale(1.3);
+  transform: scale(1.3);
+}
+
+.root-canvas-selection-bar-component-images {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+}
+
+.root-canvas-selection-bar-category,
+.root-canvas-selection-bar-images-options {
+  cursor: pointer;
+  padding: 1em;
+}
+
+.root-canvas-info {
+  border: 3px solid grey;
+  margin-top: 0vh;
+}
+
+.root-canvas-buttons {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.root-canvas-selection-bar-component-category,
+.root-canvas-selection-bar-component-images {
+  display: flex;
+  flex-direction: row;
+}
+
+#container {
+  z-index: 2;
+  position: absolute;
+  left: 55%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5em;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext-btn {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+.tooltip:hover .tooltiptext-btn {
+  visibility: visible;
+}
+
+.tooltip .tooltiptext-cat {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 5;
+  top: -5px;
+  left: 110%;
+}
+
+.tooltip .tooltiptext-cat::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
+
+.tooltip:hover .tooltiptext-cat {
+  visibility: visible;
+}
