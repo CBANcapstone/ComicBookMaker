@@ -1,7 +1,4 @@
 const charactersArr = [
-  'https://sonny.js.org/react-komik/dist/char2.png',
-  'https://sonny.js.org/react-komik/dist/char2_magic.png',
-  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2FMarvel%2Fchar1.png?alt=media&token=3cd5f450-a772-4e03-b52e-ebde742ad7b4',
   'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2FMarvel%2F1.svg?alt=media&token=2d63f998-e53f-43d3-a32b-2a6e950f13b0',
   'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2FMarvel%2F2.svg?alt=media&token=baf3cce1-9a27-42e1-8b16-ae3ced7adfb8',
   'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/templates%2FMarvel%2F3.svg?alt=media&token=aebe7337-89d0-4559-8515-df1c8e1dda0d',
@@ -28,7 +25,6 @@ const charactersArr = [
   'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/ava%2Fdoctor.png?alt=media&token=6d9e9fe3-be14-4340-8bd9-059ce3c4bf8b',
   'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/ava%2Fchemist.png?alt=media&token=fc9667d0-e77d-44aa-84c4-3c73076e2560',
   'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/ava%2Falien-1.png?alt=media&token=c46624f3-d1b8-41e8-ad68-a6a89271ccb1'
-
 ];
 
 export default charactersArr;
