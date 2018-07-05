@@ -6,21 +6,12 @@ const bubblesArr = [
   'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/bubbles%2Fcomic-explosion-bubble-5-1024x676.png?alt=media&token=33a61338-d371-480a-aba8-c2633871183e',
   'https://sonny.js.org/react-komik/dist/chat_left.svg',
   'https://sonny.js.org/react-komik/dist/chat_right.svg',
-  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/bubbles%2Frectangular-speech-bubble-1.svg?alt=media&token=b69e1631-816f-4f77-b2fb-4fd35ce26c4b',
-  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/bubbles%2Frectangular-speech-bubble.svg?alt=media&token=0d655180-527d-474e-867a-279dfdd70700',
-  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/bubbles%2Fscream-bubble-1.svg?alt=media&token=dd642abf-43af-46a6-8589-f864b8deefd5',
-  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/bubbles%2Fscream-bubble.svg?alt=media&token=424fe21b-8154-4755-b38b-4597d2aad284',
-  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/bubbles%2Fspeech-bubble-1.svg?alt=media&token=be297430-2bdf-4f78-92f2-4599c42fc298',
-  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/bubbles%2Fspeech-bubble-2.svg?alt=media&token=7543b568-8674-4e7d-84f7-b6d0aa269511',
-  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/bubbles%2Fspeech-bubble-3.svg?alt=media&token=ecc16fd1-7632-4ed6-b73d-07d0e93bf88a',
-  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/bubbles%2Fspeech-bubble-4.svg?alt=media&token=5afef298-a188-4f7a-85cf-e41163bbb4c1',
-  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/bubbles%2Fspeech-bubble-5.svg?alt=media&token=d531b12a-7599-47a0-a0f6-2d1399634b91',
-  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/bubbles%2Fspeech-bubble-6.svg?alt=media&token=3cbb784b-3ee8-4a72-a872-6befdc5e373d',
-  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/bubbles%2Fspeech-bubble.svg?alt=media&token=7e11252e-78cb-457f-b552-6f1c7b9923a7',
-  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/bubbles%2Fthinking-bubble.svg?alt=media&token=9a04e368-a523-4d83-93e1-a3c0ffafa753',
-  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/bubbles%2Fthought-bubble-1.svg?alt=media&token=fbdf6977-0c9a-4c8b-bf8f-4ffea8200fd7',
-  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/bubbles%2Fthought-bubble-2.svg?alt=media&token=beb12296-47bb-4fcf-b052-0bab094988d9',
-  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/bubbles%2Fthought-bubble.svg?alt=media&token=80826dcc-ff00-48da-a55c-adff35352900'
+  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/RandomComicBubbles%2F5a1bc30237ae64.1489022515117688342281.png?alt=media&token=b4cce147-92a1-4464-88d4-495dd583025a',
+  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/RandomComicBubbles%2FUntitled%2011.16.16%20PM.svg?alt=media&token=e60c5ff7-3cc4-44da-aa56-75682b02070f',
+  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/RandomComicBubbles%2FUntiddtled%20(2).svg?alt=media&token=fbfacc08-33dd-4ce5-8862-344afff6f225',
+  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/RandomComicBubbles%2F12.svg?alt=media&token=36f1a486-e5b7-4d7a-92e0-7dd3425bfd02',
+  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/RandomComicBubbles%2F13.svg?alt=media&token=74138a04-58d5-4f2d-89db-53216a53648e',
+  'https://firebasestorage.googleapis.com/v0/b/exquisite-comics.appspot.com/o/RandomComicBubbles%2F14.svg?alt=media&token=72d9e52d-c1b8-473c-89f5-67dcfbee45f1'
 ];
 
 export default bubblesArr;
