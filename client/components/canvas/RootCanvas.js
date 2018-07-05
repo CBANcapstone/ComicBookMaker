@@ -40,25 +40,25 @@ export default class RootCanvas extends Component {
     if (this.props.location.state.number === 1) {
       this.setState({
         canvasBoxPosX: ['30'],
-        canvasBoxPosY: ['140'],
+        canvasBoxPosY: ['100'],
         numOfBox: '1'
       });
     } else if (this.props.location.state.number === 2) {
       this.setState({
-        canvasBoxPosX: ['40', '720'],
-        canvasBoxPosY: ['140', '140'],
+        canvasBoxPosX: ['60', '990'],
+        canvasBoxPosY: ['120', '120'],
         numOfBox: '2'
       });
     } else if (this.props.location.state.number === 3) {
       this.setState({
-        canvasBoxPosX: ['30', '496', '962'],
-        canvasBoxPosY: ['140', '140', '140'],
+        canvasBoxPosX: ['30', '660', '1300'],
+        canvasBoxPosY: ['100', '100', '100'],
         numOfBox: '3'
       });
     } else {
       this.setState({
-        canvasBoxPosX: ['100', '720', '35', '740'],
-        canvasBoxPosY: ['140', '120', '350', '450'],
+        canvasBoxPosX: ['150', '970', '35', '930'],
+        canvasBoxPosY: ['80', '100', '350', '435'],
         numOfBox: '4'
       });
     }
@@ -345,7 +345,7 @@ export default class RootCanvas extends Component {
                 shadowColor="black"
                 align="center"
                 fill="white"
-                x={window.innerWidth / 6}
+                x={window.innerWidth / 4}
                 y="10"
               />
               {this.state.canvasBoxPosX.map((pos, index) => {
