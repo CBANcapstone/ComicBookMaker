@@ -1,5 +1,5 @@
 ## Comic Book Maker
-Deployed App Link: https://cban-comic-book-maker.herokuapp.com/home
+Deployed App Link: https://cban-comic-book-maker.herokuapp.com
 
 Comic book maker is a web app that allows you to create your own stories based on a selection of themes. This app offers a collection of templates, backgrounds, fonts and stickers allowing you to create your own unique story and the drawing tool allows you to draw out your imagination onto the canvas. You can download the comic strip you have worked on to share with your family and friends. Complete stories can be viewed on an image slider where each user's contribution is brought together to create a comic book.
 
